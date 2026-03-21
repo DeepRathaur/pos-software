@@ -1,36 +1,104 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# POS Studio
 
-## Getting Started
+Production-oriented **mobile-first POS and business management** app built with **Next.js (App Router)**, **TypeScript**, **Tailwind CSS**, **PostgreSQL**, **Zustand**, and **TanStack React Query**.
 
-First, run the development server:
+## Features
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+- **Auth** — register / login (JWT), `/api/auth/*`
+- **Business profiles** — type-driven **module toggles** (`retail`, `cafe`, `salon`, `restaurant`, `custom`)
+- **Generic items** — `product`, `service`, `menu_item`, `recipe_component` on one `items` table
+- **Inventory** — snapshot `inventory` + append-only `inventory_transactions` (no silent quantity edits)
+- **POS** — cart, discount, tax estimate, payment methods (`cash` | `upi` | `card`), transactional checkout with stock deduction
+- **Customers, staff, reports** — REST handlers under `/api/*`
+
+## Quick start
+
+1. **Create database** and apply schema:
+
+   ```bash
+   psql "$DATABASE_URL" -f db/schema.sql
+   ```
+
+2. **Environment** — copy `.env.example` to `.env.local` and set `DATABASE_URL` and `JWT_SECRET`.
+
+3. **Run dev server**:
+
+   ```bash
+   npm run dev
+   ```
+
+4. Open [http://localhost:3000](http://localhost:3000) — register, create a business in **Setup**, add **Items**, optionally create **inventory** rows, then use **POS**.
+
+## Project layout (high level)
+
+```
+billing-software/
+├── db/
+│   └── schema.sql                 # PostgreSQL DDL
+├── src/
+│   ├── app/
+│   │   ├── (app)/                 # Authenticated shell (dashboard, POS, …)
+│   │   ├── (auth)/                # login / register
+│   │   ├── api/                   # REST route handlers
+│   │   ├── layout.tsx
+│   │   └── page.tsx
+│   ├── components/                # KPI cards, charts, POS UI, AppShell
+│   ├── hooks/queries.ts           # React Query hooks + mutations
+│   ├── lib/
+│   │   ├── auth.ts                # JWT (jose)
+│   │   ├── db.ts                  # pg Pool
+│   │   ├── feature-modules.ts     # business type → enabled_modules
+│   │   ├── orders/checkout.ts     # POS transaction + inventory
+│   │   └── validation/schemas.ts  # Zod
+│   ├── providers/                 # React Query + hydration
+│   └── stores/                    # Zustand (auth, business, cart)
+└── README.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## API surface
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+| Route | Role |
+|-------|------|
+| `POST /api/auth/register` | Create user + JWT |
+| `POST /api/auth/login` | JWT |
+| `GET /api/auth/me` | Current user (Bearer token) |
+| `GET/POST /api/business` | List / create business (+ membership) |
+| `GET/PATCH/DELETE /api/business/[id]` | Business CRUD (soft delete) |
+| `GET/POST /api/items` | Items |
+| `GET/PATCH/DELETE /api/items/[id]` | Item by id |
+| `GET/POST /api/inventory` | Rows / create row + initial tx |
+| `GET/POST /api/inventory/transactions` | Stock movements |
+| `GET/POST /api/orders` | List / **checkout** (POS) |
+| `GET/PATCH/DELETE /api/orders/[id]` | Order |
+| `GET/POST /api/payments` | Payments |
+| `GET/PATCH/DELETE /api/payments/[id]` | Single payment |
+| `GET/POST /api/customers` | Customers |
+| `GET/PATCH/DELETE /api/customers/[id]` | Customer |
+| `GET/POST /api/staff` | Staff |
+| `GET/PATCH/DELETE /api/staff/[id]` | Staff member |
+| `GET /api/reports?type=summary|sales-by-day|top-items` | Analytics |
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+All mutating business-scoped routes require `Authorization: Bearer <token>` and `businessId` (body or query) where applicable.
 
-## Learn More
+### Example: checkout (POS)
 
-To learn more about Next.js, take a look at the following resources:
+`POST /api/orders`
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```json
+{
+  "businessId": "uuid",
+  "lines": [{ "itemId": "uuid", "quantity": 2 }],
+  "discountAmount": 10,
+  "payment": { "method": "upi", "amount": 189.5 }
+}
+```
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+Server recomputes totals, writes `orders`, `order_items`, `payments`, and `inventory_transactions` for stocked products.
 
-## Deploy on Vercel
+## Module mapping
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+Defined in `src/lib/feature-modules.ts` — `enabled_modules` is stored on `businesses` at creation / type change.
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## License
+
+Private / your stack — adjust as needed.

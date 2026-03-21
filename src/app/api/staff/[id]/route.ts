@@ -60,6 +60,10 @@ export async function PATCH(req: Request, ctx: Ctx) {
       fields.push(`schedule = $${i++}::jsonb`);
       vals.push(body.schedule);
     }
+    if (body.commissionRate !== undefined) {
+      fields.push(`commission_rate = $${i++}`);
+      vals.push(body.commissionRate);
+    }
     if (fields.length === 0) {
       const cur = await pool.query(
         `SELECT * FROM staff WHERE id = $1 AND business_id = $2 AND deleted_at IS NULL`,

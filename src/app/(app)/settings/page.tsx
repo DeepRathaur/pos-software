@@ -2,10 +2,11 @@
 
 import { useMemo, useState } from "react";
 import { useRouter } from "next/navigation";
+import { Icon, Screen, StitchHeader, ListRow } from "@/components/stitch";
 import { useCreateBusinessMutation, useBusinessesQuery } from "@/hooks/queries";
 import { useAuthStore } from "@/stores/auth-store";
 import { useBusinessStore } from "@/stores/business-store";
-import { modulesForBusinessType, type BusinessType } from "@/lib/feature-modules";
+import { getEnabledModules, type BusinessType } from "@/lib/feature-modules";
 
 const types: { id: BusinessType; label: string }[] = [
   { id: "retail", label: "Retail" },
@@ -31,22 +32,34 @@ export default function SettingsPage() {
 
   const createBiz = useCreateBusinessMutation();
 
-  const previewMods = useMemo(() => modulesForBusinessType(businessType), [businessType]);
+  const previewMods = useMemo(() => getEnabledModules(businessType), [businessType]);
 
   return (
-    <div className="mx-auto max-w-3xl space-y-8 px-4 py-6">
-      <header>
-        <h1 className="text-2xl font-semibold text-zinc-50">Setup</h1>
-        <p className="text-sm text-zinc-500">Business profile, modules, and session.</p>
-      </header>
+    <Screen>
+      <StitchHeader
+        title="Settings"
+        subtitle="Business profile & session"
+        icon="settings"
+        right={
+          <button type="button" className="rounded-full p-2 text-slate-400 hover:bg-stitch-surface">
+            <Icon name="notifications" />
+          </button>
+        }
+      />
 
-      <section className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-4">
-        <h2 className="text-sm font-semibold text-zinc-200">Signed in</h2>
-        <p className="mt-1 text-sm text-zinc-400">{user?.name}</p>
-        <p className="text-sm text-zinc-500">{user?.email}</p>
+      <section className="mb-6 rounded-xl border border-stitch-border bg-stitch-card p-5">
+        <div className="flex items-center gap-4">
+          <div className="flex size-16 items-center justify-center overflow-hidden rounded-full border-2 border-stitch-primary/30 bg-stitch-primary/10 text-stitch-primary">
+            <Icon name="person" className="text-3xl" />
+          </div>
+          <div className="min-w-0 flex-1">
+            <h2 className="text-lg font-bold text-slate-100">{user?.name ?? "User"}</h2>
+            <p className="text-sm text-slate-500">{user?.email}</p>
+          </div>
+        </div>
         <button
           type="button"
-          className="mt-4 min-h-[48px] w-full rounded-2xl border border-zinc-700 text-sm font-medium text-zinc-200"
+          className="mt-4 min-h-[48px] w-full rounded-xl border border-stitch-border text-sm font-medium text-slate-200"
           onClick={() => {
             clearAuth();
             router.replace("/login");
@@ -56,10 +69,28 @@ export default function SettingsPage() {
         </button>
       </section>
 
-      <section className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-4">
-        <h2 className="text-sm font-semibold text-zinc-200">Active business</h2>
+      <section className="mb-2">
+        <h3 className="px-2 pb-2 text-xs font-bold uppercase tracking-wider text-slate-500">
+          Business operations
+        </h3>
+        <div className="divide-y divide-stitch-border overflow-hidden rounded-xl border border-stitch-border bg-stitch-card">
+          <ListRow
+            title="Business details"
+            subtitle="Name, address, contact"
+            right={<Icon name="chevron_right" className="text-slate-500" />}
+          />
+          <ListRow
+            title="Payment methods"
+            subtitle="Cards, wallets, cash"
+            right={<Icon name="chevron_right" className="text-slate-500" />}
+          />
+        </div>
+      </section>
+
+      <section className="mb-6 rounded-xl border border-stitch-border bg-stitch-card p-4">
+        <h2 className="text-sm font-semibold text-slate-200">Active business</h2>
         <select
-          className="mt-3 w-full rounded-xl border border-zinc-700 bg-zinc-950 px-3 py-3 text-base"
+          className="mt-3 w-full rounded-xl border border-stitch-border bg-stitch-bg px-3 py-3 text-base text-slate-100"
           value={currentId ?? ""}
           onChange={(e) => setCurrent(e.target.value || null)}
         >
@@ -77,7 +108,7 @@ export default function SettingsPage() {
             {(businesses.find((b) => b.id === currentId)?.enabled_modules ?? []).map((m) => (
               <span
                 key={m}
-                className="rounded-full bg-zinc-800 px-3 py-1 text-xs font-medium text-zinc-200"
+                className="rounded-full bg-stitch-surface px-3 py-1 text-xs font-medium text-slate-200"
               >
                 {m}
               </span>
@@ -86,11 +117,9 @@ export default function SettingsPage() {
         ) : null}
       </section>
 
-      <section className="rounded-2xl border border-zinc-800 bg-zinc-900/50 p-4">
-        <h2 className="text-sm font-semibold text-zinc-200">New business</h2>
-        <p className="mt-1 text-sm text-zinc-500">
-          Picking a type enables the right modules automatically.
-        </p>
+      <section className="mb-6 rounded-xl border border-stitch-border bg-stitch-card p-4">
+        <h2 className="text-sm font-semibold text-slate-200">New business</h2>
+        <p className="mt-1 text-sm text-slate-500">Picking a type enables the right modules.</p>
         <form
           className="mt-4 space-y-3"
           onSubmit={(e) => {
@@ -109,19 +138,19 @@ export default function SettingsPage() {
             );
           }}
         >
-          <label className="block text-sm text-zinc-400">
+          <label className="block text-sm text-slate-400">
             Name
             <input
-              className="mt-1 w-full rounded-xl border border-zinc-700 bg-zinc-950 px-3 py-3 text-base"
+              className="mt-1 w-full rounded-xl border border-stitch-border bg-stitch-bg px-3 py-3 text-base text-slate-100"
               value={name}
               onChange={(e) => setName(e.target.value)}
               required
             />
           </label>
-          <label className="block text-sm text-zinc-400">
+          <label className="block text-sm text-slate-400">
             Business type
             <select
-              className="mt-1 w-full rounded-xl border border-zinc-700 bg-zinc-950 px-3 py-3 text-base"
+              className="mt-1 w-full rounded-xl border border-stitch-border bg-stitch-bg px-3 py-3 text-base text-slate-100"
               value={businessType}
               onChange={(e) => setBusinessType(e.target.value as BusinessType)}
             >
@@ -132,20 +161,28 @@ export default function SettingsPage() {
               ))}
             </select>
           </label>
-          <div className="rounded-xl border border-zinc-800 bg-zinc-950/60 p-3 text-xs text-zinc-400">
-            <p className="font-medium text-zinc-300">Modules enabled</p>
+          <div className="rounded-xl border border-stitch-border bg-stitch-bg/60 p-3 text-xs text-slate-400">
+            <p className="font-medium text-slate-300">Modules enabled</p>
             <p className="mt-2">{previewMods.join(" · ")}</p>
           </div>
           {err ? <p className="text-sm text-rose-400">{err}</p> : null}
           <button
             type="submit"
             disabled={createBiz.isPending}
-            className="min-h-[52px] w-full rounded-2xl bg-emerald-500 text-base font-semibold text-emerald-950 disabled:opacity-40"
+            className="min-h-[52px] w-full rounded-2xl bg-stitch-primary text-base font-semibold text-white shadow-lg shadow-stitch-primary/25 disabled:opacity-40"
           >
             {createBiz.isPending ? "Creating…" : "Create business"}
           </button>
         </form>
       </section>
-    </div>
+
+      <section className="rounded-xl border border-dashed border-stitch-border bg-stitch-card/50 p-4">
+        <h3 className="text-xs font-bold uppercase tracking-wider text-slate-500">Capacitor (native)</h3>
+        <p className="mt-1 text-xs text-slate-500">
+          Barcode, camera, share, notifications — wire in native shell via{" "}
+          <code className="text-stitch-primary">@/lib/capacitor</code>.
+        </p>
+      </section>
+    </Screen>
   );
 }

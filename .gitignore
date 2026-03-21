@@ -33,6 +33,9 @@ yarn-error.log*
 # env files (can opt-in for committing if needed)
 .env*
 
+# local postgres password for scripts/setup-db.mjs (optional)
+db/.pgpassphrase
+
 # vercel
 .vercel
 

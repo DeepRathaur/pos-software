@@ -14,7 +14,9 @@ export async function GET(req: Request) {
       return Response.json({ error: "businessId is required" }, { status: 400 });
     }
     await assertBusinessMembership(session.sub, businessId);
-    const limit = Math.min(Number(searchParams.get("limit") ?? 50), 200);
+    const rawLimit = Number(searchParams.get("limit") ?? 50);
+    const limit =
+      Number.isFinite(rawLimit) && rawLimit > 0 ? Math.min(Math.floor(rawLimit), 200) : 50;
     const r = await pool.query(
       `SELECT o.*, c.name AS customer_name
        FROM orders o
@@ -35,15 +37,18 @@ export async function POST(req: Request) {
     const session = await requireUser(req);
     const body = orderCheckoutSchema.parse(await parseJson(req));
     await assertBusinessMembership(session.sub, body.businessId);
+    const payments =
+      body.payment != null ? [body.payment] : (body.payments ?? []);
     const order = await checkoutOrder({
       businessId: body.businessId,
       userId: session.sub,
       customerId: body.customerId,
       tableId: body.tableId,
+      attributedStaffId: body.attributedStaffId,
       lines: body.lines,
       discountAmount: body.discountAmount,
       notes: body.notes,
-      payment: body.payment,
+      payments,
     });
     return jsonOk({ order }, { status: 201 });
   } catch (err) {

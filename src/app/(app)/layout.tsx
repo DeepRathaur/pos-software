@@ -5,6 +5,8 @@ import { useRouter } from "next/navigation";
 import { useAuthStore } from "@/stores/auth-store";
 import { AppShell } from "@/components/layout/AppShell";
 import { BusinessSync } from "@/components/providers/BusinessSync";
+import { ModuleRouteGuard } from "@/components/providers/ModuleRouteGuard";
+import { OfflineSyncListener } from "@/components/providers/OfflineSyncListener";
 
 export default function AppSectionLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
@@ -26,7 +28,10 @@ export default function AppSectionLayout({ children }: { children: React.ReactNo
   return (
     <>
       <BusinessSync />
-      <AppShell>{children}</AppShell>
+      <OfflineSyncListener />
+      <ModuleRouteGuard>
+        <AppShell>{children}</AppShell>
+      </ModuleRouteGuard>
     </>
   );
 }

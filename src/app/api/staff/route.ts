@@ -29,14 +29,15 @@ export async function POST(req: Request) {
     const body = staffCreateSchema.parse(await parseJson(req));
     await assertBusinessMembership(session.sub, body.businessId);
     const ins = await pool.query(
-      `INSERT INTO staff (business_id, user_id, name, role, phone, schedule)
-       VALUES ($1,$2,$3,$4,$5,$6::jsonb) RETURNING *`,
+      `INSERT INTO staff (business_id, user_id, name, role, phone, commission_rate, schedule)
+       VALUES ($1,$2,$3,$4,$5,$6,$7::jsonb) RETURNING *`,
       [
         body.businessId,
         body.userId ?? null,
         body.name,
         body.role,
         body.phone ?? null,
+        body.commissionRate ?? 0,
         JSON.stringify(body.schedule ?? {}),
       ]
     );

@@ -1,3 +1,2 @@
-export function hasModule(enabled: string[] | undefined, key: string) {
-  return !!enabled?.includes(key);
-}
+/** @deprecated Prefer `@/shared/domain/modules-client` */
+export * from "@/shared/domain/modules-client";

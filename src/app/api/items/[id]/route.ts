@@ -48,11 +48,15 @@ export async function PATCH(req: Request, ctx: Ctx) {
     if (body.kind !== undefined) set("kind", body.kind);
     if (body.name !== undefined) set("name", body.name);
     if (body.sku !== undefined) set("sku", body.sku);
+    if (body.barcode !== undefined) set("barcode", body.barcode);
+    if (body.imageUrl !== undefined) set("image_url", body.imageUrl);
     if (body.description !== undefined) set("description", body.description);
     if (body.price !== undefined) set("price", body.price);
     if (body.cost !== undefined) set("cost", body.cost);
     if (body.taxRate !== undefined) set("tax_rate", body.taxRate);
     if (body.trackInventory !== undefined) set("track_inventory", body.trackInventory);
+    if (body.durationMinutes !== undefined) set("duration_minutes", body.durationMinutes);
+    if (body.staffRequired !== undefined) set("staff_required", body.staffRequired);
     if (body.metadata !== undefined) {
       fields.push(`metadata = $${i++}::jsonb`);
       vals.push(body.metadata);

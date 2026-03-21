@@ -14,7 +14,9 @@ export async function GET(req: Request) {
     }
     await assertBusinessMembership(session.sub, businessId);
     const itemId = searchParams.get("itemId");
-    const limit = Math.min(Number(searchParams.get("limit") ?? 100), 500);
+    const rawLimit = Number(searchParams.get("limit") ?? 100);
+    const limit =
+      Number.isFinite(rawLimit) && rawLimit > 0 ? Math.min(Math.floor(rawLimit), 500) : 100;
     const r = itemId
       ? await pool.query(
           `SELECT t.*, i.name AS item_name

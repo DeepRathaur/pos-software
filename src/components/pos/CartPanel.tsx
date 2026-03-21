@@ -9,12 +9,14 @@ export function CartPanel({
   onChangeQty,
   onRemove,
   onDiscountChange,
+  onLineDiscountChange,
 }: {
   lines: CartLine[];
   discountAmount: number;
   onChangeQty: (itemId: string, qty: number) => void;
   onRemove: (itemId: string) => void;
   onDiscountChange: (n: number) => void;
+  onLineDiscountChange: (itemId: string, amount: number) => void;
 }) {
   const { gross, discount: appliedDiscount, net, tax, total } = cartSubtotal(
     lines,
@@ -35,9 +37,22 @@ export function CartPanel({
               key={l.itemId}
               className="flex items-center gap-2 rounded-xl border border-zinc-800/80 bg-zinc-950/40 p-2"
             >
-              <div className="min-w-0 flex-1">
+              <div className="min-w-0 flex-1 space-y-1">
                 <p className="truncate text-sm font-medium text-zinc-100">{l.name}</p>
                 <p className="text-xs text-zinc-500">₹{l.unitPrice.toFixed(2)} each</p>
+                <label className="flex items-center gap-1 text-[11px] text-zinc-500">
+                  <span className="shrink-0">Line ₹ off</span>
+                  <input
+                    type="number"
+                    inputMode="decimal"
+                    min={0}
+                    className="w-16 rounded border border-zinc-700 bg-zinc-950 px-1 py-0.5 text-right text-xs text-zinc-200"
+                    value={l.lineDiscount}
+                    onChange={(e) =>
+                      onLineDiscountChange(l.itemId, Number(e.target.value) || 0)
+                    }
+                  />
+                </label>
               </div>
               <div className="flex items-center gap-1">
                 <button

@@ -1,62 +1,110 @@
 "use client";
 
-import { useQuery } from "@tanstack/react-query";
-import { apiFetch } from "@/lib/api-client";
-import { useAuthStore } from "@/stores/auth-store";
-import { useBusinessStore } from "@/stores/business-store";
+import { useMemo, useState } from "react";
+import { useCustomersQuery } from "@/hooks/queries";
+import { useEnabledModules } from "@/hooks/useEnabledModules";
+import { isModuleEnabled } from "@/lib/feature-modules";
+import { Icon, ListRow, PillTabs, Screen, SearchField, StitchHeader } from "@/components/stitch";
 
 export default function CustomersPage() {
-  const token = useAuthStore((s) => s.token);
-  const businessId = useBusinessStore((s) => s.currentBusinessId);
+  const { businessId, modules } = useEnabledModules();
+  const canCustomers = isModuleEnabled(modules, "customers");
+  const q = useCustomersQuery(businessId, canCustomers);
+  const [search, setSearch] = useState("");
+  const [filter, setFilter] = useState("all");
 
-  const q = useQuery({
-    queryKey: ["customers", businessId, token],
-    enabled: !!token && !!businessId,
-    queryFn: async () => {
-      const qs = new URLSearchParams({ businessId: businessId! });
-      const data = await apiFetch<{ customers: { id: string; name: string; phone: string | null }[] }>(
-        `/api/customers?${qs.toString()}`,
-        { token }
-      );
-      return data.customers;
-    },
-  });
+  const filtered = useMemo(() => {
+    const rows = q.data ?? [];
+    let r = rows;
+    const s = search.trim().toLowerCase();
+    if (s) r = r.filter((c) => c.name.toLowerCase().includes(s) || (c.phone ?? "").toLowerCase().includes(s));
+    return r;
+  }, [q.data, search]);
 
-  const rows = q.data ?? [];
+  if (!canCustomers) {
+    return (
+      <Screen>
+        <StitchHeader title="Customers" icon="group" />
+        <div className="rounded-xl border border-stitch-border bg-stitch-card p-4 text-sm text-slate-400">
+          Customers module is not enabled.
+        </div>
+      </Screen>
+    );
+  }
 
   return (
-    <div className="mx-auto max-w-3xl space-y-4 px-4 py-6">
-      <header>
-        <h1 className="text-2xl font-semibold text-zinc-50">Customers</h1>
-        <p className="text-sm text-zinc-500">Loyalty-ready customer records.</p>
-      </header>
+    <Screen>
+      <StitchHeader
+        title="Customers"
+        subtitle="Directory & loyalty"
+        icon="group"
+        right={
+          <button
+            type="button"
+            className="flex items-center justify-center rounded-lg bg-stitch-primary p-2.5 text-white shadow-lg shadow-stitch-primary/25"
+            aria-label="Add customer"
+          >
+            <Icon name="person_add" />
+          </button>
+        }
+      />
 
       {!businessId ? (
-        <div className="rounded-2xl border border-amber-500/30 bg-amber-500/10 p-4 text-sm text-amber-100">
+        <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-sm text-amber-100">
           Select a business in <strong>Setup</strong>.
         </div>
       ) : (
-        <div className="rounded-2xl border border-zinc-800 bg-zinc-900/40">
-          <div className="border-b border-zinc-800 px-4 py-3 text-sm font-medium text-zinc-300">
-            Directory ({rows.length})
+        <>
+          <SearchField
+            value={search}
+            onChange={setSearch}
+            placeholder="Search by name, phone or email…"
+            className="mb-4"
+          />
+          <div className="mb-4 grid grid-cols-2 gap-3">
+            <div className="rounded-xl border border-stitch-border bg-stitch-card p-4">
+              <p className="mb-1 text-xs font-medium uppercase tracking-wider text-slate-500">Total</p>
+              <p className="text-lg font-bold text-slate-100">{(q.data ?? []).length}</p>
+            </div>
+            <div className="rounded-xl border border-stitch-border bg-stitch-card p-4">
+              <p className="mb-1 text-xs font-medium uppercase tracking-wider text-slate-500">Active</p>
+              <p className="text-lg font-bold text-stitch-primary">{filtered.length}</p>
+            </div>
           </div>
+          <PillTabs
+            tabs={[
+              { id: "all", label: "All customers" },
+              { id: "recent", label: "Recent" },
+              { id: "vip", label: "VIP" },
+            ]}
+            value={filter}
+            onChange={setFilter}
+            className="mb-4"
+          />
           {q.isLoading ? (
-            <p className="px-4 py-6 text-sm text-zinc-500">Loading…</p>
+            <p className="text-sm text-slate-500">Loading…</p>
           ) : (
-            <ul className="divide-y divide-zinc-800">
-              {rows.map((c) => (
-                <li key={c.id} className="px-4 py-3 text-sm">
-                  <p className="font-medium text-zinc-100">{c.name}</p>
-                  {c.phone ? <p className="text-xs text-zinc-500">{c.phone}</p> : null}
+            <ul className="space-y-3">
+              {filtered.map((c) => (
+                <li key={c.id}>
+                  <ListRow
+                    title={c.name}
+                    subtitle={c.phone ?? "—"}
+                    right={
+                      <span className="text-[10px] font-bold uppercase tracking-wider text-emerald-400">
+                        Active
+                      </span>
+                    }
+                  />
                 </li>
               ))}
-              {rows.length === 0 ? (
-                <li className="px-4 py-6 text-center text-sm text-zinc-500">No customers yet.</li>
+              {filtered.length === 0 ? (
+                <li className="py-8 text-center text-sm text-slate-500">No customers yet.</li>
               ) : null}
             </ul>
           )}
-        </div>
+        </>
       )}
-    </div>
+    </Screen>
   );
 }

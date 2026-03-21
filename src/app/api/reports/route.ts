@@ -32,7 +32,7 @@ export async function GET(req: Request) {
       const lowStock = await pool.query(
         `SELECT i.item_id, it.name, i.quantity, i.reorder_level
          FROM inventory i
-         JOIN items it ON it.id = i.item_id
+         JOIN items it ON it.id = i.item_id AND it.deleted_at IS NULL
          WHERE i.business_id = $1 AND i.deleted_at IS NULL AND it.track_inventory = true
            AND i.quantity <= i.reorder_level
          ORDER BY i.quantity ASC
@@ -72,7 +72,7 @@ export async function GET(req: Request) {
                 SUM(oi.line_total)::numeric AS revenue
          FROM order_items oi
          JOIN orders o ON o.id = oi.order_id AND o.deleted_at IS NULL
-         JOIN items i ON i.id = oi.item_id
+         JOIN items i ON i.id = oi.item_id AND i.deleted_at IS NULL
          WHERE o.business_id = $1 AND oi.deleted_at IS NULL AND o.status = 'completed'
            AND ($2::timestamptz IS NULL OR o.created_at >= $2)
            AND ($3::timestamptz IS NULL OR o.created_at < $3)

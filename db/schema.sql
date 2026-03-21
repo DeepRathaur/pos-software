@@ -124,6 +124,17 @@ CREATE INDEX IF NOT EXISTS idx_items_business ON items (business_id) WHERE delet
 CREATE INDEX IF NOT EXISTS idx_items_kind ON items (business_id, kind) WHERE deleted_at IS NULL;
 CREATE INDEX IF NOT EXISTS idx_items_sku ON items (business_id, sku) WHERE deleted_at IS NULL AND sku IS NOT NULL;
 
+-- Default list sort: ORDER BY name within a business.
+CREATE INDEX IF NOT EXISTS idx_items_business_name
+  ON items (business_id, name ASC)
+  WHERE deleted_at IS NULL;
+
+-- ILIKE '%term%' on name / sku / description (pg_trgm).
+CREATE EXTENSION IF NOT EXISTS pg_trgm;
+CREATE INDEX IF NOT EXISTS idx_items_name_trgm ON items USING gin (name gin_trgm_ops) WHERE deleted_at IS NULL;
+CREATE INDEX IF NOT EXISTS idx_items_sku_trgm ON items USING gin (sku gin_trgm_ops) WHERE deleted_at IS NULL AND sku IS NOT NULL;
+CREATE INDEX IF NOT EXISTS idx_items_description_trgm ON items USING gin (description gin_trgm_ops) WHERE deleted_at IS NULL AND description IS NOT NULL;
+
 -- ---------------------------------------------------------------------------
 -- INVENTORY (current snapshot) + TRANSACTION LOG
 -- ---------------------------------------------------------------------------
@@ -144,6 +155,11 @@ CREATE TABLE IF NOT EXISTS inventory (
 CREATE INDEX IF NOT EXISTS idx_inventory_business ON inventory (business_id) WHERE deleted_at IS NULL;
 CREATE INDEX IF NOT EXISTS idx_inventory_item ON inventory (item_id);
 
+-- Low-stock alerts: filter by business then quantity vs reorder (sequential scan helper).
+CREATE INDEX IF NOT EXISTS idx_inventory_business_qty
+  ON inventory (business_id, quantity)
+  WHERE deleted_at IS NULL;
+
 CREATE TABLE IF NOT EXISTS inventory_transactions (
   id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   business_id     UUID NOT NULL REFERENCES businesses(id) ON DELETE CASCADE,
@@ -160,6 +176,9 @@ CREATE TABLE IF NOT EXISTS inventory_transactions (
 
 CREATE INDEX IF NOT EXISTS idx_inv_tx_business_time ON inventory_transactions (business_id, created_at DESC);
 CREATE INDEX IF NOT EXISTS idx_inv_tx_item ON inventory_transactions (item_id);
+CREATE INDEX IF NOT EXISTS idx_inv_tx_business_item_time
+  ON inventory_transactions (business_id, item_id, created_at DESC)
+  WHERE deleted_at IS NULL;
 CREATE INDEX IF NOT EXISTS idx_inv_tx_ref ON inventory_transactions (reference_type, reference_id);
 
 -- ---------------------------------------------------------------------------
@@ -210,6 +229,12 @@ CREATE TABLE IF NOT EXISTS orders (
 CREATE INDEX IF NOT EXISTS idx_orders_business_time ON orders (business_id, created_at DESC) WHERE deleted_at IS NULL;
 CREATE INDEX IF NOT EXISTS idx_orders_customer ON orders (customer_id) WHERE deleted_at IS NULL;
 
+-- Dashboard / reports: almost all analytics filter status = 'completed' + created_at range.
+-- Partial index keeps this index small and fast for SUM/COUNT/GROUP BY on hot paths.
+CREATE INDEX IF NOT EXISTS idx_orders_business_completed_time
+  ON orders (business_id, created_at DESC)
+  WHERE deleted_at IS NULL AND status = 'completed';
+
 CREATE TABLE IF NOT EXISTS order_items (
   id            UUID PRIMARY KEY DEFAULT gen_random_uuid(),
   order_id      UUID NOT NULL REFERENCES orders(id) ON DELETE CASCADE,
@@ -224,6 +249,7 @@ CREATE TABLE IF NOT EXISTS order_items (
 );
 
 CREATE INDEX IF NOT EXISTS idx_order_items_order ON order_items (order_id) WHERE deleted_at IS NULL;
+CREATE INDEX IF NOT EXISTS idx_order_items_item_active ON order_items (item_id) WHERE deleted_at IS NULL;
 
 CREATE TABLE IF NOT EXISTS payments (
   id            UUID PRIMARY KEY DEFAULT gen_random_uuid(),
@@ -344,5 +370,76 @@ DO $$ BEGIN
     ADD CONSTRAINT fk_orders_table
     FOREIGN KEY (table_id) REFERENCES restaurant_tables(id) ON DELETE SET NULL;
 EXCEPTION WHEN duplicate_object THEN NULL; END $$;
+
+-- ---------------------------------------------------------------------------
+-- Spec extensions (barcode, media, services, KOT, split payments, credit)
+-- ---------------------------------------------------------------------------
+
+ALTER TABLE items ADD COLUMN IF NOT EXISTS barcode TEXT;
+ALTER TABLE items ADD COLUMN IF NOT EXISTS image_url TEXT;
+ALTER TABLE items ADD COLUMN IF NOT EXISTS duration_minutes INT;
+ALTER TABLE items ADD COLUMN IF NOT EXISTS staff_required BOOLEAN NOT NULL DEFAULT false;
+
+CREATE INDEX IF NOT EXISTS idx_items_barcode ON items (business_id, barcode) WHERE deleted_at IS NULL AND barcode IS NOT NULL;
+
+ALTER TABLE customers ADD COLUMN IF NOT EXISTS credit_balance NUMERIC(14, 4) NOT NULL DEFAULT 0;
+
+ALTER TABLE staff ADD COLUMN IF NOT EXISTS commission_rate NUMERIC(8, 4) NOT NULL DEFAULT 0;
+
+ALTER TABLE order_items ADD COLUMN IF NOT EXISTS kitchen_status TEXT;
+ALTER TABLE order_items ADD COLUMN IF NOT EXISTS line_note TEXT;
+
+ALTER TABLE payments ADD COLUMN IF NOT EXISTS status TEXT NOT NULL DEFAULT 'completed';
+
+CREATE INDEX IF NOT EXISTS idx_orders_table_business ON orders (business_id, table_id) WHERE deleted_at IS NULL AND table_id IS NOT NULL;
+
+-- ---------------------------------------------------------------------------
+-- Advanced modules (see db/migrations/20250323_advanced_modules.sql)
+-- ---------------------------------------------------------------------------
+
+ALTER TABLE restaurant_tables ADD COLUMN IF NOT EXISTS current_order_id UUID REFERENCES orders(id) ON DELETE SET NULL;
+CREATE INDEX IF NOT EXISTS idx_restaurant_tables_current_order ON restaurant_tables (current_order_id) WHERE current_order_id IS NOT NULL;
+
+CREATE TABLE IF NOT EXISTS kot (
+  id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  business_id     UUID NOT NULL REFERENCES businesses(id) ON DELETE CASCADE,
+  order_id        UUID NOT NULL REFERENCES orders(id) ON DELETE CASCADE,
+  status          TEXT NOT NULL DEFAULT 'pending' CHECK (status IN ('pending', 'preparing', 'ready')),
+  created_at      TIMESTAMPTZ NOT NULL DEFAULT now(),
+  updated_at      TIMESTAMPTZ NOT NULL DEFAULT now(),
+  UNIQUE (order_id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_kot_business_status ON kot (business_id, status);
+CREATE INDEX IF NOT EXISTS idx_kot_order ON kot (order_id);
+
+CREATE TABLE IF NOT EXISTS staff_performance (
+  id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  staff_id        UUID NOT NULL REFERENCES staff(id) ON DELETE CASCADE,
+  business_id     UUID NOT NULL REFERENCES businesses(id) ON DELETE CASCADE,
+  total_services  INT NOT NULL DEFAULT 0,
+  total_revenue   NUMERIC(14, 4) NOT NULL DEFAULT 0,
+  updated_at      TIMESTAMPTZ NOT NULL DEFAULT now(),
+  UNIQUE (staff_id)
+);
+
+CREATE INDEX IF NOT EXISTS idx_staff_perf_business ON staff_performance (business_id);
+
+ALTER TABLE appointments ADD COLUMN IF NOT EXISTS order_id UUID REFERENCES orders(id) ON DELETE SET NULL;
+
+ALTER TABLE purchases ADD COLUMN IF NOT EXISTS amount_paid NUMERIC(14, 4) NOT NULL DEFAULT 0;
+
+CREATE TABLE IF NOT EXISTS supplier_payments (
+  id              UUID PRIMARY KEY DEFAULT gen_random_uuid(),
+  business_id     UUID NOT NULL REFERENCES businesses(id) ON DELETE CASCADE,
+  purchase_id     UUID NOT NULL REFERENCES purchases(id) ON DELETE CASCADE,
+  amount          NUMERIC(14, 4) NOT NULL,
+  notes           TEXT,
+  created_at      TIMESTAMPTZ NOT NULL DEFAULT now()
+);
+
+CREATE INDEX IF NOT EXISTS idx_supplier_payments_purchase ON supplier_payments (purchase_id);
+
+ALTER TABLE orders ADD COLUMN IF NOT EXISTS attributed_staff_id UUID REFERENCES staff(id) ON DELETE SET NULL;
 
 -- Application code sets updated_at on writes; add DB triggers in production if desired.

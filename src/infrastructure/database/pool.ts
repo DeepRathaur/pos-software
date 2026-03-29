@@ -1,13 +1,16 @@
 import { Pool } from "pg";
 
-import { serverEnv } from "@/config/env";
+type GlobalWithPool = typeof globalThis & {
+  __posPool?: Pool;
+  __posPoolUrl?: string;
+  __posDbWarned?: boolean;
+};
 
-const globalForPool = globalThis as unknown as { __posPool?: Pool };
+const g = globalThis as GlobalWithPool;
 
-function createPool(): Pool {
-  const url = serverEnv.databaseUrl;
-  if (!url && !(globalThis as { __posDbWarned?: boolean }).__posDbWarned) {
-    (globalThis as { __posDbWarned?: boolean }).__posDbWarned = true;
+function createPool(url: string | undefined): Pool {
+  if (!url && !g.__posDbWarned) {
+    g.__posDbWarned = true;
     console.warn("DATABASE_URL is not set — API routes that use the DB will fail.");
   }
   return new Pool({
@@ -17,8 +20,28 @@ function createPool(): Pool {
   });
 }
 
-export const pool = globalForPool.__posPool ?? createPool();
-
-if (serverEnv.nodeEnv !== "production") {
-  globalForPool.__posPool = pool;
+/** Recreates the pool when `DATABASE_URL` changes (e.g. after fixing .env.local without restarting dev). */
+function getPool(): Pool {
+  const url = process.env.DATABASE_URL ?? "";
+  if (g.__posPool && g.__posPoolUrl === url) {
+    return g.__posPool;
+  }
+  if (g.__posPool) {
+    void g.__posPool.end();
+    g.__posPool = undefined;
+  }
+  g.__posPool = createPool(url || undefined);
+  g.__posPoolUrl = url;
+  return g.__posPool;
 }
+
+export const pool = new Proxy({} as Pool, {
+  get(_target, prop) {
+    const p = getPool();
+    const v = Reflect.get(p, prop, p);
+    if (typeof v === "function") {
+      return (v as (...args: unknown[]) => unknown).bind(p);
+    }
+    return v;
+  },
+});

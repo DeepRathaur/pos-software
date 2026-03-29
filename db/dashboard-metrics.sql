@@ -1,0 +1,93 @@
+-- Dashboard analytics — reference SQL for GET /api/dashboard
+-- Parameters: $1 = business_id (uuid), $2 = range_start (timestamptz), $3 = range_end (timestamptz exclusive)
+-- "Today" uses the same $2/$3 from the app (UTC midnight boundaries).
+
+-- ---------------------------------------------------------------------------
+-- 1) sales_today — gross sales (order totals) for completed orders in range
+-- ---------------------------------------------------------------------------
+-- SELECT COALESCE(SUM(total), 0)::numeric AS sales_today
+-- FROM orders
+-- WHERE business_id = $1
+--   AND deleted_at IS NULL
+--   AND status = 'completed'
+--   AND created_at >= $2 AND created_at < $3;
+
+-- ---------------------------------------------------------------------------
+-- 2) orders_today — count of completed orders in range
+-- ---------------------------------------------------------------------------
+-- SELECT COUNT(*)::int AS orders_today
+-- FROM orders
+-- WHERE business_id = $1
+--   AND deleted_at IS NULL
+--   AND status = 'completed'
+--   AND created_at >= $2 AND created_at < $3;
+
+-- ---------------------------------------------------------------------------
+-- 3) profit — revenue minus COGS (item.cost × qty) on order lines, completed, in range
+-- ---------------------------------------------------------------------------
+-- SELECT COALESCE(SUM(
+--   oi.line_total - COALESCE(i.cost, 0) * oi.quantity
+-- ), 0)::numeric AS profit
+-- FROM order_items oi
+-- INNER JOIN orders o ON o.id = oi.order_id AND o.deleted_at IS NULL
+-- INNER JOIN items i ON i.id = oi.item_id
+-- WHERE o.business_id = $1
+--   AND oi.deleted_at IS NULL
+--   AND o.status = 'completed'
+--   AND o.created_at >= $2 AND o.created_at < $3;
+
+-- ---------------------------------------------------------------------------
+-- 4) purchases — sum of purchase order totals created in range (non-deleted)
+-- ---------------------------------------------------------------------------
+-- SELECT COALESCE(SUM(total), 0)::numeric AS purchases
+-- FROM purchases
+-- WHERE business_id = $1
+--   AND deleted_at IS NULL
+--   AND created_at >= $2 AND created_at < $3;
+
+-- ---------------------------------------------------------------------------
+-- 5) top_products — top sellers by revenue (last 30 days rolling)
+-- ---------------------------------------------------------------------------
+-- $2 = top_products_start (timestamptz), computed in app so predicates stay sargable.
+-- SELECT oi.item_id, i.name,
+--        SUM(oi.quantity)::numeric AS units_sold,
+--        SUM(oi.line_total)::numeric AS revenue
+-- FROM order_items oi
+-- INNER JOIN orders o ON o.id = oi.order_id AND o.deleted_at IS NULL
+-- INNER JOIN items i ON i.id = oi.item_id AND i.deleted_at IS NULL
+-- WHERE o.business_id = $1
+--   AND oi.deleted_at IS NULL
+--   AND o.status = 'completed'
+--   AND o.created_at >= $2
+-- GROUP BY oi.item_id, i.name
+-- ORDER BY revenue DESC NULLS LAST
+-- LIMIT 10;
+
+-- ---------------------------------------------------------------------------
+-- 6) low_stock — inventory at or below reorder level (tracked items)
+-- ---------------------------------------------------------------------------
+-- SELECT i.item_id, it.name,
+--        i.quantity::numeric AS quantity,
+--        i.reorder_level::numeric AS reorder_level
+-- FROM inventory i
+-- INNER JOIN items it ON it.id = i.item_id AND it.deleted_at IS NULL
+-- WHERE i.business_id = $1
+--   AND i.deleted_at IS NULL
+--   AND it.track_inventory = true
+--   AND i.quantity <= i.reorder_level
+-- ORDER BY i.quantity ASC
+-- LIMIT 25;
+
+-- ---------------------------------------------------------------------------
+-- 7) sales_last_7_days — daily sales + order count for sparkline / bar chart
+-- ---------------------------------------------------------------------------
+-- SELECT date_trunc('day', o.created_at AT TIME ZONE 'UTC') AS day,
+--        COALESCE(SUM(o.total), 0)::numeric AS sales,
+--        COUNT(*)::int AS orders
+-- FROM orders o
+-- WHERE o.business_id = $1
+--   AND o.deleted_at IS NULL
+--   AND o.status = 'completed'
+--   AND o.created_at >= $4 AND o.created_at < $5
+-- GROUP BY 1
+-- ORDER BY 1 ASC;

@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import { LogoutButton } from "@/components/auth/LogoutButton";
 import { KpiCard, Screen, StitchHeader, StitchSalesChart, Icon } from "@/components/stitch";
 import { useDashboardQuery } from "@/hooks/queries";
 import { useBusinessStore } from "@/stores/business-store";
@@ -24,14 +25,15 @@ export default function DashboardPage() {
           subtitle={current?.name ?? "Select a business in Setup"}
           icon="dashboard"
           right={
-            <div className="flex items-center gap-2">
+            <div className="flex items-center gap-1">
               <button
                 type="button"
-                className="rounded-full p-2 text-slate-400 hover:bg-stitch-surface"
+                className="rounded-full p-2 text-stitch-fg-muted hover:bg-stitch-surface"
                 aria-label="Notifications"
               >
                 <Icon name="notifications" />
               </button>
+              <LogoutButton variant="icon" />
               <div className="size-10 overflow-hidden rounded-full border-2 border-stitch-primary">
                 <div className="flex h-full w-full items-center justify-center bg-stitch-surface text-stitch-primary">
                   <Icon name="person" />
@@ -50,7 +52,7 @@ export default function DashboardPage() {
         {showReports && businessId ? (
           <>
             {dash.isLoading ? (
-              <p className="text-sm text-slate-500">Loading analytics…</p>
+              <p className="text-sm text-stitch-fg-muted">Loading analytics…</p>
             ) : dash.isError ? (
               <p className="text-sm text-rose-400">Could not load dashboard.</p>
             ) : (
@@ -82,8 +84,8 @@ export default function DashboardPage() {
                 <div className="mt-4 rounded-xl border border-stitch-border bg-stitch-card/80 p-6">
                   <div className="mb-6 flex items-center justify-between">
                     <div>
-                      <p className="text-sm font-medium text-slate-400">Sales trend</p>
-                      <p className="text-4xl font-extrabold tracking-tight text-slate-100">
+                      <p className="text-sm font-medium text-stitch-fg-muted">Sales trend</p>
+                      <p className="text-4xl font-extrabold tracking-tight text-stitch-fg">
                         ₹{rev7.toFixed(2)}
                       </p>
                     </div>
@@ -91,7 +93,7 @@ export default function DashboardPage() {
                       <div className="inline-flex items-center rounded bg-emerald-500/10 px-2 py-1 text-sm font-bold text-emerald-500">
                         +15.3%
                       </div>
-                      <p className="mt-1 text-xs text-slate-500">Last 7 days</p>
+                      <p className="mt-1 text-xs text-stitch-fg-muted">Last 7 days</p>
                     </div>
                   </div>
                   <StitchSalesChart />
@@ -99,14 +101,14 @@ export default function DashboardPage() {
 
                 <div className="mt-6 space-y-3">
                   <div className="flex items-center justify-between">
-                    <h3 className="text-lg font-bold tracking-tight text-slate-100">
+                    <h3 className="text-lg font-bold tracking-tight text-stitch-fg">
                       Recent activity
                     </h3>
                     <Link href="/reports" className="text-sm font-semibold text-stitch-primary hover:underline">
                       View all
                     </Link>
                   </div>
-                  <p className="text-xs text-slate-500">
+                  <p className="text-xs text-stitch-fg-muted">
                     Low stock: {dash.data?.low_stock?.length ?? 0} SKU(s) need attention.
                   </p>
                 </div>
@@ -114,7 +116,7 @@ export default function DashboardPage() {
             )}
           </>
         ) : (
-          <p className="text-sm text-slate-500">Reports are disabled for this business profile.</p>
+          <p className="text-sm text-stitch-fg-muted">Reports are disabled for this business profile.</p>
         )}
       </Screen>
 

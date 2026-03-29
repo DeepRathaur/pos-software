@@ -36,6 +36,32 @@ export function useCreateBusinessMutation() {
   });
 }
 
+export function usePatchBusinessMutation() {
+  const qc = useQueryClient();
+  const token = useAuthStore((s) => s.token);
+  return useMutation({
+    mutationFn: async ({
+      businessId,
+      body,
+    }: {
+      businessId: string;
+      body: {
+        name?: string;
+        businessType?: string;
+        settings?: Record<string, unknown>;
+        enabledModules?: string[];
+      };
+    }) => {
+      return apiFetch<{ business: unknown }>(`/api/business/${businessId}`, {
+        method: "PATCH",
+        body: JSON.stringify(body),
+        token,
+      });
+    },
+    onSuccess: () => qc.invalidateQueries({ queryKey: ["businesses"] }),
+  });
+}
+
 export function useCategoriesQuery(businessId: string | null) {
   const token = useAuthStore((s) => s.token);
   return useQuery({
@@ -71,6 +97,70 @@ export function useItemsQuery(
       else if (q.length > 0) qs.set("search", q);
       const data = await apiFetch<{ items: unknown[] }>(`/api/items?${qs.toString()}`, { token });
       return data.items;
+    },
+  });
+}
+
+/** Single item row as returned by GET /api/items/[id] (Postgres snake_case columns). */
+export type ItemDetailRow = {
+  id: string;
+  business_id: string;
+  category_id: string | null;
+  kind: string;
+  name: string;
+  sku: string | null;
+  barcode: string | null;
+  image_url: string | null;
+  description: string | null;
+  price: string | number;
+  cost: string | number | null;
+  tax_rate: string | number;
+  track_inventory: boolean;
+  duration_minutes: number | null;
+  staff_required: boolean;
+  metadata: unknown;
+  is_active: boolean;
+  created_at?: string;
+  updated_at?: string;
+};
+
+export function useItemQuery(businessId: string | null, itemId: string | null) {
+  const token = useAuthStore((s) => s.token);
+  return useQuery({
+    queryKey: ["items", "detail", businessId, itemId, token],
+    enabled: !!token && !!businessId && !!itemId,
+    queryFn: async () => {
+      const qs = new URLSearchParams({ businessId: businessId! });
+      const data = await apiFetch<{ item: ItemDetailRow }>(`/api/items/${itemId}?${qs.toString()}`, {
+        token,
+      });
+      return data.item;
+    },
+  });
+}
+
+export function usePatchItemMutation() {
+  const qc = useQueryClient();
+  const token = useAuthStore((s) => s.token);
+  return useMutation({
+    mutationFn: async ({
+      itemId,
+      businessId,
+      body,
+    }: {
+      itemId: string;
+      businessId: string;
+      body: Record<string, unknown>;
+    }) => {
+      return apiFetch<{ item: ItemDetailRow }>(`/api/items/${itemId}`, {
+        method: "PATCH",
+        token,
+        body: JSON.stringify({ businessId, ...body }),
+      });
+    },
+    onSuccess: (_, v) => {
+      void qc.invalidateQueries({ queryKey: ["items"] });
+      void qc.invalidateQueries({ queryKey: ["items", "detail", v.businessId, v.itemId] });
     },
   });
 }

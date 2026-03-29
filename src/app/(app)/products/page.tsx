@@ -1,15 +1,35 @@
 "use client";
 
-import { useMemo, useState } from "react";
+import Link from "next/link";
+import { Suspense, useEffect, useMemo, useState } from "react";
+import { useSearchParams } from "next/navigation";
 import { useMutation, useQueryClient } from "@tanstack/react-query";
 import { apiFetch } from "@/lib/api-client";
 import { useAuthStore } from "@/stores/auth-store";
 import { useBusinessStore } from "@/stores/business-store";
-import { useItemsQuery } from "@/hooks/queries";
+import { useCategoriesQuery, useItemsQuery } from "@/hooks/queries";
 import { isAnyModuleEnabled } from "@/lib/feature-modules";
-import { Screen, StitchHeader, UnderlineTabs, ProductCard, SearchField } from "@/components/stitch";
+import {
+  Screen,
+  StitchHeader,
+  UnderlineTabs,
+  ProductCard,
+  SearchField,
+  StitchModal,
+  StitchButton,
+} from "@/components/stitch";
 
-export default function ProductsPage() {
+type ItemRow = {
+  id: string;
+  name: string;
+  price: string;
+  kind: string;
+  category_id?: string | null;
+  image_url?: string | null;
+  is_active?: boolean;
+};
+
+function ProductsContent() {
   const token = useAuthStore((s) => s.token);
   const businessId = useBusinessStore((s) => s.currentBusinessId);
   const businesses = useBusinessStore((s) => s.businesses);
@@ -24,18 +44,25 @@ export default function ProductsPage() {
     : false;
 
   const { data: items, refetch } = useItemsQuery(businessId);
+  const categoriesQ = useCategoriesQuery(businessId);
   const qc = useQueryClient();
 
+  const [addMenuOpen, setAddMenuOpen] = useState(false);
   const [name, setName] = useState("");
   const [price, setPrice] = useState("99");
   const [barcode, setBarcode] = useState("");
   const [imageUrl, setImageUrl] = useState("");
-  const [kind, setKind] = useState<"product" | "service" | "menu_item">("product");
   const [err, setErr] = useState<string | null>(null);
+  const searchParams = useSearchParams();
   const [stockTab, setStockTab] = useState("all");
   const [search, setSearch] = useState("");
 
-  const createItem = useMutation({
+  useEffect(() => {
+    const tab = searchParams.get("tab");
+    if (tab === "menu") setStockTab("menu");
+  }, [searchParams]);
+
+  const createMenuItem = useMutation({
     mutationFn: async () => {
       if (!businessId) throw new Error("No business");
       return apiFetch<{ item: unknown }>("/api/items", {
@@ -45,26 +72,26 @@ export default function ProductsPage() {
           businessId,
           name,
           price: Number(price),
-          kind,
-          trackInventory: kind === "product",
+          kind: "menu_item",
+          trackInventory: false,
           barcode: barcode.trim() || null,
           imageUrl: imageUrl.trim() || null,
-          durationMinutes: kind === "service" ? 30 : null,
-          staffRequired: kind === "service",
         }),
       });
     },
     onSuccess: async () => {
       setName("");
+      setPrice("99");
+      setBarcode("");
+      setImageUrl("");
+      setAddMenuOpen(false);
+      setErr(null);
       await qc.invalidateQueries({ queryKey: ["items"] });
       refetch();
     },
   });
 
-  const rows = useMemo(
-    () => (items as { id: string; name: string; price: string; kind: string; is_active?: boolean }[]) ?? [],
-    [items]
-  );
+  const rows = useMemo(() => (items as ItemRow[]) ?? [], [items]);
 
   const filtered = useMemo(() => {
     let r = rows;
@@ -76,9 +103,57 @@ export default function ProductsPage() {
     return r;
   }, [rows, search, stockTab]);
 
+  const categorySections = useMemo(() => {
+    if (categoriesQ.data === undefined) return null;
+
+    const m = new Map<string | null, ItemRow[]>();
+    for (const item of filtered) {
+      const cid = item.category_id != null ? item.category_id : null;
+      const arr = m.get(cid) ?? [];
+      arr.push(item);
+      m.set(cid, arr);
+    }
+
+    const categories = categoriesQ.data;
+    const catIds = new Set(categories.map((c) => c.id));
+    const sections: { key: string; title: string; items: ItemRow[] }[] = [];
+
+    for (const c of categories) {
+      const list = m.get(c.id);
+      if (list?.length) sections.push({ key: c.id, title: c.name, items: list });
+    }
+
+    const unc = m.get(null);
+    if (unc?.length) sections.push({ key: "uncategorized", title: "Uncategorized", items: unc });
+
+    let other: ItemRow[] = [];
+    for (const [k, v] of m) {
+      if (k !== null && !catIds.has(k) && v.length) other = other.concat(v);
+    }
+    if (other.length) sections.push({ key: "other", title: "Other", items: other });
+
+    return sections;
+  }, [filtered, categoriesQ.data]);
+
+  function submitMenuItem(e: React.FormEvent) {
+    e.preventDefault();
+    setErr(null);
+    createMenuItem.mutate(undefined, {
+      onError: (er) => setErr(er instanceof Error ? er.message : "Failed"),
+    });
+  }
+
   return (
     <Screen>
-      <StitchHeader title="Products" subtitle="Catalog & quick add" icon="inventory_2" />
+      <StitchHeader
+        title="Products"
+        subtitle={
+          stockTab === "menu"
+            ? "Menu editor — tap an item to view or edit details"
+            : "Catalog — tap an item to edit"
+        }
+        icon="inventory_2"
+      />
 
       {!businessId ? (
         <div className="rounded-xl border border-amber-500/30 bg-amber-500/10 p-4 text-sm text-amber-100">
@@ -87,83 +162,30 @@ export default function ProductsPage() {
       ) : null}
 
       {businessId && !canShowItems ? (
-        <div className="rounded-xl border border-stitch-border bg-stitch-card p-4 text-sm text-slate-400">
+        <div className="rounded-xl border border-stitch-border bg-stitch-card p-4 text-sm text-stitch-fg-muted">
           Item catalog is disabled for this business profile.
         </div>
       ) : null}
 
       {businessId && canShowItems ? (
-        <form
-          className="mb-6 rounded-xl border border-stitch-border bg-stitch-card p-4"
-          onSubmit={(e) => {
-            e.preventDefault();
-            setErr(null);
-            createItem.mutate(undefined, {
-              onError: (er) => setErr(er instanceof Error ? er.message : "Failed"),
-            });
-          }}
-        >
-          <h2 className="text-sm font-semibold text-slate-200">Quick add</h2>
-          <div className="mt-3 grid gap-3 sm:grid-cols-3">
-            <label className="text-sm text-slate-400 sm:col-span-2">
-              Name
-              <input
-                className="mt-1 w-full rounded-xl border border-stitch-border bg-stitch-bg px-3 py-3 text-base text-slate-100"
-                value={name}
-                onChange={(e) => setName(e.target.value)}
-                required
-              />
-            </label>
-            <label className="text-sm text-slate-400">
-              Price (₹)
-              <input
-                className="mt-1 w-full rounded-xl border border-stitch-border bg-stitch-bg px-3 py-3 text-base text-slate-100"
-                inputMode="decimal"
-                value={price}
-                onChange={(e) => setPrice(e.target.value)}
-                required
-              />
-            </label>
-            <label className="text-sm text-slate-400 sm:col-span-2">
-              Barcode (optional)
-              <input
-                className="mt-1 w-full rounded-xl border border-stitch-border bg-stitch-bg px-3 py-3 text-base text-slate-100"
-                value={barcode}
-                onChange={(e) => setBarcode(e.target.value)}
-                placeholder="Scan or type"
-              />
-            </label>
-            <label className="text-sm text-slate-400 sm:col-span-3">
-              Image URL (optional)
-              <input
-                className="mt-1 w-full rounded-xl border border-stitch-border bg-stitch-bg px-3 py-3 text-base text-slate-100"
-                value={imageUrl}
-                onChange={(e) => setImageUrl(e.target.value)}
-                placeholder="https://…"
-              />
-            </label>
-            <label className="text-sm text-slate-400 sm:col-span-3">
-              Kind
-              <select
-                className="mt-1 w-full rounded-xl border border-stitch-border bg-stitch-bg px-3 py-3 text-base text-slate-100"
-                value={kind}
-                onChange={(e) => setKind(e.target.value as typeof kind)}
-              >
-                <option value="product">Product</option>
-                <option value="service">Service</option>
-                <option value="menu_item">Menu item</option>
-              </select>
-            </label>
-          </div>
-          {err ? <p className="mt-2 text-sm text-rose-400">{err}</p> : null}
-          <button
-            type="submit"
-            disabled={createItem.isPending}
-            className="mt-4 min-h-[48px] w-full rounded-2xl bg-stitch-primary text-base font-semibold text-white shadow-lg shadow-stitch-primary/25 disabled:opacity-40"
+        <div className="mb-4 flex flex-wrap gap-2">
+          <Link
+            href="/pos"
+            className="inline-flex items-center rounded-full border border-stitch-border bg-stitch-card px-3 py-1.5 text-sm font-semibold text-stitch-fg-secondary transition hover:border-stitch-primary/50 hover:text-stitch-primary"
           >
-            {createItem.isPending ? "Saving…" : "Save item"}
+            Add order
+          </Link>
+          <button
+            type="button"
+            onClick={() => {
+              setErr(null);
+              setAddMenuOpen(true);
+            }}
+            className="inline-flex items-center rounded-full border border-stitch-primary/40 bg-stitch-primary/15 px-3 py-1.5 text-sm font-semibold text-stitch-primary transition hover:bg-stitch-primary/25"
+          >
+            Add menu item
           </button>
-        </form>
+        </div>
       ) : null}
 
       <UnderlineTabs
@@ -178,19 +200,127 @@ export default function ProductsPage() {
       />
       <SearchField value={search} onChange={setSearch} placeholder="Search catalog…" className="my-4" />
 
-      <div className="grid grid-cols-2 gap-4">
-        {filtered.map((r) => (
-          <ProductCard
-            key={r.id}
-            name={r.name}
-            priceLabel={`₹${Number(r.price).toFixed(2)}`}
-            kindHint={r.kind}
-          />
-        ))}
-      </div>
-      {filtered.length === 0 ? (
-        <p className="py-8 text-center text-sm text-slate-500">No items.</p>
+      {businessId && canShowItems ? (
+        <>
+          {filtered.length === 0 ? (
+            <p className="py-8 text-center text-sm text-stitch-fg-muted">No items.</p>
+          ) : categorySections === null ? (
+            <div className="grid grid-cols-2 gap-4">
+              {filtered.map((r) => (
+                <Link
+                  key={r.id}
+                  href={`/products/${r.id}`}
+                  className="block rounded-xl focus:outline-none focus:ring-2 focus:ring-stitch-primary"
+                >
+                  <ProductCard
+                    name={r.name}
+                    priceLabel={`₹${Number(r.price).toFixed(2)}`}
+                    kindHint={r.kind}
+                    imageUrl={r.image_url ?? undefined}
+                  />
+                </Link>
+              ))}
+            </div>
+          ) : (
+            <div className="space-y-8">
+              {categorySections.map((sec) => (
+                <section key={sec.key} aria-labelledby={`cat-${sec.key}`}>
+                  <h2 id={`cat-${sec.key}`} className="mb-3 text-sm font-bold text-stitch-fg-secondary">
+                    {sec.title}
+                  </h2>
+                  <div className="grid grid-cols-2 gap-4">
+                    {sec.items.map((r) => (
+                      <Link
+                        key={r.id}
+                        href={`/products/${r.id}`}
+                        className="block rounded-xl focus:outline-none focus:ring-2 focus:ring-stitch-primary"
+                      >
+                        <ProductCard
+                          name={r.name}
+                          priceLabel={`₹${Number(r.price).toFixed(2)}`}
+                          kindHint={r.kind}
+                          imageUrl={r.image_url ?? undefined}
+                        />
+                      </Link>
+                    ))}
+                  </div>
+                </section>
+              ))}
+            </div>
+          )}
+        </>
       ) : null}
+
+      <StitchModal open={addMenuOpen} title="Add menu item" onClose={() => setAddMenuOpen(false)}>
+        <form onSubmit={submitMenuItem} className="space-y-3">
+          <label className="block text-sm text-stitch-fg-muted">
+            Name
+            <input
+              className="mt-1 w-full rounded-xl border border-stitch-border bg-stitch-bg px-3 py-3 text-base text-stitch-fg"
+              value={name}
+              onChange={(e) => setName(e.target.value)}
+              required
+            />
+          </label>
+          <label className="block text-sm text-stitch-fg-muted">
+            Price (₹)
+            <input
+              className="mt-1 w-full rounded-xl border border-stitch-border bg-stitch-bg px-3 py-3 text-base text-stitch-fg"
+              inputMode="decimal"
+              value={price}
+              onChange={(e) => setPrice(e.target.value)}
+              required
+            />
+          </label>
+          <label className="block text-sm text-stitch-fg-muted">
+            Barcode (optional)
+            <input
+              className="mt-1 w-full rounded-xl border border-stitch-border bg-stitch-bg px-3 py-3 text-base text-stitch-fg"
+              value={barcode}
+              onChange={(e) => setBarcode(e.target.value)}
+              placeholder="Scan or type"
+            />
+          </label>
+          <label className="block text-sm text-stitch-fg-muted">
+            Image URL (optional)
+            <input
+              className="mt-1 w-full rounded-xl border border-stitch-border bg-stitch-bg px-3 py-3 text-base text-stitch-fg"
+              value={imageUrl}
+              onChange={(e) => setImageUrl(e.target.value)}
+              placeholder="https://…"
+            />
+          </label>
+          {err ? <p className="text-sm text-rose-400">{err}</p> : null}
+          <div className="flex flex-col gap-2 pt-2 sm:flex-row-reverse">
+            <StitchButton type="submit" className="min-h-[48px] flex-1" disabled={createMenuItem.isPending}>
+              {createMenuItem.isPending ? "Saving…" : "Save menu item"}
+            </StitchButton>
+            <StitchButton
+              type="button"
+              variant="secondary"
+              className="min-h-[48px] flex-1"
+              onClick={() => setAddMenuOpen(false)}
+            >
+              Cancel
+            </StitchButton>
+          </div>
+        </form>
+      </StitchModal>
     </Screen>
+  );
+}
+
+export default function ProductsPage() {
+  return (
+    <Suspense
+      fallback={
+        <Screen>
+          <StitchHeader title="Products" subtitle="Loading…" icon="inventory_2" />
+          <p className="text-sm text-stitch-fg-muted">Loading catalog…</p>
+        </Screen>
+      }
+    >
+      <ProductsContent />
+    </Suspense>
   );
 }

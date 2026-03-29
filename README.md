@@ -142,6 +142,13 @@ Uses **sql.js** (SQLite in the browser), **`sync_queue`** table, and **IndexedDB
 
 WASM is copied to `public/sql-wasm.wasm` on `postinstall` (`npm run copy-sql-wasm`).
 
+## Architecture docs
+
+- **[HLD](docs/HLD.md)** — high-level system context and components  
+- **[LLD](docs/LLD.md)** — layers, APIs, client state, flows  
+- **[Draw.io diagrams](docs/diagrams/pos-hld-lld.drawio)** — editable HLD/LLD pages (open in [diagrams.net](https://app.diagrams.net/) or VS Code Draw.io extension)  
+- **[ARCHITECTURE.md](docs/ARCHITECTURE.md)** — layers and error handling  
+
 ## Android (Capacitor)
 
 The `android/` project wraps the web UI. The APK loads your **deployed** Next app (API routes are not inside the APK). Set `CAPACITOR_SERVER_URL`, run `npm run android:sync`, then open `android/` in Android Studio or run `.\android\gradlew.bat assembleDebug`. Use **JDK 17 or 21** for Gradle. Details: [`docs/capacitor.md`](docs/capacitor.md).

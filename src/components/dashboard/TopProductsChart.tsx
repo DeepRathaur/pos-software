@@ -15,7 +15,7 @@ type Row = { name: string; revenue: number };
 export function TopProductsChart({ data }: { data: Row[] }) {
   if (data.length === 0) {
     return (
-      <div className="flex h-56 items-center justify-center rounded-2xl border border-zinc-800 bg-zinc-900/40 text-sm text-zinc-500">
+      <div className="flex h-56 items-center justify-center rounded-2xl border border-zinc-800 bg-zinc-900/40 text-sm text-stitch-fg-muted">
         No sales in the last 30 days yet.
       </div>
     );
@@ -27,7 +27,7 @@ export function TopProductsChart({ data }: { data: Row[] }) {
   }));
   return (
     <div className="h-72 w-full rounded-2xl border border-zinc-800 bg-zinc-900/40 p-3">
-      <p className="mb-2 text-sm font-medium text-zinc-300">Top products (30 days)</p>
+      <p className="mb-2 text-sm font-medium text-stitch-fg-secondary">Top products (30 days)</p>
       <ResponsiveContainer width="100%" height="100%">
         <BarChart layout="vertical" data={chartData} margin={{ left: 8, right: 16 }}>
           <CartesianGrid strokeDasharray="3 3" stroke="#27272a" horizontal={false} />

@@ -8,9 +8,9 @@ export function KpiCards({ items }: { items: Kpi[] }) {
           key={k.label}
           className="rounded-2xl border border-stitch-border bg-stitch-card/80 p-4 shadow-sm"
         >
-          <p className="text-xs font-medium uppercase tracking-wide text-slate-500">{k.label}</p>
-          <p className="mt-2 text-2xl font-semibold tabular-nums text-slate-50">{k.value}</p>
-          {k.hint ? <p className="mt-1 text-xs text-slate-500">{k.hint}</p> : null}
+          <p className="text-xs font-medium uppercase tracking-wide text-stitch-fg-muted">{k.label}</p>
+          <p className="mt-2 text-2xl font-semibold tabular-nums text-stitch-fg">{k.value}</p>
+          {k.hint ? <p className="mt-1 text-xs text-stitch-fg-muted">{k.hint}</p> : null}
         </div>
       ))}
     </div>

@@ -1,0 +1,206 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2563EB",
+                        "background-light": "#F8FAFC",
+                        "background-dark": "#0f172a",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .no-scrollbar::-webkit-scrollbar { display: none; }
+        .no-scrollbar { -ms-overflow-style: none; scrollbar-width: none; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Header -->
+<header class="sticky top-0 z-20 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800 px-4 py-4">
+<div class="flex items-center justify-between max-w-md mx-auto">
+<div class="flex items-center gap-3">
+<button class="p-2 hover:bg-slate-100 dark:hover:bg-slate-800 rounded-full transition-colors">
+<span class="material-symbols-outlined block">arrow_back</span>
+</button>
+<h1 class="text-xl font-bold tracking-tight">New Purchase</h1>
+</div>
+<button class="p-2 text-primary hover:bg-primary/10 rounded-full transition-colors">
+<span class="material-symbols-outlined block">barcode_scanner</span>
+</button>
+</div>
+</header>
+<main class="flex-1 max-w-md mx-auto w-full px-4 pt-4 pb-32 space-y-6">
+<!-- Supplier Search -->
+<section class="space-y-3">
+<label class="block text-sm font-semibold text-slate-700 dark:text-slate-300 ml-1">Supplier Details</label>
+<div class="relative group">
+<div class="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none text-slate-400 group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined text-[20px]">person_search</span>
+</div>
+<input class="block w-full pl-10 pr-4 py-3 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-xl focus:ring-2 focus:ring-primary focus:border-primary transition-all text-sm" placeholder="Search or add new supplier..." type="text"/>
+</div>
+</section>
+<!-- Itemized List -->
+<section class="space-y-4">
+<div class="flex items-center justify-between px-1">
+<h2 class="text-sm font-semibold text-slate-700 dark:text-slate-300">Purchase Items</h2>
+<button class="text-xs font-bold text-primary flex items-center gap-1 bg-primary/10 px-3 py-1.5 rounded-full">
+<span class="material-symbols-outlined text-[16px]">add</span> Add Item
+                </button>
+</div>
+<div class="space-y-3">
+<!-- Item Card 1 -->
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex gap-4">
+<div class="size-16 rounded-lg bg-slate-100 dark:bg-slate-800 overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Bag of roasted organic coffee beans" src="https://lh3.googleusercontent.com/aida-public/AB6AXuACbuIVGxJg97mKbqu7oeaR95EFU6Ti428LCBZJAVRldk-DVTsVeeFjnFJc1ijQ-MEaVQCMK-9pePuwSnrPEVQnm-_NxcS2i-4AiXL8-r1m4E69Yc7QoT01L-Wp3qU8G2bpuPLEujpxOvlOBl6nX408cHY4nIdGc-IuBd0w7SB7dDnR5fwW0LX74TD1pQDpRD1VBhbPUJNhKGjZoAjVJjKJGaT3hqX3QMpPlci12SqL3P4Zh0lz4e0qaHnGy-oMCIiOvMBD9B6ichM"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<h3 class="font-bold text-slate-900 dark:text-slate-100 truncate">Organic Espresso Roast</h3>
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+<p class="text-xs text-slate-500 mb-2">SKU: COF-001-ESP</p>
+<div class="flex items-end justify-between gap-4 mt-2">
+<div class="flex-1">
+<label class="text-[10px] uppercase tracking-wider font-bold text-slate-400 mb-1 block">Cost Price</label>
+<div class="relative">
+<span class="absolute left-2 top-1/2 -translate-y-1/2 text-slate-400 text-sm">$</span>
+<input class="w-full pl-5 pr-2 py-1 bg-slate-50 dark:bg-slate-800 border-none rounded-md text-sm font-semibold focus:ring-1 focus:ring-primary" step="0.01" type="number" value="12.50"/>
+</div>
+</div>
+<div class="shrink-0">
+<label class="text-[10px] uppercase tracking-wider font-bold text-slate-400 mb-1 block">Quantity</label>
+<div class="flex items-center gap-2 bg-slate-50 dark:bg-slate-800 rounded-lg p-1">
+<button class="size-7 flex items-center justify-center rounded-md hover:bg-white dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-[18px]">remove</span>
+</button>
+<input class="w-8 text-center bg-transparent border-none p-0 text-sm font-bold focus:ring-0" type="number" value="24"/>
+<button class="size-7 flex items-center justify-center rounded-md hover:bg-white dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Item Card 2 -->
+<div class="bg-white dark:bg-slate-900 p-4 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex gap-4">
+<div class="size-16 rounded-lg bg-slate-100 dark:bg-slate-800 overflow-hidden shrink-0">
+<img class="w-full h-full object-cover" data-alt="Pack of high quality paper filters" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCGTwMgK3TbAX2fYL5qGnBhZdVsvaXCk3MUNAZsxK8RIOJG-Ir49rxeReJhSeAQYegk7bo_s7NXqE_aOvxYdT44uGbdKzF-YTXujMmLGSVzUdUxFhY4B02oRN0-j0LWMzVJhEsCTKJ1sd57oPYO9T5fI00PAQLd4iQAnYh6JU_3PNEckkUuO7bMuAMgxuIp4CCqWQ0hwjsQl1HcA9no7aO6IG9Aim25G3rifzchmoP_iRWq5gmMx3JV7SABVuv0sCsJUPl7zXOLcW4"/>
+</div>
+<div class="flex-1 min-w-0">
+<div class="flex justify-between items-start">
+<h3 class="font-bold text-slate-900 dark:text-slate-100 truncate">V60 Paper Filters (100pk)</h3>
+<button class="text-slate-400 hover:text-red-500 transition-colors">
+<span class="material-symbols-outlined text-[20px]">delete</span>
+</button>
+</div>
+<p class="text-xs text-slate-500 mb-2">SKU: ACC-V60-FLT</p>
+<div class="flex items-end justify-between gap-4 mt-2">
+<div class="flex-1">
+<label class="text-[10px] uppercase tracking-wider font-bold text-slate-400 mb-1 block">Cost Price</label>
+<div class="relative">
+<span class="absolute left-2 top-1/2 -translate-y-1/2 text-slate-400 text-sm">$</span>
+<input class="w-full pl-5 pr-2 py-1 bg-slate-50 dark:bg-slate-800 border-none rounded-md text-sm font-semibold focus:ring-1 focus:ring-primary" step="0.01" type="number" value="4.20"/>
+</div>
+</div>
+<div class="shrink-0">
+<label class="text-[10px] uppercase tracking-wider font-bold text-slate-400 mb-1 block">Quantity</label>
+<div class="flex items-center gap-2 bg-slate-50 dark:bg-slate-800 rounded-lg p-1">
+<button class="size-7 flex items-center justify-center rounded-md hover:bg-white dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-[18px]">remove</span>
+</button>
+<input class="w-8 text-center bg-transparent border-none p-0 text-sm font-bold focus:ring-0" type="number" value="50"/>
+<button class="size-7 flex items-center justify-center rounded-md hover:bg-white dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined text-[18px]">add</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- Summary & Action -->
+<section class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-5 shadow-sm space-y-3">
+<div class="flex justify-between text-sm">
+<span class="text-slate-500">Subtotal</span>
+<span class="font-medium">$510.00</span>
+</div>
+<div class="flex justify-between text-sm">
+<span class="text-slate-500">Tax (8%)</span>
+<span class="font-medium">$40.80</span>
+</div>
+<div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex justify-between items-center">
+<span class="text-base font-bold text-slate-900 dark:text-slate-100">Total Amount</span>
+<span class="text-2xl font-black text-primary">$550.80</span>
+</div>
+</section>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 px-6 rounded-xl flex items-center justify-center gap-2 shadow-lg shadow-primary/20 transition-all active:scale-[0.98]">
+            Complete Purchase
+            <span class="material-symbols-outlined">chevron_right</span>
+</button>
+</main>
+<!-- Bottom Navigation -->
+<nav class="fixed bottom-0 inset-x-0 bg-white/90 dark:bg-background-dark/90 backdrop-blur-xl border-t border-slate-200 dark:border-slate-800 px-2 pb-6 pt-3 z-30">
+<div class="flex items-center justify-between max-w-md mx-auto">
+<a class="flex flex-1 flex-col items-center gap-1 text-slate-400 transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Home</span>
+</a>
+<a class="flex flex-1 flex-col items-center gap-1 text-slate-400 transition-colors" href="#">
+<span class="material-symbols-outlined">point_of_sale</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">POS</span>
+</a>
+<a class="flex flex-1 flex-col items-center gap-1 text-slate-400 transition-colors" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Products</span>
+</a>
+<a class="flex flex-1 flex-col items-center gap-1 text-primary transition-colors" href="#">
+<span class="material-symbols-outlined fill-1">warehouse</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Inventory</span>
+</a>
+<a class="flex flex-1 flex-col items-center gap-1 text-slate-400 transition-colors" href="#">
+<span class="material-symbols-outlined">assessment</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Reports</span>
+</a>
+<a class="flex flex-1 flex-col items-center gap-1 text-slate-400 transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold uppercase tracking-tight">Settings</span>
+</a>
+</div>
+</nav>
+</body></html>

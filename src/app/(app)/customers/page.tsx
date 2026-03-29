@@ -25,7 +25,7 @@ export default function CustomersPage() {
     return (
       <Screen>
         <StitchHeader title="Customers" icon="group" />
-        <div className="rounded-xl border border-stitch-border bg-stitch-card p-4 text-sm text-slate-400">
+        <div className="rounded-xl border border-stitch-border bg-stitch-card p-4 text-sm text-stitch-fg-muted">
           Customers module is not enabled.
         </div>
       </Screen>
@@ -63,11 +63,11 @@ export default function CustomersPage() {
           />
           <div className="mb-4 grid grid-cols-2 gap-3">
             <div className="rounded-xl border border-stitch-border bg-stitch-card p-4">
-              <p className="mb-1 text-xs font-medium uppercase tracking-wider text-slate-500">Total</p>
-              <p className="text-lg font-bold text-slate-100">{(q.data ?? []).length}</p>
+              <p className="mb-1 text-xs font-medium uppercase tracking-wider text-stitch-fg-muted">Total</p>
+              <p className="text-lg font-bold text-stitch-fg">{(q.data ?? []).length}</p>
             </div>
             <div className="rounded-xl border border-stitch-border bg-stitch-card p-4">
-              <p className="mb-1 text-xs font-medium uppercase tracking-wider text-slate-500">Active</p>
+              <p className="mb-1 text-xs font-medium uppercase tracking-wider text-stitch-fg-muted">Active</p>
               <p className="text-lg font-bold text-stitch-primary">{filtered.length}</p>
             </div>
           </div>
@@ -82,7 +82,7 @@ export default function CustomersPage() {
             className="mb-4"
           />
           {q.isLoading ? (
-            <p className="text-sm text-slate-500">Loading…</p>
+            <p className="text-sm text-stitch-fg-muted">Loading…</p>
           ) : (
             <ul className="space-y-3">
               {filtered.map((c) => (
@@ -99,7 +99,7 @@ export default function CustomersPage() {
                 </li>
               ))}
               {filtered.length === 0 ? (
-                <li className="py-8 text-center text-sm text-slate-500">No customers yet.</li>
+                <li className="py-8 text-center text-sm text-stitch-fg-muted">No customers yet.</li>
               ) : null}
             </ul>
           )}

@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Product Management - POS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e21d48",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#211115",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<header class="flex items-center bg-background-light dark:bg-background-dark p-4 sticky top-0 z-10 border-b border-slate-200 dark:border-primary/20">
+<div class="flex size-10 shrink-0 items-center justify-center">
+<span class="material-symbols-outlined text-slate-900 dark:text-slate-100">menu</span>
+</div>
+<h1 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-tight flex-1 ml-4">Products</h1>
+<div class="flex items-center gap-2">
+<button class="flex size-10 items-center justify-center rounded-lg hover:bg-slate-200 dark:hover:bg-primary/20">
+<span class="material-symbols-outlined text-slate-900 dark:text-slate-100">search</span>
+</button>
+<button class="flex size-10 items-center justify-center rounded-lg hover:bg-slate-200 dark:hover:bg-primary/20">
+<span class="material-symbols-outlined text-slate-900 dark:text-slate-100">filter_list</span>
+</button>
+</div>
+</header>
+<div class="bg-background-light dark:bg-background-dark sticky top-[73px] z-10">
+<div class="flex border-b border-slate-200 dark:border-primary/20 px-4 gap-6 overflow-x-auto no-scrollbar">
+<a class="flex flex-col items-center justify-center border-b-2 border-primary text-primary pb-3 pt-4 whitespace-nowrap" href="#">
+<span class="text-sm font-bold tracking-wide">All Products</span>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-4 whitespace-nowrap" href="#">
+<span class="text-sm font-bold tracking-wide">In Stock</span>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-4 whitespace-nowrap" href="#">
+<span class="text-sm font-bold tracking-wide">Low Stock</span>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-4 whitespace-nowrap" href="#">
+<span class="text-sm font-bold tracking-wide">Out of Stock</span>
+</a>
+</div>
+</div>
+<main class="flex-1 pb-24">
+<div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4 p-4">
+<div class="flex flex-col bg-white dark:bg-primary/5 rounded-xl border border-slate-200 dark:border-primary/10 overflow-hidden group">
+<div class="relative w-full aspect-square bg-slate-100 dark:bg-primary/10">
+<img alt="Red Velvet Cake" class="w-full h-full object-cover" data-alt="Gourmet red velvet cake with frosting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAwRRWjY38Wd4WANb9Xgfuv2Z320LM_EyCmjiAb4sqJGrYs5M4lQ7ag3KdhkVJUfDR_c3xfeZtDqxaXW9sgv4SPLeOakhyYBDyWehWyuWmIRxVTVCwFOav83FYOV20Q9lmUTUAvvoSoC4X6n9qcgRtBMhE9rakPEaclTB2jLdBWlU0mufjPjyooJVWFnnozgs0VjaQYf8rQEGrFLdT_jJ1r0pNzsTx-Tr_UedezAovE9eGR92ZKOgkEDx_ceWwpvw04U3oKQ7-O1ec"/>
+<button class="absolute top-2 right-2 p-1.5 bg-black/50 backdrop-blur-md rounded-lg text-white">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+</div>
+<div class="p-3">
+<p class="text-slate-900 dark:text-slate-100 text-sm font-bold truncate">Red Velvet Cake</p>
+<div class="flex justify-between items-end mt-1">
+<div>
+<p class="text-primary text-base font-bold">$24.00</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs">Stock: 12</p>
+</div>
+<span class="text-[10px] bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 px-2 py-0.5 rounded-full font-bold">ACTIVE</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col bg-white dark:bg-primary/5 rounded-xl border border-slate-200 dark:border-primary/10 overflow-hidden">
+<div class="relative w-full aspect-square bg-slate-100 dark:bg-primary/10">
+<img alt="Dark Roast Coffee" class="w-full h-full object-cover" data-alt="Dark roasted aromatic coffee beans" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBycN39e9xeLj4hA2D_UbkBJidOfb9iJX-goqVzi3uFBX7GHSK91oOqWQ57Uk20KQmPpNdwv8mDP72IJgmILNPdJP_BFiFlcXCOUx7WkNAFV8fznYfQhFkNYKEKvRGH1A-15HNu_gZTXzovQanwvL_Fa1gwabq5kYFh7bkZgG4dcJoVqT_UAtAn1JnAYJHCEyqpNayPqPUpxWuvMXSBkw7Wdcx8mYYQJnK6mq4_HSy1gQrSU3Yhup8P86DzFItD4OgYwvoc29JA8-Q"/>
+<button class="absolute top-2 right-2 p-1.5 bg-black/50 backdrop-blur-md rounded-lg text-white">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+</div>
+<div class="p-3">
+<p class="text-slate-900 dark:text-slate-100 text-sm font-bold truncate">Dark Roast Coffee</p>
+<div class="flex justify-between items-end mt-1">
+<div>
+<p class="text-primary text-base font-bold">$18.50</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs">Stock: 45</p>
+</div>
+<span class="text-[10px] bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 px-2 py-0.5 rounded-full font-bold">ACTIVE</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col bg-white dark:bg-primary/5 rounded-xl border border-slate-200 dark:border-primary/10 overflow-hidden">
+<div class="relative w-full aspect-square bg-slate-100 dark:bg-primary/10">
+<img alt="Artisan Bread" class="w-full h-full object-cover" data-alt="Freshly baked artisan sourdough bread" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBfvEIYeXK4s2qYQTJPRKZLxLm6ckgo3I_6nP4XjvJIYzd9GuN7hwi_DXK5-EbC9xk61Re3Cy-CNf4C6nJPTYZVOzBYBNz9Zzp0FWE6PFijDHNLFYbYYFMI1iDx_W0wQsMS79LTHLIb_HnQNc_oZScrurBDgLpQTUq8EczRWMFuG6OVKHIMiTi4z6A0Jf_WlLe04Uxo4HB9ZVSLgPbUgVarKTLsnz4fkzXqJwwYY5KooQnXVXWGr2MArOgc6jt9gwYUZlwZ9AE6Pm0"/>
+<button class="absolute top-2 right-2 p-1.5 bg-black/50 backdrop-blur-md rounded-lg text-white">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+</div>
+<div class="p-3">
+<p class="text-slate-900 dark:text-slate-100 text-sm font-bold truncate">Artisan Bread</p>
+<div class="flex justify-between items-end mt-1">
+<div>
+<p class="text-primary text-base font-bold">$6.00</p>
+<p class="text-orange-500 text-xs font-semibold">Stock: 8 (Low)</p>
+</div>
+<span class="text-[10px] bg-orange-100 text-orange-700 dark:bg-orange-900/30 dark:text-orange-400 px-2 py-0.5 rounded-full font-bold">WARNING</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col bg-white dark:bg-primary/5 rounded-xl border border-slate-200 dark:border-primary/10 overflow-hidden">
+<div class="relative w-full aspect-square bg-slate-100 dark:bg-primary/10">
+<img alt="Espresso Beans" class="w-full h-full object-cover" data-alt="Premium espresso coffee beans" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBmmZSL2gtWvFEBVwM8rcBa-prc9ZwbWi6TNU8HE9Nx2uSh_7xrnk_yF-tjk36lxCbUH44yTGAocwCQ6m2CRl-RlRnh6lDPmSxig38sKZVBaawQ-hjLt1HqUs7PhUB__KCj3v4UPlTPvIM9kJb5yA3T5U7l3tvzoV_v0h0-BpR9t83U7DUq-4kTU8zpl8zFZV6Lvu2a_ae-3LubJKuEQLpELgQAxM_lGVh17K6bFA0bfLXiNgJMoxKMpvwgBrq4SgZloC4vZMSSAtw"/>
+<button class="absolute top-2 right-2 p-1.5 bg-black/50 backdrop-blur-md rounded-lg text-white">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+</div>
+<div class="p-3">
+<p class="text-slate-900 dark:text-slate-100 text-sm font-bold truncate">Espresso Beans</p>
+<div class="flex justify-between items-end mt-1">
+<div>
+<p class="text-primary text-base font-bold">$15.00</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs">Stock: 22</p>
+</div>
+<span class="text-[10px] bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 px-2 py-0.5 rounded-full font-bold">ACTIVE</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col bg-white dark:bg-primary/5 rounded-xl border border-slate-200 dark:border-primary/10 overflow-hidden opacity-80">
+<div class="relative w-full aspect-square bg-slate-100 dark:bg-primary/10">
+<img alt="Blueberry Muffin" class="w-full h-full object-cover grayscale" data-alt="Large blueberry muffin with crumble top" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAZCfXh_Kb5Bbu626KGfHYuFitFHCzQd-M0EvodjuYUoQao701fVEBWrVE7CpH_9hUo0FmCq8ZD2W9mB6Ef17wSmyJ0OrW_mwlZ0qgxEz30oBerhf-IP1tQzbU0yFXj0tzsJuOsk-EscKnRZZ6btBHF2_IkHxY3jQjch1aLmfMmBMa9lG_LebgQh6nDRjtJqfw1hS5U9Icjz798JCROzAsWL0J6RmuHY8FKzs7och09g6wyF5YyArxkLRjpEzo18eZlPzHoGsNMIZE"/>
+<div class="absolute inset-0 bg-black/40 flex items-center justify-center">
+<span class="bg-primary text-white text-[10px] font-bold px-3 py-1 rounded-full uppercase tracking-wider">Out of Stock</span>
+</div>
+<button class="absolute top-2 right-2 p-1.5 bg-black/50 backdrop-blur-md rounded-lg text-white">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+</div>
+<div class="p-3">
+<p class="text-slate-900 dark:text-slate-100 text-sm font-bold truncate">Blueberry Muffin</p>
+<div class="flex justify-between items-end mt-1">
+<div>
+<p class="text-primary text-base font-bold">$4.50</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs">Stock: 0</p>
+</div>
+<span class="text-[10px] bg-slate-200 text-slate-700 dark:bg-slate-800 dark:text-slate-400 px-2 py-0.5 rounded-full font-bold">DRAFT</span>
+</div>
+</div>
+</div>
+<div class="flex flex-col bg-white dark:bg-primary/5 rounded-xl border border-slate-200 dark:border-primary/10 overflow-hidden">
+<div class="relative w-full aspect-square bg-slate-100 dark:bg-primary/10">
+<img alt="Croissant" class="w-full h-full object-cover" data-alt="Flaky buttery french croissants" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBuIJit-iZc28ZiDcvKUm6qHiUmW0EkhG44wqCd2e0i1xyFYdNVAQukMnqxDgNAMQDMdR27aKYm4ivq8fhY2hzYcmaUo0fXGeDtcJJbHUXr264L_JziwrouqE4e2kH18wVLNqyx2tQ_qrsFFBKUhWllC1XRcr9yOoCGiDd_cLjoJJLHzVd3s7rKvxQfgAufNWjjbuPkG7hxCLaTYMl6zBxBWqv7MUHPYHZzQZ4_mGo5QtB_oEbtPOhWt7G6bvh1VLqJ7E9vnGt2Trc"/>
+<button class="absolute top-2 right-2 p-1.5 bg-black/50 backdrop-blur-md rounded-lg text-white">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+</div>
+<div class="p-3">
+<p class="text-slate-900 dark:text-slate-100 text-sm font-bold truncate">Butter Croissant</p>
+<div class="flex justify-between items-end mt-1">
+<div>
+<p class="text-primary text-base font-bold">$3.25</p>
+<p class="text-slate-500 dark:text-slate-400 text-xs">Stock: 15</p>
+</div>
+<span class="text-[10px] bg-green-100 text-green-700 dark:bg-green-900/30 dark:text-green-400 px-2 py-0.5 rounded-full font-bold">ACTIVE</span>
+</div>
+</div>
+</div>
+</div>
+</main>
+<div class="fixed bottom-20 left-0 right-0 px-4 pointer-events-none">
+<div class="flex justify-center pointer-events-auto">
+<button class="flex min-w-[160px] cursor-pointer items-center justify-center overflow-hidden rounded-full h-14 px-6 bg-primary text-white gap-2 shadow-lg shadow-primary/30 active:scale-95 transition-transform">
+<span class="material-symbols-outlined">add</span>
+<span class="text-base font-bold tracking-wide">Add Product</span>
+</button>
+</div>
+</div>
+<nav class="fixed bottom-0 left-0 right-0 flex border-t border-slate-200 dark:border-primary/20 bg-white/80 dark:bg-background-dark/80 backdrop-blur-xl px-4 pb-6 pt-2 z-20">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-500 dark:text-slate-400" href="#">
+<span class="material-symbols-outlined">sell</span>
+<p class="text-[10px] font-medium uppercase tracking-tighter">Sales</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined active-icon">inventory_2</span>
+<p class="text-[10px] font-bold uppercase tracking-tighter">Products</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-500 dark:text-slate-400" href="#">
+<span class="material-symbols-outlined">warehouse</span>
+<p class="text-[10px] font-medium uppercase tracking-tighter">Inventory</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-500 dark:text-slate-400" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-[10px] font-medium uppercase tracking-tighter">Settings</p>
+</a>
+</nav>
+</div>
+</body></html>

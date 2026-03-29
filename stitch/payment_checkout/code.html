@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            colors: {
+              "primary": "#e21d48",
+              "background-light": "#f8f6f6",
+              "background-dark": "#11090a",
+              "surface-dark": "#1a0d10",
+              "border-dark": "#2d161b",
+            },
+            fontFamily: {
+              "display": ["Inter"]
+            },
+            borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+          },
+        },
+      }
+    </script>
+<title>Checkout | Fintech Pay</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Header -->
+<header class="sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-border-dark px-4 py-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-900 dark:text-slate-100 cursor-pointer">arrow_back</span>
+<h1 class="text-xl font-bold tracking-tight">Checkout</h1>
+</div>
+<div class="size-10 rounded-full bg-primary/10 flex items-center justify-center border border-primary/20">
+<span class="material-symbols-outlined text-primary text-sm">security</span>
+</div>
+</header>
+<main class="flex-1 max-w-md mx-auto w-full pb-32">
+<!-- Order Summary Card -->
+<section class="p-4 mt-2">
+<div class="bg-white dark:bg-surface-dark rounded-xl p-5 border border-slate-200 dark:border-border-dark shadow-sm">
+<div class="flex justify-between items-center mb-4">
+<h2 class="text-sm font-semibold uppercase tracking-wider text-slate-500 dark:text-primary/70">Order Summary</h2>
+<span class="text-xs bg-primary/10 text-primary px-2 py-1 rounded font-medium">#ORD-9921</span>
+</div>
+<div class="space-y-3">
+<div class="flex justify-between items-center">
+<p class="text-slate-600 dark:text-slate-400">Premium Subscription</p>
+<p class="font-medium">$120.00</p>
+</div>
+<div class="flex justify-between items-center">
+<p class="text-slate-600 dark:text-slate-400">Service Fee</p>
+<p class="font-medium">$5.00</p>
+</div>
+<div class="pt-3 mt-3 border-t border-slate-100 dark:border-border-dark flex justify-between items-center">
+<p class="text-lg font-bold">Total Amount</p>
+<p class="text-2xl font-bold text-primary">$125.00</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Quick Pay Options -->
+<section class="px-4 py-2">
+<h3 class="text-lg font-bold mb-4 flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">bolt</span>
+                Quick Pay
+            </h3>
+<div class="grid grid-cols-2 gap-3">
+<button class="flex flex-col items-center justify-center gap-2 bg-slate-900 text-white rounded-xl py-4 border border-slate-700 hover:bg-slate-800 transition-colors">
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-2xl">ios</span>
+<span class="font-bold">Pay</span>
+</div>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 bg-white text-slate-900 rounded-xl py-4 border border-slate-200 hover:bg-slate-50 transition-colors">
+<div class="flex items-center gap-1">
+<img alt="Google Pay" class="h-5" data-alt="Google Pay logo in full colors" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnNi5CcoJYqn6s9dKRRw3EYaXBGX4-hCbVtBlHmFYSly8iEso6cmoC-rtxnGESnhiazcpr11FfD47rKcOAOLKvZPjTKIDy7Os4TeozilppJi3fC9c0jPni1ChhkRI0E2KqEflcraBMSHWsUdMQZJPOXYf4X9Fb4zHd1kqtkhJAGTZfkMbac16zfGT__kZ4fx7qi6P_zu1Q7PWFdhQczvb_ij6DVhDHn022DapiPPDu158AfF50x78gY8BtM2Hz6FeSQYUM7cKvJfs"/>
+</div>
+</button>
+</div>
+</section>
+<!-- Payment Method Selection -->
+<section class="px-4 py-4">
+<h3 class="text-lg font-bold mb-4">Payment Method</h3>
+<div class="space-y-3">
+<!-- Selected Card -->
+<div class="relative group cursor-pointer">
+<div class="bg-primary/5 border-2 border-primary rounded-xl p-4 flex items-center justify-between">
+<div class="flex items-center gap-4">
+<div class="bg-primary rounded-lg p-2 text-white">
+<span class="material-symbols-outlined">credit_card</span>
+</div>
+<div>
+<p class="font-bold">•••• 4242</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 uppercase">Visa Platinum</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary">check_circle</span>
+</div>
+</div>
+<!-- Other Options -->
+<div class="bg-white dark:bg-surface-dark border border-slate-200 dark:border-border-dark rounded-xl p-4 flex items-center justify-between cursor-pointer hover:border-primary/50 transition-colors">
+<div class="flex items-center gap-4">
+<div class="bg-slate-100 dark:bg-border-dark rounded-lg p-2 text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined">account_balance</span>
+</div>
+<div>
+<p class="font-bold">Bank Transfer</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">Direct from account</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-slate-300 dark:text-slate-700">radio_button_unchecked</span>
+</div>
+<button class="w-full py-3 flex items-center justify-center gap-2 border-2 border-dashed border-slate-300 dark:border-border-dark rounded-xl text-slate-500 hover:text-primary hover:border-primary transition-colors">
+<span class="material-symbols-outlined">add</span>
+<span class="font-medium">Add New Method</span>
+</button>
+</div>
+</section>
+<!-- Animation Placeholder (Implicitly shown) -->
+<div class="px-4 pt-4">
+<div class="rounded-xl overflow-hidden relative group h-24 bg-gradient-to-r from-primary/10 via-primary/5 to-transparent border border-primary/10 flex items-center px-6">
+<div class="z-10">
+<p class="text-primary font-bold">Secure Transaction</p>
+<p class="text-xs text-slate-500">256-bit SSL Encrypted</p>
+</div>
+<div class="absolute right-0 top-0 h-full w-1/2 flex items-center justify-center overflow-hidden">
+<span class="material-symbols-outlined text-7-xl text-primary/10 scale-[4] rotate-12">verified_user</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Bottom Action Bar -->
+<footer class="fixed bottom-0 left-0 right-0 bg-white dark:bg-background-dark border-t border-slate-200 dark:border-border-dark p-4 z-20">
+<div class="max-w-md mx-auto space-y-4">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 flex items-center justify-center gap-2 transition-transform active:scale-95">
+<span>PAY $125.00 NOW</span>
+<span class="material-symbols-outlined">arrow_forward</span>
+</button>
+<!-- Bottom Navigation Mockup -->
+<nav class="flex justify-between items-center px-6 pt-2">
+<a class="text-primary" href="#">
+<span class="material-symbols-outlined">home</span>
+</a>
+<a class="text-slate-400 dark:text-slate-600" href="#">
+<span class="material-symbols-outlined">account_balance_wallet</span>
+</a>
+<a class="text-slate-400 dark:text-slate-600" href="#">
+<span class="material-symbols-outlined">history</span>
+</a>
+<a class="text-slate-400 dark:text-slate-600" href="#">
+<span class="material-symbols-outlined">person</span>
+</a>
+</nav>
+</div>
+</footer>
+</body></html>

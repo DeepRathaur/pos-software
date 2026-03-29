@@ -20,7 +20,7 @@ export default function AppSectionLayout({ children }: { children: React.ReactNo
 
   if (!hydrated) {
     return (
-      <div className="flex min-h-dvh items-center justify-center text-sm text-zinc-500">Loading…</div>
+      <div className="flex min-h-dvh items-center justify-center text-sm text-stitch-fg-muted">Loading…</div>
     );
   }
   if (!token) return null;

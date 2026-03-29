@@ -25,7 +25,7 @@ export default function ReportsPage() {
         subtitle="Sales pulse and risk signals"
         icon="monitoring"
         right={
-          <button type="button" className="rounded-lg p-2 text-slate-100" aria-label="Date range">
+          <button type="button" className="rounded-lg p-2 text-stitch-fg" aria-label="Date range">
             <Icon name="calendar_today" />
           </button>
         }

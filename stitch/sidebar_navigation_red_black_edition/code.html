@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>POS System Navigation</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e21d48",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#211115",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .active-icon {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex h-screen w-full overflow-hidden">
+<aside class="z-50 flex h-full w-80 flex-col bg-slate-950 border-r border-slate-800/50 shadow-2xl">
+<div class="flex flex-col gap-4 p-6 border-b border-slate-800/50">
+<div class="flex items-center gap-4">
+<div class="relative size-12 overflow-hidden rounded-full ring-2 ring-primary/20">
+<img alt="User Profile" class="h-full w-full object-cover" data-alt="Professional headshot of a male store manager" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCd8Tubm7aFH46pEdXXu30kfqYnwAqB7cep6gbMxYYHzjRfbTcIUnNCFdkK916nDAtWVWxPq0DucC5lNoPdfS8CwUJlU7YQlcucv3zfzmzgoWXoWa-MYlTwzIDY9x7CvvUdFOz-OewNrzTR6pHo-z295Z9iIQ0aAxm-zI0_yREJ5_cm5emUQIaqqfEPZvcAZKlKmhGpzTg33kEGAWD807BGIhufO1VhEgVaXTjksIsrl7pM_jFs5aV20gFYxC6QajK7v4FlWDrOPWM"/>
+</div>
+<div class="flex flex-col">
+<p class="text-slate-100 text-lg font-bold leading-tight tracking-tight">Alex Johnson</p>
+<p class="text-slate-400 text-xs font-medium uppercase tracking-wider">Store Manager</p>
+</div>
+</div>
+</div>
+<nav class="flex-1 overflow-y-auto px-4 py-6 scrollbar-hide">
+<ul class="flex flex-col gap-1.5">
+<li>
+<a class="flex h-11 items-center gap-3 rounded-lg px-3 bg-primary text-white shadow-lg shadow-primary/20 transition-all" href="#">
+<span aria-hidden="true" class="material-symbols-outlined active-icon">dashboard</span>
+<span class="text-sm font-semibold tracking-wide">Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex h-11 items-center gap-3 rounded-lg px-3 text-slate-400 hover:bg-slate-900 hover:text-slate-100 transition-all" href="#">
+<span aria-hidden="true" class="material-symbols-outlined">point_of_sale</span>
+<span class="text-sm font-semibold tracking-wide">POS</span>
+</a>
+</li>
+<li>
+<a class="flex h-11 items-center gap-3 rounded-lg px-3 text-slate-400 hover:bg-slate-900 hover:text-slate-100 transition-all" href="#">
+<span aria-hidden="true" class="material-symbols-outlined">inventory_2</span>
+<span class="text-sm font-semibold tracking-wide">Products</span>
+</a>
+</li>
+<li>
+<a class="flex h-11 items-center gap-3 rounded-lg px-3 text-slate-400 hover:bg-slate-900 hover:text-slate-100 transition-all" href="#">
+<span aria-hidden="true" class="material-symbols-outlined">warehouse</span>
+<span class="text-sm font-semibold tracking-wide">Inventory</span>
+</a>
+</li>
+<li>
+<a class="flex h-11 items-center gap-3 rounded-lg px-3 text-slate-400 hover:bg-slate-900 hover:text-slate-100 transition-all" href="#">
+<span aria-hidden="true" class="material-symbols-outlined">group</span>
+<span class="text-sm font-semibold tracking-wide">Customers</span>
+</a>
+</li>
+<li>
+<a class="flex h-11 items-center gap-3 rounded-lg px-3 text-slate-400 hover:bg-slate-900 hover:text-slate-100 transition-all" href="#">
+<span aria-hidden="true" class="material-symbols-outlined">calendar_today</span>
+<span class="text-sm font-semibold tracking-wide">Appointments</span>
+</a>
+</li>
+<li>
+<a class="flex h-11 items-center gap-3 rounded-lg px-3 text-slate-400 hover:bg-slate-900 hover:text-slate-100 transition-all" href="#">
+<span aria-hidden="true" class="material-symbols-outlined">restaurant</span>
+<span class="text-sm font-semibold tracking-wide">Table Booking</span>
+</a>
+</li>
+<div class="my-4 h-px bg-slate-800/50 mx-2"></div>
+<li>
+<a class="flex h-11 items-center gap-3 rounded-lg px-3 text-slate-400 hover:bg-slate-900 hover:text-slate-100 transition-all" href="#">
+<span aria-hidden="true" class="material-symbols-outlined">bar_chart</span>
+<span class="text-sm font-semibold tracking-wide">Reports</span>
+</a>
+</li>
+<li>
+<a class="flex h-11 items-center gap-3 rounded-lg px-3 text-slate-400 hover:bg-slate-900 hover:text-slate-100 transition-all" href="#">
+<span aria-hidden="true" class="material-symbols-outlined">settings</span>
+<span class="text-sm font-semibold tracking-wide">Settings</span>
+</a>
+</li>
+</ul>
+</nav>
+<div class="p-4 border-t border-slate-800/50">
+<a class="flex h-11 items-center gap-3 rounded-lg px-3 text-slate-400 hover:bg-red-500/10 hover:text-red-500 transition-all" href="#">
+<span aria-hidden="true" class="material-symbols-outlined">logout</span>
+<span class="text-sm font-semibold tracking-wide">Logout</span>
+</a>
+</div>
+</aside>
+<main class="flex-1 bg-background-light dark:bg-background-dark p-8 overflow-y-auto">
+<header class="mb-8 flex justify-between items-center">
+<div>
+<h1 class="text-3xl font-bold text-slate-900 dark:text-slate-100">Dashboard</h1>
+<p class="text-slate-500 dark:text-slate-400">Welcome back, here's what's happening today.</p>
+</div>
+<div class="flex gap-4">
+<button class="px-4 py-2 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 rounded-lg text-sm font-medium hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors">
+                        Download Report
+                    </button>
+<button class="px-4 py-2 bg-primary text-white rounded-lg text-sm font-medium hover:bg-primary/90 transition-colors">
+                        New Order
+                    </button>
+</div>
+</header>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg">payments</span>
+<span class="text-emerald-500 text-xs font-bold">+12.5%</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Total Revenue</p>
+<h3 class="text-2xl font-bold mt-1 text-slate-900 dark:text-slate-100">$24,560.00</h3>
+</div>
+<div class="p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg">shopping_cart</span>
+<span class="text-emerald-500 text-xs font-bold">+8.2%</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Total Sales</p>
+<h3 class="text-2xl font-bold mt-1 text-slate-900 dark:text-slate-100">1,240</h3>
+</div>
+<div class="p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg">person</span>
+<span class="text-red-500 text-xs font-bold">-2.1%</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">New Customers</p>
+<h3 class="text-2xl font-bold mt-1 text-slate-900 dark:text-slate-100">48</h3>
+</div>
+<div class="p-6 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<span class="material-symbols-outlined text-primary bg-primary/10 p-2 rounded-lg">avg_time</span>
+<span class="text-emerald-500 text-xs font-bold">+5.4%</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Avg. Order Value</p>
+<h3 class="text-2xl font-bold mt-1 text-slate-900 dark:text-slate-100">$19.80</h3>
+</div>
+</div>
+<div class="mt-8 grid grid-cols-1 lg:grid-cols-3 gap-8">
+<div class="lg:col-span-2 bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 overflow-hidden">
+<div class="p-6 border-b border-slate-200 dark:border-slate-800 flex justify-between items-center">
+<h2 class="text-lg font-bold">Recent Transactions</h2>
+<button class="text-primary text-sm font-semibold hover:underline">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead class="bg-slate-50 dark:bg-slate-800/50">
+<tr>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Invoice</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Customer</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Amount</th>
+<th class="px-6 py-4 text-xs font-bold uppercase tracking-wider text-slate-500">Status</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-200 dark:divide-slate-800">
+<tr>
+<td class="px-6 py-4 text-sm font-medium">#INV-2024-001</td>
+<td class="px-6 py-4 text-sm">Sarah Miller</td>
+<td class="px-6 py-4 text-sm font-bold">$124.50</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-500">Completed</span>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-4 text-sm font-medium">#INV-2024-002</td>
+<td class="px-6 py-4 text-sm">James Wilson</td>
+<td class="px-6 py-4 text-sm font-bold">$89.20</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-xs font-bold bg-amber-500/10 text-amber-500">Pending</span>
+</td>
+</tr>
+<tr>
+<td class="px-6 py-4 text-sm font-medium">#INV-2024-003</td>
+<td class="px-6 py-4 text-sm">Elena Rodriguez</td>
+<td class="px-6 py-4 text-sm font-bold">$210.00</td>
+<td class="px-6 py-4">
+<span class="px-2.5 py-1 rounded-full text-xs font-bold bg-emerald-500/10 text-emerald-500">Completed</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</div>
+<div class="bg-white dark:bg-slate-900 rounded-xl border border-slate-200 dark:border-slate-800 p-6">
+<h2 class="text-lg font-bold mb-6">Popular Products</h2>
+<div class="space-y-6">
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">local_cafe</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold">Artisan Roast Coffee</p>
+<p class="text-xs text-slate-500">Beverages</p>
+</div>
+<p class="text-sm font-bold">$18.00</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">bakery_dining</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold">Fresh Sourdough</p>
+<p class="text-xs text-slate-500">Bakery</p>
+</div>
+<p class="text-sm font-bold">$7.50</p>
+</div>
+<div class="flex items-center gap-4">
+<div class="size-12 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">set_meal</span>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold">Grilled Salmon</p>
+<p class="text-xs text-slate-500">Main Course</p>
+</div>
+<p class="text-sm font-bold">$24.00</p>
+</div>
+</div>
+</div>
+</div>
+</main>
+</div>
+</body></html>

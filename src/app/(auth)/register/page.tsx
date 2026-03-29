@@ -45,7 +45,7 @@ export default function RegisterPage() {
 
   if (!hydrated) {
     return (
-      <div className="relative z-10 flex min-h-dvh items-center justify-center text-sm text-slate-500">
+      <div className="relative z-10 flex min-h-dvh items-center justify-center text-sm text-stitch-fg-muted">
         Loading…
       </div>
     );
@@ -57,16 +57,16 @@ export default function RegisterPage() {
       <header className="sticky top-0 z-20 flex items-center justify-between bg-transparent p-4">
         <Link
           href="/login"
-          className="flex size-10 items-center justify-center rounded-full text-slate-100 transition hover:bg-stitch-primary/10"
+          className="flex size-10 items-center justify-center rounded-full text-stitch-fg transition hover:bg-stitch-primary/10"
           aria-label="Back to login"
         >
           <Icon name="arrow_back" />
         </Link>
         <div className="flex items-center gap-2">
           <div className="flex size-8 items-center justify-center rounded-lg bg-stitch-primary">
-            <Icon name="point_of_sale" className="text-xl text-white" />
+            <Icon name="point_of_sale" className="text-xl text-stitch-fg" />
           </div>
-          <span className="font-bold tracking-tight text-white">
+          <span className="font-bold tracking-tight text-stitch-fg">
             POS<span className="text-stitch-primary">PRO</span>
           </span>
         </div>
@@ -76,10 +76,10 @@ export default function RegisterPage() {
       <main className="flex flex-1 flex-col items-center justify-center px-4 py-8">
         <div className="w-full max-w-md">
           <div className="mb-8 text-center">
-            <h1 className="text-3xl font-bold leading-tight tracking-tight text-white">
+            <h1 className="text-3xl font-bold leading-tight tracking-tight text-stitch-fg">
               Create your account
             </h1>
-            <p className="mt-2 text-base font-normal text-slate-400">
+            <p className="mt-2 text-base font-normal text-stitch-fg-muted">
               Join businesses managing growth with POS Pro — then add your store in Setup.
             </p>
           </div>
@@ -106,14 +106,14 @@ export default function RegisterPage() {
                 required
               />
               <div className="space-y-2">
-                <label className="px-1 text-sm font-medium text-slate-300">Password (min 8)</label>
+                <label className="px-1 text-sm font-medium text-stitch-fg-secondary">Password (min 8)</label>
                 <div className="relative">
                   <Icon
                     name="lock"
-                    className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-xl text-slate-500"
+                    className="pointer-events-none absolute left-3 top-1/2 -translate-y-1/2 text-xl text-stitch-fg-muted"
                   />
                   <input
-                    className="w-full rounded-lg border border-stitch-primary/20 bg-stitch-bg/50 py-3.5 pl-11 pr-11 text-white outline-none transition placeholder:text-slate-600 focus:ring-2 focus:ring-stitch-primary"
+                    className="w-full rounded-lg border border-stitch-primary/20 bg-stitch-bg/50 py-3.5 pl-11 pr-11 text-stitch-fg outline-none transition placeholder:text-stitch-fg-muted focus:ring-2 focus:ring-stitch-primary"
                     type={showPw ? "text" : "password"}
                     autoComplete="new-password"
                     value={password}
@@ -124,7 +124,7 @@ export default function RegisterPage() {
                   />
                   <button
                     type="button"
-                    className="absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 hover:text-stitch-primary"
+                    className="absolute right-3 top-1/2 -translate-y-1/2 text-stitch-fg-muted hover:text-stitch-primary"
                     onClick={() => setShowPw((s) => !s)}
                     aria-label={showPw ? "Hide password" : "Show password"}
                   >
@@ -147,14 +147,14 @@ export default function RegisterPage() {
             </form>
 
             <div className="mt-6 flex items-center justify-center gap-2 text-sm">
-              <span className="text-slate-400">Already have a business?</span>
+              <span className="text-stitch-fg-muted">Already have a business?</span>
               <Link href="/login" className="font-semibold text-stitch-primary hover:underline">
                 Sign in
               </Link>
             </div>
           </div>
 
-          <p className="mt-8 px-4 text-center text-xs leading-relaxed text-slate-500">
+          <p className="mt-8 px-4 text-center text-xs leading-relaxed text-stitch-fg-muted">
             By creating an account you agree to our{" "}
             <a className="underline" href="#">
               Terms of Service

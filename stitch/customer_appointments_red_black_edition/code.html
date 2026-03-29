@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e21d48",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#211115",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>Customer Appointments - Premium Salon</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark overflow-x-hidden">
+<!-- Header Section -->
+<header class="flex items-center bg-background-light dark:bg-background-dark p-6 justify-between border-b border-primary/10">
+<div class="flex items-center gap-3">
+<div class="text-primary flex size-10 shrink-0 items-center justify-center rounded-lg bg-primary/10">
+<span class="material-symbols-outlined">event_note</span>
+</div>
+<div>
+<h1 class="text-slate-900 dark:text-slate-100 text-xl font-bold leading-tight tracking-tight">Appointments</h1>
+<p class="text-slate-500 dark:text-slate-400 text-xs">Manage your daily schedule</p>
+</div>
+</div>
+<div class="flex gap-2">
+<button class="flex size-10 items-center justify-center rounded-full hover:bg-slate-200 dark:hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-slate-900 dark:text-slate-100">search</span>
+</button>
+<button class="flex size-10 items-center justify-center rounded-full bg-primary text-white shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined">add</span>
+</button>
+</div>
+</header>
+<!-- Calendar Section -->
+<div class="p-6">
+<div class="bg-white dark:bg-slate-900/40 rounded-xl border border-primary/5 p-4 backdrop-blur-sm">
+<div class="flex items-center justify-between mb-4">
+<button class="text-slate-900 dark:text-slate-100 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold">October 2023</p>
+<button class="text-slate-900 dark:text-slate-100 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<div class="grid grid-cols-7 gap-1 mb-2">
+<p class="text-slate-400 text-[11px] font-bold uppercase text-center py-2">S</p>
+<p class="text-slate-400 text-[11px] font-bold uppercase text-center py-2">M</p>
+<p class="text-slate-400 text-[11px] font-bold uppercase text-center py-2">T</p>
+<p class="text-slate-400 text-[11px] font-bold uppercase text-center py-2">W</p>
+<p class="text-slate-400 text-[11px] font-bold uppercase text-center py-2">T</p>
+<p class="text-slate-400 text-[11px] font-bold uppercase text-center py-2">F</p>
+<p class="text-slate-400 text-[11px] font-bold uppercase text-center py-2">S</p>
+<!-- Week 1 -->
+<div class="h-10 flex items-center justify-center text-slate-300 dark:text-slate-600 text-sm">27</div>
+<div class="h-10 flex items-center justify-center text-slate-300 dark:text-slate-600 text-sm">28</div>
+<div class="h-10 flex items-center justify-center text-slate-300 dark:text-slate-600 text-sm">29</div>
+<div class="h-10 flex items-center justify-center text-slate-300 dark:text-slate-600 text-sm">30</div>
+<button class="h-10 w-full flex items-center justify-center rounded-lg text-slate-900 dark:text-slate-100 text-sm font-medium hover:bg-primary/10">1</button>
+<button class="h-10 w-full flex items-center justify-center rounded-lg text-slate-900 dark:text-slate-100 text-sm font-medium hover:bg-primary/10">2</button>
+<button class="h-10 w-full flex items-center justify-center rounded-lg text-slate-900 dark:text-slate-100 text-sm font-medium hover:bg-primary/10">3</button>
+<!-- Week 2 -->
+<button class="h-10 w-full flex items-center justify-center rounded-lg text-slate-900 dark:text-slate-100 text-sm font-medium hover:bg-primary/10">4</button>
+<button class="h-10 w-full flex items-center justify-center rounded-lg bg-primary text-white text-sm font-bold shadow-md shadow-primary/30">5</button>
+<button class="h-10 w-full flex items-center justify-center rounded-lg text-slate-900 dark:text-slate-100 text-sm font-medium hover:bg-primary/10">6</button>
+<button class="h-10 w-full flex items-center justify-center rounded-lg text-slate-900 dark:text-slate-100 text-sm font-medium hover:bg-primary/10">7</button>
+<button class="h-10 w-full flex items-center justify-center rounded-lg text-slate-900 dark:text-slate-100 text-sm font-medium hover:bg-primary/10">8</button>
+<button class="h-10 w-full flex items-center justify-center rounded-lg text-slate-900 dark:text-slate-100 text-sm font-medium hover:bg-primary/10">9</button>
+<button class="h-10 w-full flex items-center justify-center rounded-lg text-slate-900 dark:text-slate-100 text-sm font-medium hover:bg-primary/10">10</button>
+</div>
+<div class="flex justify-center pt-2">
+<button class="text-xs font-semibold text-primary uppercase tracking-widest flex items-center gap-1">
+                        View Full Calendar <span class="material-symbols-outlined text-[14px]">expand_more</span>
+</button>
+</div>
+</div>
+</div>
+<!-- Appointments List -->
+<div class="flex-1 flex flex-col gap-4 px-6 pb-24">
+<div class="flex items-center justify-between">
+<h3 class="text-slate-900 dark:text-slate-100 text-lg font-bold">Upcoming Today</h3>
+<span class="text-xs font-medium px-2 py-1 bg-primary/10 text-primary rounded-full">4 Slots Remaining</span>
+</div>
+<!-- Appointment Item 1 -->
+<div class="group flex items-center gap-4 bg-white dark:bg-slate-900/40 p-4 rounded-xl border border-primary/5 hover:border-primary/30 transition-all cursor-pointer">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-14 border-2 border-primary/20 group-hover:border-primary transition-colors" data-alt="Portrait of Sarah Jenkins smiling" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDpxbP-aPgN2eecHEA26JBDzZcGPCDp7jHnBOlcH72lag-a1NFsHlwCS20mIGgWJ8DqiDr0b27QWzqnUkXbVz5xmUZsFZLr7KC29o4f8jgdLTWOERB9Wemh4qh0h8tDuD28rz9TRkuJzZJ3xRvPOgWUcRADEMaGH93tiv78k2WGDrzAFNK5q8nUwwgEKtCQVeaJsO0BYIEDvbXbx2RhaBa9gkBevovQ31gU_xcV3NEhbHcLmC35LvFIFlUkWr3T-syLlarAqHjW0aM");'></div>
+<div class="absolute -bottom-1 -right-1 size-5 bg-emerald-500 border-2 border-background-dark rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[12px] font-bold">check</span>
+</div>
+</div>
+<div class="flex flex-col flex-1">
+<div class="flex justify-between items-start">
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold">Sarah Jenkins</p>
+<p class="text-slate-400 text-xs font-semibold">10:30 AM</p>
+</div>
+<div class="flex justify-between items-center mt-1">
+<p class="text-slate-500 dark:text-slate-400 text-sm">Haircut &amp; Blow Dry</p>
+<span class="bg-emerald-500/10 text-emerald-500 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Confirmed</span>
+</div>
+</div>
+</div>
+<!-- Appointment Item 2 -->
+<div class="group flex items-center gap-4 bg-white dark:bg-slate-900/40 p-4 rounded-xl border border-primary/5 hover:border-primary/30 transition-all cursor-pointer">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-14 border-2 border-primary/20 group-hover:border-primary transition-colors" data-alt="Portrait of Michael Chen" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDhaKx97GAH_2zU0yg0bVACNUVAg6IgkfI3GSu1PFtfrQVHoEWlLWLhu9tu3ueTqcCE5m6hr5rBb2ue-HNNbb4dssjNv-gfun4MZwSILwUfZu61QXugzGoxHRrRHZ5uYiXnb1ljCHLO-Mv2vov3degGMcgolXyOQrA50HWnxP0OxK2bpdEZrZ8by4ciBKmuGBIDgi5N3NqBljQLOx08kQrif525XsvPWoxlJdUU5IiyqFmq3W3Yn7CbWz0sHfwfZ1SgtEAXmhwsbCs");'></div>
+<div class="absolute -bottom-1 -right-1 size-5 bg-amber-500 border-2 border-background-dark rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[12px] font-bold">history</span>
+</div>
+</div>
+<div class="flex flex-col flex-1">
+<div class="flex justify-between items-start">
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold">Michael Chen</p>
+<p class="text-slate-400 text-xs font-semibold">01:15 PM</p>
+</div>
+<div class="flex justify-between items-center mt-1">
+<p class="text-slate-500 dark:text-slate-400 text-sm">Deep Tissue Massage</p>
+<span class="bg-amber-500/10 text-amber-500 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Pending</span>
+</div>
+</div>
+</div>
+<!-- Appointment Item 3 -->
+<div class="group flex items-center gap-4 bg-white dark:bg-slate-900/40 p-4 rounded-xl border border-primary/5 hover:border-primary/30 transition-all cursor-pointer">
+<div class="relative">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full h-14 w-14 border-2 border-primary/20 group-hover:border-primary transition-colors" data-alt="Portrait of Elena Rodriguez" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCONkTj5cF88RrI6FP5DpKVoxyu7jFw4s9vDRIXWuzNJf2yO3_Rpwww2szZSKnrbI-zmGVqzHbxu_GgytH_68XbcgTB3L3rtXq-k4QQuMUBUe2cJ9pwgFHeWUQzsxaAumaQT7m8ctPECQ9vLnwbURpNysZ4H_r59aEwt6oNv6W_ix5FNON_XEOWdk59R4Pt23jAXrtq6eR-P7GB35oPQr6FHowgKC9FBmbh7NQ8KmT0capBSFM0YNbDAEMkEAZrCg7Nks49FJF0vsI");'></div>
+<div class="absolute -bottom-1 -right-1 size-5 bg-emerald-500 border-2 border-background-dark rounded-full flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-[12px] font-bold">check</span>
+</div>
+</div>
+<div class="flex flex-col flex-1">
+<div class="flex justify-between items-start">
+<p class="text-slate-900 dark:text-slate-100 text-base font-bold">Elena Rodriguez</p>
+<p class="text-slate-400 text-xs font-semibold">02:45 PM</p>
+</div>
+<div class="flex justify-between items-center mt-1">
+<p class="text-slate-500 dark:text-slate-400 text-sm">Facial Treatment</p>
+<span class="bg-emerald-500/10 text-emerald-500 text-[10px] font-bold px-2 py-0.5 rounded-full uppercase">Confirmed</span>
+</div>
+</div>
+</div>
+<button class="w-full py-4 mt-2 bg-primary/10 border border-primary/20 text-primary font-bold rounded-xl hover:bg-primary/20 transition-all">
+                View All Appointments
+            </button>
+</div>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 z-50 flex gap-2 border-t border-primary/10 bg-white/80 dark:bg-background-dark/95 backdrop-blur-md px-4 pb-6 pt-2">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">home</span>
+<p class="text-[10px] font-bold uppercase tracking-wider">Home</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">calendar_today</span>
+<p class="text-[10px] font-bold uppercase tracking-wider">Calendar</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">group</span>
+<p class="text-[10px] font-bold uppercase tracking-wider">Clients</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<p class="text-[10px] font-bold uppercase tracking-wider">Reports</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<p class="text-[10px] font-bold uppercase tracking-wider">Settings</p>
+</a>
+</nav>
+</div>
+</body></html>

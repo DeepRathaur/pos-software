@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+
+<html class="h-full" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Confirm Refund - Red &amp; Black Edition</title>
+<!-- Tailwind CSS CDN with plugins -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<!-- Google Fonts: Inter -->
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          colors: {
+            brand: {
+              DEFAULT: '#e21d48',
+              dark: '#be123c',
+            },
+            surface: {
+              DEFAULT: '#121212',
+              card: '#1c1c1c',
+              border: '#2a2a2a',
+            }
+          },
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          borderRadius: {
+            'custom': '8px', // ROUND_EIGHT from theme
+          }
+        }
+      }
+    }
+  </script>
+<style data-purpose="custom-animations">
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+    @keyframes slideUp {
+      from { transform: translateY(20px); opacity: 0; }
+      to { transform: translateY(0); opacity: 1; }
+    }
+    .animate-fade-in { animation: fadeIn 0.3s ease-out forwards; }
+    .animate-slide-up { animation: slideUp 0.4s cubic-bezier(0.16, 1, 0.3, 1) forwards; }
+    
+    /* Custom backdrop blur for the background overlay */
+    .bg-overlay {
+      background-color: rgba(0, 0, 0, 0.75);
+      backdrop-filter: blur(4px);
+    }
+  </style>
+</head>
+<body class="font-sans bg-black h-full flex items-center justify-center p-4">
+<!-- BEGIN: Background Context -->
+<!-- This represents the screen underneath the modal, dimmed and blurred as per requirements -->
+<div aria-hidden="true" class="fixed inset-0 z-0 overflow-hidden pointer-events-none">
+<div class="p-6 max-w-md mx-auto h-full flex flex-col gap-6 opacity-30 grayscale">
+<div class="flex items-center gap-4 mb-2">
+<div class="w-6 h-6 rounded-full bg-white/20"></div>
+<div class="h-6 w-32 bg-white/20 rounded"></div>
+</div>
+<div class="p-4 bg-surface-card border border-surface-border rounded-custom">
+<div class="h-4 w-24 bg-brand/30 rounded mb-4"></div>
+<div class="h-8 w-20 bg-white/30 rounded mb-2"></div>
+<div class="h-4 w-40 bg-white/20 rounded"></div>
+</div>
+<div class="p-4 bg-surface-card border border-surface-border rounded-custom h-40"></div>
+<div class="p-4 bg-surface-card border border-surface-border rounded-custom h-20"></div>
+</div>
+</div>
+<!-- END: Background Context -->
+<!-- BEGIN: Modal Backdrop -->
+<div class="fixed inset-0 z-10 bg-overlay animate-fade-in flex items-center justify-center p-4">
+<!-- BEGIN: Confirm Refund Modal -->
+<div class="bg-surface-card w-full max-w-sm rounded-custom shadow-2xl border border-surface-border animate-slide-up overflow-hidden" data-purpose="confirm-refund-modal">
+<!-- Modal Header -->
+<div class="px-6 pt-8 pb-4 text-center">
+<h2 class="text-white text-xl font-semibold tracking-tight">Confirm Refund</h2>
+</div>
+<!-- Modal Content: Main Amount -->
+<div class="px-6 py-2 text-center" data-purpose="refund-summary">
+<p class="text-gray-400 text-sm mb-1 uppercase tracking-wider font-medium">Refund Total</p>
+<div class="text-brand text-5xl font-bold tracking-tighter">$45.36</div>
+</div>
+<!-- Modal Content: Details List -->
+<div class="px-6 py-6 space-y-6" data-purpose="refund-details">
+<!-- Item List -->
+<div class="space-y-3">
+<p class="text-xs font-bold text-gray-500 uppercase tracking-widest">Items being refunded</p>
+<div class="flex justify-between items-center text-sm border-b border-surface-border pb-3">
+<span class="text-gray-200">Premium Steak &amp; Greens</span>
+<span class="text-gray-400 font-medium">1 unit</span>
+</div>
+</div>
+<!-- Refund Destination -->
+<div class="space-y-3">
+<p class="text-xs font-bold text-gray-500 uppercase tracking-widest">Refund Destination</p>
+<div class="flex items-center gap-3 bg-black/40 p-3 rounded-custom border border-surface-border">
+<!-- Simple Card Icon SVG -->
+<svg class="w-8 h-8 text-brand" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M3 10h18M7 15h1m4 0h1m-7 4h12a2 2 0 002-2V7a2 2 0 00-2-2H6a2 2 0 00-2 2v10a2 2 0 002 2z" stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5"></path>
+</svg>
+<div class="flex flex-col">
+<span class="text-gray-100 text-sm font-medium">Visa •••• 4242</span>
+<span class="text-gray-500 text-xs">Original Payment Method</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Modal Footer: Action Buttons -->
+<div class="px-6 pb-8 space-y-3" data-purpose="modal-actions">
+<button class="w-full bg-brand hover:bg-brand-dark text-white font-bold py-4 rounded-custom transition-colors flex items-center justify-center gap-2 shadow-lg shadow-brand/20" type="button">
+<!-- Refresh/Process Icon -->
+<svg class="w-5 h-5" fill="none" stroke="currentColor" viewbox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+<path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5"></path>
+</svg>
+          Process Refund
+        </button>
+<button class="w-full bg-transparent hover:bg-white/5 text-gray-400 font-semibold py-3 rounded-custom transition-colors border border-transparent hover:border-surface-border" type="button">
+          Cancel
+        </button>
+</div>
+</div>
+<!-- END: Confirm Refund Modal -->
+</div>
+<!-- END: Modal Backdrop -->
+</body></html>

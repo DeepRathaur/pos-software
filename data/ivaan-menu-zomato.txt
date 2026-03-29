@@ -1,0 +1,254 @@
+Category 	Item 	Zomato Price 	Category 	Item 	Quantity 	Zomato Price
+Coffee & Chai
+Ginger Tea 	31 North Indian Specials
+Chole Bhature 	2 Pcs 	155
+Black Coffee 	46.5 	Puri Bhaji 	4 Pcs 	186
+Green Tea 	77.5 	0
+Tulsi Ginger Tea 	46.5 	0
+Tulsi Mulethi Tea 	77.5
+Breakfast
+Poha 	– 	124
+Elaichi Tea 	38.75 	Plain Maggi 	– 	77.5
+Masala Tea 	38.75 	Veg Maggi 	– 	93
+Black Tea 	23.25 	Cheese Maggi 	– 	124
+Lemon Tea 	31 	Garlic Cheese Maggi 	– 	155
+Ginger Honey Lemon 	77.5 	Ivaan's Special Maggi 	– 	186
+Lemon Grass 	77.5 	Egg Maggi 	– 	155
+Tulsi Ginger Tea 	77.5 	Chilla 	2 Pcs 	46.5
+Mint Tea 	77.5 	Egg Bhurji 	Sunny Side Up (1 Pc) 	108.5
+Gur Tea 	46.5 	Bread Toast 	Butter / Jam / Masala 	62
+Coffee 	Boiled Egg 	1 Pc 	46.5
+Hazelnut Coffee 	Double Egg Omelette 	2 Eggs 	93
+ButterScotch Coffee 	Half Fry 	1 Pc 	54.25
+Vanilla Coffee 	Egg Fry 	1 Pc 	54.25
+Bhel Puri 	– 	77.5
+Sandwich
+Plain 	93 	0
+Cheese 	155 	0
+Cheese Paneer 	217 	0
+Paneer 	186 	0
+Masala 	124
+South Indian
+Plain Dosa 	Plain / Onion 	124
+Peri Peri 	124 	Masala Dosa 	– 	186
+Peri Peri Cheese 	170.5 	Onion Dosa 	– 	186
+Veg Creamy Dosa 	– 	232.5
+Burger
+Classic Burger 	108.5 	Masala Idli 	– 	124
+Cheese Burger 	139.5 	Plain Idli 	2 Pcs / 3 Pcs 	110/120
+Paneer Burger 	170.5 	Uttapam 	– 	93
+Chilli Paneer Burger 	232.5 	0
+Crispy Paneer Burger 	232.5 	0
+Vada Pao 	62 	0
+0
+Thali
+Veg Thali 	1 Sabji, 1 Dal, 2 Roti, Rice, Salad 	248
+0 	Veg Thali Super Deluxe 2 Sabji, 1 Dal, 2 Roti, Rice, Rayta, Salad 	279
+0 	Shahi Paneer Thali 	– 	310
+Quick Lunch
+Sambar Rice / Dal Rice 	155 	Kadhai Paneer Thali 	– 	310
+
+-- 1 of 6 --
+
+Quick Lunch
+Chole Rice 	155
+Thali
+Dal Makhani Thali 	– 	310
+Rajma Rice 	155
+Kadhi Rice 	155
+Paneer Rice 	232.5
+Main Course
+Paneer Butter Masala 	372
+Paneer Do Pyaza 	372
+Kadai Paneer 	341
+Mix Veg 	186
+Jeera Aloo 	124
+Methi Aloo 	124
+Yellow Dal Tadka 	124
+Yellow Dal Fry 	155
+Dal Makhani 	232.5
+Chole Masala 	186
+Rajma Masala 	186
+Egg Curry 	232.5
+Chaat Specials
+Chaat Basket 	155
+Corn Chaat 	155
+Cheese Chaat Basket 	186
+Peanut Chaat 	155
+Veg Tikki Chaat 	232.5
+0
+0
+0
+0
+Lassi Specials
+Salted Lassi 	124
+Sweet Lassi 	124
+Mango Lassi 	124
+Pineapple Lassi 	124
+Strawberry Lassi 	124
+Butter Scotch Lassi 	124
+0
+0
+
+-- 2 of 6 --
+
+Rolls
+Veg Roll 	124
+Paneer Roll 	155
+Noodles Roll 	155
+Double Egg Roll 	186
+Veg Cheese Roll 	201.5
+Chilli Paneer Roll 	232.5
+Paneer Cheese Roll 	232.5
+Schezwan Paneer Roll 	248
+0
+0
+Chinese Starters
+Honey Chilli Potato 	248
+Chilli Paneer 	294.5
+Paneer 65 	310
+Veg Manchurian Dry 	232.5
+Veg Manchurian Gravy 	263.5
+Chilli Potato 	232.5
+Chilli Mushroom 	279
+Crispy Mushroom 	248
+Crispy Corn 	186
+Paneer Manchurian Dry 	294.5
+Paneer Manchurian Gravy 	341
+Golden Fried Baby Corn 	248
+Baby Corn Manchurian 	248
+Baby Corn Chilli 	217
+Baby Corn Crispy 	217
+French Fries 	139.5
+Peri Peri French Fries 	186
+Salted Fries 	139.5
+BBQ Fries 	186
+American Creamy & Onion Fries 	186
+0
+0
+Pasta
+White Sauce Pasta 	232.5
+Red Sauce Pasta 	232.5
+Plain Pasta / Macaroni 	155
+Makhani Pasta 	310
+0
+0
+
+-- 3 of 6 --
+
+0
+Garam-Garam Pakode
+Aloo Pakode 	108.5
+Onion Pakode 	108.5
+Bread Pakode 	77.5
+Paneer Pakode 	139.5
+Samosa 	31
+Aloo Patties 	46.5
+Paneer Patties 	77.5
+Ivaan Paneer Patties 	124
+Chole Samosa 	77.5
+0
+0
+Momos
+Veg Steam Momo 	124
+Veg Fried Momo 	155
+Paneer Steam Momo 	155
+Paneer Fried Momo 	186
+Chilli Momo 	217
+Schezwan Momo 	217
+Manchurian Momo 	217
+Pizza Momo 	310
+Cheese Corn Momo 	310
+0
+0
+Kurkure Momos Veg Kurkure 	232.5
+Paneer Kurkure 	279
+0
+0
+Rice
+Steamed Rice 	124
+Jeera Rice 	155
+Veg Pulao 	186
+Peas Pulao 	232.5
+Veg Biryani 	279
+Biryani Wednesdays
+Veg Biryani 	160/200
+Dum Biryani 	180/230
+Chef's Special Biryani 	200/280
+
+-- 4 of 6 --
+
+Shakes
+Banana Shake 	108.5
+Peanut Banana Shake 	108.5
+Banana Dates Shake 	124
+Mango Shake 	139.5
+Oreo Shake 	155
+Kit Kat Shake 	155
+0
+0
+Pizza
+Paneer Cheese Pizza 	186
+Peri Peri Bread Pizza 	153.45
+Corn Pizza 	155
+Pasta Pizza 	387.5
+0
+0
+Fried Rice
+Veg Fried Rice 	155
+Egg Fried Rice 	232.5
+Chilli Garlic Fried Rice 	186
+Schezwan Fried Rice 	186
+Paneer Fried Rice 	217
+Mixed Fried Rice 	248
+Mushroom Fried Rice 	263.5
+0
+0
+Office Combo
+Paneer Lababdar + 4 Roti 	232.5
+Shahi Paneer + 4 Roti 	232.5
+Matar Paneer + 4 Roti 	232.5
+Kadhai Paneer + 4 Roti 	232.5
+Veg Noodles + Chilli Paneer + Coke 	310
+Veg Fried Rice + Chilli Paneer + Coke 	387.5
+0
+0
+0
+Indian Breads
+Tawa Roti 	15.5
+Plain Paratha 	77.5
+Aloo Paratha 	108.5
+Onion Paratha 	108.5
+
+-- 5 of 6 --
+
+Indian Breads 	Gobhi Paratha 	108.5
+Paneer Paratha 	139.5
+Aloo Onion Paratha 	124
+Mix Veg Paratha 	155
+Cheese Paratha 	186
+0
+0
+0
+Noodles
+Veg Noodles 	155
+Chilli Garlic Noodles 	186
+Paneer Noodles 	217
+Chilli Garlic Paneer Noodles 	232.5
+Egg Noodles 	248
+Schezwan Noodles 	248
+Veg Hakka Noodles 	263.5
+Paneer Hakka Noodles 	294.5
+0
+0
+Mocktails
+Watermelon Mojito 	155
+Strawberry Mojito 	155
+Blue Lagoon 	155
+Virgin Mojito 	155
+Lemonade 	124
+Nimbu Pani 	62
+Lemon Soda 	77.5
+Masala Soda 	93
+
+-- 6 of 6 --

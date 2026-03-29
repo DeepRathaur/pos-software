@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e21d48",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#0a0506",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<div class="relative flex h-auto min-h-screen w-full flex-col bg-background-light dark:bg-background-dark overflow-x-hidden">
+<div class="flex items-center p-4 pb-2 justify-between">
+<button aria-label="Go back to login" class="text-slate-900 dark:text-slate-100 flex size-12 shrink-0 items-center justify-center rounded-full hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-[24px]">arrow_back</span>
+</button>
+</div>
+<div class="flex-1 flex flex-col justify-center max-w-[480px] w-full mx-auto">
+<div class="px-6">
+<div class="mb-8">
+<div class="w-16 h-16 bg-primary/10 rounded-2xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-primary text-[32px]">lock_reset</span>
+</div>
+<h1 class="text-slate-900 dark:text-slate-100 tracking-tight text-[32px] font-bold leading-tight pb-3">Forgot Password?</h1>
+<p class="text-slate-600 dark:text-slate-400 text-base font-normal leading-relaxed">
+                        Enter your email address and we'll send you a link to reset your password and get you back to your POS dashboard.
+                    </p>
+</div>
+<form class="space-y-6">
+<div class="flex flex-col gap-2">
+<label class="text-slate-900 dark:text-slate-200 text-sm font-semibold tracking-wide uppercase">
+                            Email Address
+                        </label>
+<div class="relative flex items-center group">
+<div class="absolute left-4 text-slate-400 group-focus-within:text-primary transition-colors">
+<span class="material-symbols-outlined">mail</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-xl text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/50 border border-slate-200 dark:border-primary/20 bg-white dark:bg-primary/5 focus:border-primary h-14 placeholder:text-slate-400 dark:placeholder:text-slate-500 pl-12 pr-4 text-base font-normal leading-normal transition-all" placeholder="name@company.com" type="email"/>
+</div>
+</div>
+<div class="pt-2">
+<button class="w-full flex cursor-pointer items-center justify-center overflow-hidden rounded-xl h-14 px-5 bg-primary text-white text-base font-bold leading-normal tracking-wide shadow-lg shadow-primary/20 hover:bg-primary/90 transition-all active:scale-[0.98]" type="submit">
+<span class="truncate">Send Reset Link</span>
+</button>
+</div>
+</form>
+<div class="mt-12 text-center">
+<p class="text-slate-500 dark:text-slate-500 text-sm">
+                        Remember your password? 
+                        <a class="text-primary font-bold hover:underline ml-1" href="#">Log in</a>
+</p>
+</div>
+</div>
+</div>
+<div class="p-8 flex justify-center opacity-20 grayscale pointer-events-none">
+<div class="flex items-center gap-2">
+<span class="material-symbols-outlined text-primary">point_of_sale</span>
+<span class="font-bold tracking-tighter text-xl text-slate-900 dark:text-white">PREMIUM POS</span>
+</div>
+</div>
+</div>
+</body></html>

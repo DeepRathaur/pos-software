@@ -13,7 +13,7 @@ export default function Home() {
     router.replace(token ? "/dashboard" : "/login");
   }, [hydrated, token, router]);
   return (
-    <div className="flex min-h-dvh items-center justify-center p-8 text-sm text-zinc-500">
+    <div className="flex min-h-dvh items-center justify-center p-8 text-sm text-stitch-fg-muted">
       Starting…
     </div>
   );

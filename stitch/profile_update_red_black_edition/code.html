@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Edit Profile - POS Admin</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e21d48",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#0a0a0a",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex h-screen w-full flex-col overflow-hidden max-w-md mx-auto border-x border-primary/10">
+<!-- Header -->
+<header class="flex items-center bg-background-light dark:bg-background-dark p-4 justify-between border-b border-primary/10">
+<button class="text-slate-900 dark:text-slate-100 flex size-10 items-center justify-center rounded-full hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 ml-4">Edit Profile</h1>
+<div class="size-10"></div> <!-- Spacer for symmetry -->
+</header>
+<!-- Main Content (Scrollable) -->
+<main class="flex-1 overflow-y-auto pb-24">
+<!-- Profile Picture Section -->
+<div class="flex p-8 @container">
+<div class="flex w-full flex-col gap-4 items-center">
+<div class="relative group">
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full border-4 border-primary/20 min-h-32 w-32 overflow-hidden" data-alt="Professional male business owner profile portrait" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuB5Abhk9ys7k3SbO8804nLrX7KPn_lBCNKKZ6qVgtOtm9m0snh6NJKVJ7sOr1NOibIj_r6EmVzmeKDO5NMoxpXynBHUoibX0wqxi4jEek6b5JenE63j-Naiu0jFUqsW8VlUyWkr6pEOb-pIfXvl3QzexXmIe08G0gMRIZi6nfoZ4BhZ-cPg7YFhaqtbL5RrDhJyJ1s8jsfEkSocUFNa8zwZJKlmDsvJID-gtJ2Yd-6LA6W7fHQP7hzGso3dbrW9IWLjnOPr5ZsFQO4");'>
+</div>
+<button class="absolute bottom-1 right-1 bg-primary text-white p-2 rounded-full shadow-lg border-2 border-background-dark flex items-center justify-center hover:bg-primary/90 transition-transform active:scale-95">
+<span class="material-symbols-outlined text-sm">edit</span>
+</button>
+</div>
+<div class="flex flex-col items-center">
+<p class="text-slate-900 dark:text-slate-100 text-xl font-bold tracking-tight">Marcus Thorne</p>
+<p class="text-primary text-sm font-medium uppercase tracking-widest">Store Owner</p>
+</div>
+</div>
+</div>
+<!-- Form Fields -->
+<div class="px-6 space-y-6">
+<div class="space-y-4">
+<label class="block">
+<span class="text-slate-600 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1 block">Full Name</span>
+<input class="w-full rounded-xl border-primary/10 bg-slate-100 dark:bg-primary/5 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-1 focus:ring-primary h-14 px-4 transition-all" type="text" value="Marcus Thorne"/>
+</label>
+<label class="block">
+<span class="text-slate-600 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1 block">Email Address</span>
+<input class="w-full rounded-xl border-primary/10 bg-slate-100 dark:bg-primary/5 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-1 focus:ring-primary h-14 px-4 transition-all" type="email" value="marcus.thorne@poscloud.com"/>
+</label>
+<label class="block">
+<span class="text-slate-600 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1 block">Phone Number</span>
+<input class="w-full rounded-xl border-primary/10 bg-slate-100 dark:bg-primary/5 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-1 focus:ring-primary h-14 px-4 transition-all" type="tel" value="+1 (555) 902-3412"/>
+</label>
+<label class="block">
+<span class="text-slate-600 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1 block">Business Name</span>
+<input class="w-full rounded-xl border-primary/10 bg-slate-100 dark:bg-primary/5 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-1 focus:ring-primary h-14 px-4 transition-all" type="text" value="Urban Grind Coffee Co."/>
+</label>
+<label class="block">
+<span class="text-slate-600 dark:text-slate-400 text-xs font-semibold uppercase tracking-wider mb-1 block">Role</span>
+<select class="w-full rounded-xl border-primary/10 bg-slate-100 dark:bg-primary/5 text-slate-900 dark:text-slate-100 focus:border-primary focus:ring-1 focus:ring-primary h-14 px-4 transition-all appearance-none">
+<option selected="">Administrator / Owner</option>
+<option>Manager</option>
+<option>Cashier</option>
+</select>
+</label>
+</div>
+<!-- Action Buttons -->
+<div class="pt-4 space-y-4">
+<button class="w-full bg-primary text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 active:scale-[0.98] transition-all">
+                        Save Changes
+                    </button>
+<button class="w-full py-4 text-primary font-semibold hover:bg-primary/5 rounded-xl transition-colors flex items-center justify-center gap-2">
+<span class="material-symbols-outlined">logout</span>
+                        Log Out
+                    </button>
+</div>
+<div class="h-8"></div>
+</div>
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="absolute bottom-0 left-0 right-0 flex border-t border-primary/10 bg-background-light dark:bg-background-dark/95 backdrop-blur-md px-4 pb-6 pt-2 z-10">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<p class="text-[10px] font-medium leading-normal">Dashboard</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<p class="text-[10px] font-medium leading-normal">Inventory</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<p class="text-[10px] font-medium leading-normal">Sales</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<p class="text-[10px] font-medium leading-normal">Reports</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">account_circle</span>
+<p class="text-[10px] font-medium leading-normal">Profile</p>
+</a>
+</nav>
+</div>
+</body></html>

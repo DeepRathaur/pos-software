@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Order History - Premium Restaurant POS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e21d48",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#0a0506",
+                        "surface": "#1a0d0f",
+                        "border-muted": "#3d1c22",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<!-- Header Section -->
+<header class="sticky top-0 z-10 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-border-muted px-4 py-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-slate-900 dark:text-slate-100">arrow_back</span>
+</button>
+<h1 class="text-xl font-bold tracking-tight">Order History</h1>
+</div>
+<button class="flex items-center justify-center p-2 rounded-full hover:bg-primary/10">
+<span class="material-symbols-outlined text-slate-900 dark:text-slate-100">search</span>
+</button>
+</header>
+<!-- Filters/Tabs -->
+<div class="px-4 py-2 bg-background-light dark:bg-background-dark sticky top-[68px] z-10">
+<div class="flex gap-2 overflow-x-auto no-scrollbar py-2">
+<button class="whitespace-nowrap px-6 py-2 rounded-full bg-primary text-white text-sm font-semibold shadow-lg shadow-primary/20">
+                All Orders
+            </button>
+<button class="whitespace-nowrap px-6 py-2 rounded-full bg-surface border border-border-muted text-slate-400 text-sm font-semibold hover:border-primary/50 transition-colors">
+                Completed
+            </button>
+<button class="whitespace-nowrap px-6 py-2 rounded-full bg-surface border border-border-muted text-slate-400 text-sm font-semibold hover:border-primary/50 transition-colors">
+                Processing
+            </button>
+<button class="whitespace-nowrap px-6 py-2 rounded-full bg-surface border border-border-muted text-slate-400 text-sm font-semibold hover:border-primary/50 transition-colors">
+                Cancelled
+            </button>
+</div>
+</div>
+<!-- Main Content: Order List -->
+<main class="flex-1 px-4 py-4 space-y-4 max-w-2xl mx-auto w-full">
+<!-- Order Card 1 -->
+<div class="bg-surface rounded-2xl border border-border-muted overflow-hidden shadow-xl">
+<div class="p-4 flex gap-4">
+<div class="w-24 h-24 rounded-xl bg-cover bg-center shrink-0 border border-border-muted" data-alt="Gourmet salad with fresh greens and dressing" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB-bPFgVMkupAY_mfqOztoT29YxxJLGRCLYlxxziyqP2dj3hY5VjO9E4yw1Q4V92YBrH7IYrwhbfUe-n3RwQwNrohieMZDKrmIGw-xZjl44IMQf-usMl-RxC4A6YbLoRQHIl3TUtbQqaihCdmnXm_7H2yi46F6V99Jl6pvK8dm_6xKeIw1s1RzsPxxut_5sJo3jEGdUUSTWk-7d-sMnDkItI7JlLtPUW8fc-y2_a-I62jVsfdm0H2Ig0LXXGxOoS1pXGrXJfZEMI34');">
+</div>
+<div class="flex flex-col justify-between flex-1">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-xs font-medium text-primary uppercase tracking-widest">Order #8291</p>
+<h3 class="text-lg font-bold text-slate-100 mt-0.5">Premium Steak &amp; Greens</h3>
+</div>
+<span class="px-2 py-1 rounded text-[10px] font-bold uppercase bg-green-500/10 text-green-500 border border-green-500/20">Completed</span>
+</div>
+<p class="text-sm text-slate-400">Oct 24, 2023 • 12:45 PM</p>
+</div>
+</div>
+<div class="px-4 py-3 bg-white/5 border-t border-border-muted flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-xl font-bold text-slate-100">$142.50</span>
+<span class="text-xs text-slate-500 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">stars</span>
+                        142 Points Earned
+                    </span>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-xl font-bold text-sm flex items-center gap-2 transition-all active:scale-95 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-sm">reorder</span>
+                    Reorder
+                </button>
+</div>
+</div>
+<!-- Order Card 2 -->
+<div class="bg-surface rounded-2xl border border-border-muted overflow-hidden shadow-xl">
+<div class="p-4 flex gap-4">
+<div class="w-24 h-24 rounded-xl bg-cover bg-center shrink-0 border border-border-muted" data-alt="Close up of a delicious italian pizza" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuARqHKYFJscS0Xqnk3UQgsB0zgjSePp_rpO2vtgrwtMvCcWGeVKoxb-FyPrXJqm0uxQA4k-pLVE5LeoZBFZiErk6mbnLfAnmuLAs-PeANBEgpmGFAl5_3nEo4Sc3OI4C0NtoiqDn3aLpuWSfM9rM9hvAQk-_Iuu0d9uqYDrw9rtj6LDM_Et1_4f7vp8MfYOjEsvCKwucrj1ZCAa5IKiMi8-TQpDpZXfu8_HwoF1P3H6gtMqjYV3aFIjZW2aZG7bORYF3DbEymM7rEw');">
+</div>
+<div class="flex flex-col justify-between flex-1">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-xs font-medium text-primary uppercase tracking-widest">Order #8154</p>
+<h3 class="text-lg font-bold text-slate-100 mt-0.5">Truffle Pizza Combo</h3>
+</div>
+<span class="px-2 py-1 rounded text-[10px] font-bold uppercase bg-primary/10 text-primary border border-primary/20">Processing</span>
+</div>
+<p class="text-sm text-slate-400">Oct 21, 2023 • 07:12 PM</p>
+</div>
+</div>
+<div class="px-4 py-3 bg-white/5 border-t border-border-muted flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-xl font-bold text-slate-100">$85.00</span>
+<span class="text-xs text-slate-500 flex items-center gap-1">
+<span class="material-symbols-outlined text-[14px] text-primary">stars</span>
+                        85 Points Earned
+                    </span>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white px-6 py-2.5 rounded-xl font-bold text-sm flex items-center gap-2 transition-all active:scale-95 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-sm">reorder</span>
+                    Reorder
+                </button>
+</div>
+</div>
+<!-- Order Card 3 (Cancelled Style) -->
+<div class="bg-surface/60 rounded-2xl border border-border-muted overflow-hidden opacity-80">
+<div class="p-4 flex gap-4">
+<div class="w-24 h-24 rounded-xl bg-cover bg-center shrink-0 border border-border-muted grayscale" data-alt="Pepperoni pizza on a wooden table" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuAS8C75xdGc5XQnS3Rsu7OHB8oJ0vKbAD1ITjpeeoSUZEGN-_44vwEFACmTqV7HBrpDg82HNJUBJlZa5LYI-sIzeZ-Z4r4v7zhMU1ZR6TsKGBH1_5RAeUzh8zyLM-uhMdy0o3joqw-pIk8k2qOUyb7LZ2wyYfkp51F6Mf_hoNW_9RfVUyWLl2wTb7WTyxT_Wx8V1p2-ik1_SvM3YyqIdgg5PqBVwRjVVxfSBe-4A8g6uhj4jk1A9MzmI8Qq1lJcRkzPhiMiXngOU5o');">
+</div>
+<div class="flex flex-col justify-between flex-1">
+<div class="flex justify-between items-start">
+<div>
+<p class="text-xs font-medium text-slate-500 uppercase tracking-widest">Order #7982</p>
+<h3 class="text-lg font-bold text-slate-400 mt-0.5">Family Feast Pack</h3>
+</div>
+<span class="px-2 py-1 rounded text-[10px] font-bold uppercase bg-slate-500/10 text-slate-500 border border-slate-500/20">Cancelled</span>
+</div>
+<p class="text-sm text-slate-500">Oct 15, 2023 • 01:30 PM</p>
+</div>
+</div>
+<div class="px-4 py-3 bg-white/5 border-t border-border-muted flex items-center justify-between">
+<div class="flex flex-col">
+<span class="text-xl font-bold text-slate-500">$210.00</span>
+<span class="text-xs text-slate-600">0 Points Earned</span>
+</div>
+<button class="bg-slate-700 text-slate-400 px-6 py-2.5 rounded-xl font-bold text-sm flex items-center gap-2 cursor-not-allowed">
+<span class="material-symbols-outlined text-sm">reorder</span>
+                    Reorder
+                </button>
+</div>
+</div>
+<!-- Loyalty Summary Card -->
+<div class="mt-8 p-6 rounded-2xl bg-gradient-to-br from-primary to-rose-900 shadow-2xl shadow-primary/30 relative overflow-hidden">
+<div class="relative z-10 flex justify-between items-center">
+<div>
+<h4 class="text-white/80 font-medium text-sm">Total Reward Points</h4>
+<p class="text-4xl font-black text-white mt-1">1,240 <span class="text-lg font-normal opacity-80">pts</span></p>
+<p class="text-white/60 text-xs mt-2 font-medium tracking-wide">You're 260 points away from a FREE Meal!</p>
+</div>
+<div class="bg-white/10 p-3 rounded-full backdrop-blur-sm">
+<span class="material-symbols-outlined text-4xl text-white">loyalty</span>
+</div>
+</div>
+<!-- Decorative circle -->
+<div class="absolute -right-10 -bottom-10 w-32 h-32 bg-white/5 rounded-full"></div>
+</div>
+<div class="h-24"></div> <!-- Spacer for fixed nav -->
+</main>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 bg-surface/95 backdrop-blur-xl border-t border-border-muted px-4 py-3 flex justify-between items-center z-50">
+<a class="flex flex-col items-center gap-1 group" href="#">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-primary transition-colors">home</span>
+<span class="text-[10px] font-bold text-slate-500 group-hover:text-primary uppercase tracking-tighter">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 group" href="#">
+<span class="material-symbols-outlined text-primary fill-1">receipt_long</span>
+<span class="text-[10px] font-bold text-primary uppercase tracking-tighter">Orders</span>
+</a>
+<div class="relative -top-8">
+<button class="w-14 h-14 rounded-full bg-primary text-white shadow-xl shadow-primary/40 border-4 border-background-dark flex items-center justify-center transform active:scale-90 transition-transform">
+<span class="material-symbols-outlined text-3xl">shopping_cart</span>
+</button>
+</div>
+<a class="flex flex-col items-center gap-1 group" href="#">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-primary transition-colors">favorite</span>
+<span class="text-[10px] font-bold text-slate-500 group-hover:text-primary uppercase tracking-tighter">Favorites</span>
+</a>
+<a class="flex flex-col items-center gap-1 group" href="#">
+<span class="material-symbols-outlined text-slate-500 group-hover:text-primary transition-colors">person</span>
+<span class="text-[10px] font-bold text-slate-500 group-hover:text-primary uppercase tracking-tighter">Profile</span>
+</a>
+</nav>
+</body></html>

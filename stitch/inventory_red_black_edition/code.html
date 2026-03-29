@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e21d48",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#0a0a0a",
+                        "card-dark": "#171717",
+                        "border-dark": "#262626",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            background-color: #0a0a0a;
+            color: #ffffff;
+            font-family: 'Inter', sans-serif;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-dark text-slate-100 font-display">
+<div class="relative flex min-h-screen w-full flex-col bg-background-dark overflow-x-hidden">
+<!-- Header -->
+<div class="flex items-center bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10 border-b border-border-dark">
+<div class="text-slate-100 flex size-12 shrink-0 items-center justify-start">
+<span class="material-symbols-outlined">menu</span>
+</div>
+<h2 class="text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1">Inventory Management</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="relative flex items-center justify-center rounded-lg h-10 w-10 bg-transparent text-slate-100">
+<span class="material-symbols-outlined">notifications</span>
+<span class="absolute top-2 right-2 flex h-2 w-2 rounded-full bg-primary"></span>
+</button>
+</div>
+</div>
+<!-- Search Bar -->
+<div class="px-4 py-4">
+<label class="flex flex-col min-w-40 h-12 w-full">
+<div class="flex w-full flex-1 items-stretch rounded-lg h-full">
+<div class="text-slate-400 flex border-none bg-card-dark items-center justify-center pl-4 rounded-l-lg">
+<span class="material-symbols-outlined">search</span>
+</div>
+<input class="form-input flex w-full min-w-0 flex-1 resize-none overflow-hidden rounded-r-lg text-slate-100 focus:outline-0 focus:ring-1 focus:ring-primary border-none bg-card-dark h-full placeholder:text-slate-500 px-4 pl-2 text-base font-normal leading-normal" placeholder="Search stock items..." value=""/>
+</div>
+</label>
+</div>
+<!-- Tabs -->
+<div class="pb-1">
+<div class="flex border-b border-border-dark px-4 gap-8">
+<a class="flex flex-col items-center justify-center border-b-2 border-primary text-slate-100 pb-3 pt-2" href="#">
+<p class="text-sm font-bold tracking-wide">All Items</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-400 pb-3 pt-2 hover:text-slate-200" href="#">
+<p class="text-sm font-medium">Low Stock</p>
+</a>
+<a class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-400 pb-3 pt-2 hover:text-slate-200" href="#">
+<p class="text-sm font-medium">Categories</p>
+</a>
+</div>
+</div>
+<!-- Critical Alerts Section -->
+<div class="px-4 pt-6 pb-2">
+<div class="flex items-center gap-2 text-primary mb-4">
+<span class="material-symbols-outlined text-xl">error</span>
+<h3 class="text-slate-100 text-lg font-bold tracking-tight">Critical Alerts</h3>
+</div>
+<!-- Alert Card -->
+<div class="bg-primary/10 border border-primary/30 rounded-xl p-4 mb-4 flex items-center justify-between">
+<div class="flex gap-4 items-center">
+<div class="bg-primary/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary">inventory_2</span>
+</div>
+<div>
+<p class="text-slate-100 font-bold">Brake Pads X-200</p>
+<p class="text-primary text-sm font-medium">2 units left • Reorder point: 10</p>
+</div>
+</div>
+<button class="bg-primary hover:bg-primary/90 text-white px-4 py-2 rounded-lg text-sm font-bold transition-colors">
+                    RESTOCK
+                </button>
+</div>
+</div>
+<!-- Inventory List -->
+<div class="px-4 py-2 flex flex-col gap-3 mb-24">
+<h3 class="text-slate-400 text-xs font-bold uppercase tracking-widest mb-1">Standard Inventory</h3>
+<!-- Item Card 1 -->
+<div class="bg-card-dark border border-border-dark rounded-xl p-4 flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-lg bg-border-dark flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Close up of mechanical car parts" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAG2WVyvsUsrW91niKDlh8t2UEs0irWI9tXCKyM_FqNSxQhP5VWD8kiNrGbz9Kbg3yDDjzdP3ziywe0cixixumXCO9I-P4r0h4H5UwN6TonAdSfAlTPxGomNjOzU3Q0f6LLustMyN5SjjQkV9Pid-3PGeu5S_nldTIaG_UoTVCc8ysmf9CYYhGBfDZQ9WdfvzUEHWH_iaAg1unvwcuGxT3hKjxgttelFlOOyN89-agayqVtl3sstj0aXfm2Kj-3Z5LpF8x4n2uyX90"/>
+</div>
+<div>
+<h4 class="text-slate-100 font-semibold">Synthetic Oil 5W-30</h4>
+<p class="text-slate-500 text-sm">SKU: OIL-SYN-530</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-slate-100 font-bold text-lg">124</p>
+<p class="text-slate-500 text-xs">In Stock</p>
+</div>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-border-dark/50">
+<div class="flex gap-4">
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 uppercase font-bold">Reorder Point</span>
+<span class="text-slate-300 text-sm">50 units</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 uppercase font-bold">Category</span>
+<span class="text-slate-300 text-sm">Fluids</span>
+</div>
+</div>
+<button class="text-slate-300 hover:text-white flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+</div>
+</div>
+<!-- Item Card 2 -->
+<div class="bg-card-dark border border-border-dark rounded-xl p-4 flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-lg bg-border-dark flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Premium car tire tread pattern" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWVavrk3-fhkNbRYBVqS0nog5hH6-3wwyUpelBMJvzMIRJoi4rUY3Japc-BBqBzVOFmRyO7DqunfTJtzfS_2Y-375joPyUugEcpG7ZGiwYaxJgu-Vc5fAg-xXnYpi-ym5ghaLr9XHcQjmbAG35ix2FNwbXmFLJpq2h9Ff6n3mgfbN_dLXDRVefzj7l-KLFu4jZI3UO-CHgtIeU0SDpNJfgTjZdG7dOUbuaJi_5z5qBL9rhL9NK540lztqp4MBlEpFlcU5zxCak4do"/>
+</div>
+<div>
+<h4 class="text-slate-100 font-semibold">Sport Performance Tires</h4>
+<p class="text-slate-500 text-sm">SKU: TIRE-SP-18</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-slate-100 font-bold text-lg">32</p>
+<p class="text-slate-500 text-xs">In Stock</p>
+</div>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-border-dark/50">
+<div class="flex gap-4">
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 uppercase font-bold">Reorder Point</span>
+<span class="text-slate-300 text-sm">24 units</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 uppercase font-bold">Category</span>
+<span class="text-slate-300 text-sm">Wheels</span>
+</div>
+</div>
+<button class="text-slate-300 hover:text-white flex items-center gap-1">
+<span class="material-symbols-outlined text-lg">edit</span>
+</button>
+</div>
+</div>
+<!-- Item Card 3 (Low Stock) -->
+<div class="bg-card-dark border-2 border-primary/20 rounded-xl p-4 flex flex-col gap-4">
+<div class="flex justify-between items-start">
+<div class="flex gap-4">
+<div class="w-12 h-12 rounded-lg bg-border-dark flex items-center justify-center overflow-hidden">
+<img class="w-full h-full object-cover" data-alt="Set of car spark plugs" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCaXuNzz4fARbz5oVajoD9g8W6s_G5M2_f-2VkVsYSL4Wa_oscK42i7KUDncBvHPhuypRc_vrH4bzGn1pBuVfARkvgyO1balQSSmi29FaYTTgpS1P4X81Pp7SSy_dEKKHA9cH0QxNR3kFlBw2_elLWfkCpfeSaFQtimI2CKwBF0kxI2HS26XnS47XOgQn67u3rKbi0DjGhHcV4HYfNw6q2l49V9VH0thFDiTUwLYwaH_Sa7CoiScwk_lnzBdeYeCNrD6wIgHQ3CeZg"/>
+</div>
+<div>
+<h4 class="text-slate-100 font-semibold">Iridium Spark Plugs</h4>
+<p class="text-slate-500 text-sm">SKU: PLUG-IRD-9</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-primary font-bold text-lg">15</p>
+<p class="text-primary text-xs font-medium">Low Stock</p>
+</div>
+</div>
+<div class="flex items-center justify-between pt-2 border-t border-border-dark/50">
+<div class="flex gap-4">
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 uppercase font-bold">Reorder Point</span>
+<span class="text-slate-300 text-sm">40 units</span>
+</div>
+<div class="flex flex-col">
+<span class="text-[10px] text-slate-500 uppercase font-bold">Category</span>
+<span class="text-slate-300 text-sm">Ignition</span>
+</div>
+</div>
+<button class="bg-primary text-white px-3 py-1.5 rounded-lg text-xs font-bold">
+                        RESTOCK
+                    </button>
+</div>
+</div>
+</div>
+<!-- Floating Action Button -->
+<button class="fixed bottom-24 right-6 bg-primary text-white w-14 h-14 rounded-full shadow-lg shadow-primary/20 flex items-center justify-center z-20">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<div class="fixed bottom-0 w-full flex flex-col z-30">
+<div class="flex gap-2 border-t border-border-dark bg-card-dark px-4 pb-6 pt-3">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-500 hover:text-slate-100" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">dashboard</span>
+</div>
+<p class="text-[10px] font-bold leading-normal tracking-wide uppercase">Dashboard</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-primary" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">inventory_2</span>
+</div>
+<p class="text-[10px] font-bold leading-normal tracking-wide uppercase">Inventory</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-500 hover:text-slate-100" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">shopping_cart</span>
+</div>
+<p class="text-[10px] font-bold leading-normal tracking-wide uppercase">Orders</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-500 hover:text-slate-100" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">settings</span>
+</div>
+<p class="text-[10px] font-bold leading-normal tracking-wide uppercase">Settings</p>
+</a>
+</div>
+</div>
+</div>
+</body></html>

@@ -13,6 +13,7 @@ import {
   Screen,
   StitchHeader,
   UnderlineTabs,
+  PillTabs,
   ProductCard,
   SearchField,
   StitchModal,
@@ -56,11 +57,16 @@ function ProductsContent() {
   const searchParams = useSearchParams();
   const [stockTab, setStockTab] = useState("all");
   const [search, setSearch] = useState("");
+  const [categoryTabId, setCategoryTabId] = useState("all");
 
   useEffect(() => {
     const tab = searchParams.get("tab");
     if (tab === "menu") setStockTab("menu");
   }, [searchParams]);
+
+  useEffect(() => {
+    setCategoryTabId("all");
+  }, [stockTab]);
 
   const createMenuItem = useMutation({
     mutationFn: async () => {
@@ -135,6 +141,57 @@ function ProductsContent() {
     return sections;
   }, [filtered, categoriesQ.data]);
 
+  const categoryPillTabs = useMemo(() => {
+    if (!categorySections?.length) return [];
+    const tabs = [{ id: "all", label: "All categories" }];
+    for (const s of categorySections) {
+      tabs.push({ id: s.key, label: s.title });
+    }
+    return tabs;
+  }, [categorySections]);
+
+  const sortedAllInCategoryOrder = useMemo(() => {
+    if (!categorySections?.length) return filtered;
+    return categorySections.flatMap((s) =>
+      [...s.items].sort((a, b) => a.name.localeCompare(b.name, undefined, { sensitivity: "base" }))
+    );
+  }, [categorySections, filtered]);
+
+  const visibleItems = useMemo(() => {
+    if (categorySections === null) return filtered;
+    if (categoryTabId === "all") return sortedAllInCategoryOrder;
+    const sec = categorySections.find((s) => s.key === categoryTabId);
+    return sec?.items ?? [];
+  }, [categorySections, categoryTabId, filtered, sortedAllInCategoryOrder]);
+
+  useEffect(() => {
+    if (categorySections === null) return;
+    if (categoryTabId === "all") return;
+    const valid = categorySections.some((s) => s.key === categoryTabId && s.items.length > 0);
+    if (!valid) setCategoryTabId("all");
+  }, [categorySections, categoryTabId]);
+
+  function renderProductGrid(items: ItemRow[]) {
+    return (
+      <div className="grid grid-cols-2 gap-4">
+        {items.map((r) => (
+          <Link
+            key={r.id}
+            href={`/products/${r.id}`}
+            className="block rounded-xl focus:outline-none focus:ring-2 focus:ring-stitch-primary"
+          >
+            <ProductCard
+              name={r.name}
+              priceLabel={`₹${Number(r.price).toFixed(2)}`}
+              kindHint={r.kind}
+              imageUrl={r.image_url ?? undefined}
+            />
+          </Link>
+        ))}
+      </div>
+    );
+  }
+
   function submitMenuItem(e: React.FormEvent) {
     e.preventDefault();
     setErr(null);
@@ -205,48 +262,23 @@ function ProductsContent() {
           {filtered.length === 0 ? (
             <p className="py-8 text-center text-sm text-stitch-fg-muted">No items.</p>
           ) : categorySections === null ? (
-            <div className="grid grid-cols-2 gap-4">
-              {filtered.map((r) => (
-                <Link
-                  key={r.id}
-                  href={`/products/${r.id}`}
-                  className="block rounded-xl focus:outline-none focus:ring-2 focus:ring-stitch-primary"
-                >
-                  <ProductCard
-                    name={r.name}
-                    priceLabel={`₹${Number(r.price).toFixed(2)}`}
-                    kindHint={r.kind}
-                    imageUrl={r.image_url ?? undefined}
-                  />
-                </Link>
-              ))}
-            </div>
+            renderProductGrid(filtered)
           ) : (
-            <div className="space-y-8">
-              {categorySections.map((sec) => (
-                <section key={sec.key} aria-labelledby={`cat-${sec.key}`}>
-                  <h2 id={`cat-${sec.key}`} className="mb-3 text-sm font-bold text-stitch-fg-secondary">
-                    {sec.title}
-                  </h2>
-                  <div className="grid grid-cols-2 gap-4">
-                    {sec.items.map((r) => (
-                      <Link
-                        key={r.id}
-                        href={`/products/${r.id}`}
-                        className="block rounded-xl focus:outline-none focus:ring-2 focus:ring-stitch-primary"
-                      >
-                        <ProductCard
-                          name={r.name}
-                          priceLabel={`₹${Number(r.price).toFixed(2)}`}
-                          kindHint={r.kind}
-                          imageUrl={r.image_url ?? undefined}
-                        />
-                      </Link>
-                    ))}
-                  </div>
-                </section>
-              ))}
-            </div>
+            <>
+              {categoryPillTabs.length > 1 ? (
+                <PillTabs
+                  tabs={categoryPillTabs}
+                  value={categoryTabId}
+                  onChange={setCategoryTabId}
+                  className="mb-4"
+                />
+              ) : null}
+              {visibleItems.length === 0 ? (
+                <p className="py-6 text-center text-sm text-stitch-fg-muted">No items in this category.</p>
+              ) : (
+                renderProductGrid(visibleItems)
+              )}
+            </>
           )}
         </>
       ) : null}

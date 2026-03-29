@@ -16,8 +16,8 @@ export default function RecipesPage() {
   }
   return (
     <div className="mx-auto max-w-3xl space-y-4 px-4 py-6">
-      <h1 className="text-2xl font-semibold text-zinc-50">Recipes</h1>
-      <p className="text-sm text-zinc-500">
+      <h1 className="text-2xl font-semibold text-stitch-fg">Recipes</h1>
+      <p className="text-sm text-stitch-fg-muted">
         Café recipe / BOM builder — link items as components and track yields (extend with metadata on
         items).
       </p>

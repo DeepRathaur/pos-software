@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reports &amp; Analytics - Red &amp; Black Theme</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e21d48",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#12080a",
+                        "surface-dark": "#1f1114",
+                        "card-dark": "#2a161b",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex h-auto min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Header Section -->
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between sticky top-0 z-10 backdrop-blur-md bg-opacity-90 dark:bg-opacity-90">
+<div class="text-slate-900 dark:text-white flex size-12 shrink-0 items-center justify-start">
+<span class="material-symbols-outlined cursor-pointer">arrow_back</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em] flex-1 text-center">Reports &amp; Analytics</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex cursor-pointer items-center justify-center rounded-lg h-12 bg-transparent text-slate-900 dark:text-white p-0">
+<span class="material-symbols-outlined">calendar_today</span>
+</button>
+</div>
+</div>
+<!-- Time Range Tabs -->
+<div class="pb-3 sticky top-[64px] z-10 bg-background-light dark:bg-background-dark border-b border-slate-200 dark:border-primary/20">
+<div class="flex px-4 gap-8 justify-between">
+<a class="flex flex-1 flex-col items-center justify-center border-b-[3px] border-b-transparent text-slate-500 dark:text-slate-400 pb-[13px] pt-4" href="#">
+<p class="text-sm font-bold leading-normal">Day</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center border-b-[3px] border-b-primary text-slate-900 dark:text-white pb-[13px] pt-4" href="#">
+<p class="text-sm font-bold leading-normal">Week</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center border-b-[3px] border-b-transparent text-slate-500 dark:text-slate-400 pb-[13px] pt-4" href="#">
+<p class="text-sm font-bold leading-normal">Month</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center border-b-[3px] border-b-transparent text-slate-500 dark:text-slate-400 pb-[13px] pt-4" href="#">
+<p class="text-sm font-bold leading-normal">Year</p>
+</a>
+</div>
+</div>
+<!-- Main Content -->
+<div class="flex flex-col gap-6 p-4 mb-24">
+<!-- Key Metrics -->
+<div class="flex flex-wrap gap-4">
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-5 bg-white dark:bg-card-dark border border-slate-100 dark:border-primary/10 shadow-sm">
+<p class="text-slate-600 dark:text-slate-400 text-sm font-medium leading-normal">Total Revenue</p>
+<p class="text-slate-900 dark:text-white tracking-tight text-2xl font-bold leading-tight">$42,850.00</p>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-emerald-500 text-sm">trending_up</span>
+<p class="text-emerald-500 text-sm font-semibold leading-normal">+12.5%</p>
+</div>
+</div>
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-5 bg-white dark:bg-card-dark border border-slate-100 dark:border-primary/10 shadow-sm">
+<p class="text-slate-600 dark:text-slate-400 text-sm font-medium leading-normal">Total Orders</p>
+<p class="text-slate-900 dark:text-white tracking-tight text-2xl font-bold leading-tight">1,240</p>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-emerald-500 text-sm">trending_up</span>
+<p class="text-emerald-500 text-sm font-semibold leading-normal">+8.2%</p>
+</div>
+</div>
+</div>
+<!-- Sales Performance Chart (Placeholder Representing Chart) -->
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<h2 class="text-slate-900 dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]">Sales Performance</h2>
+<span class="material-symbols-outlined text-slate-400 cursor-pointer">info</span>
+</div>
+<div class="w-full aspect-video bg-white dark:bg-card-dark rounded-xl border border-slate-100 dark:border-primary/10 p-4 flex items-end gap-2 justify-between">
+<!-- High Contrast Red Bars -->
+<div class="w-full bg-primary/20 rounded-t-lg h-[40%]"></div>
+<div class="w-full bg-primary/30 rounded-t-lg h-[60%]"></div>
+<div class="w-full bg-primary/40 rounded-t-lg h-[55%]"></div>
+<div class="w-full bg-primary/60 rounded-t-lg h-[85%]"></div>
+<div class="w-full bg-primary rounded-t-lg h-[100%]"></div>
+<div class="w-full bg-primary/70 rounded-t-lg h-[75%]"></div>
+<div class="w-full bg-primary/50 rounded-t-lg h-[50%]"></div>
+</div>
+</div>
+<!-- Sales by Category (Pie Chart Visual) -->
+<div class="flex flex-col gap-4">
+<h2 class="text-slate-900 dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]">Sales by Category</h2>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-white dark:bg-card-dark rounded-xl p-6 border border-slate-100 dark:border-primary/10 flex items-center justify-center">
+<div class="relative size-40 rounded-full border-[12px] border-primary flex items-center justify-center">
+<div class="absolute inset-0 border-[12px] border-white/20 dark:border-white/10 rounded-full rotate-45 border-t-transparent border-r-transparent"></div>
+<div class="text-center">
+<p class="text-xs text-slate-500 dark:text-slate-400">Total</p>
+<p class="text-lg font-bold">100%</p>
+</div>
+</div>
+</div>
+<div class="flex flex-col justify-center gap-3">
+<div class="flex items-center gap-3">
+<div class="size-3 rounded-full bg-primary"></div>
+<span class="text-sm font-medium flex-1">Electronics</span>
+<span class="text-sm font-bold">45%</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="size-3 rounded-full bg-primary/60"></div>
+<span class="text-sm font-medium flex-1">Apparel</span>
+<span class="text-sm font-bold">30%</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="size-3 rounded-full bg-primary/30"></div>
+<span class="text-sm font-medium flex-1">Home &amp; Decor</span>
+<span class="text-sm font-bold">15%</span>
+</div>
+<div class="flex items-center gap-3">
+<div class="size-3 rounded-full bg-white/20"></div>
+<span class="text-sm font-medium flex-1">Others</span>
+<span class="text-sm font-bold">10%</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Top Products -->
+<div class="flex flex-col gap-4">
+<h2 class="text-slate-900 dark:text-white text-xl font-bold leading-tight tracking-[-0.015em]">Top Products</h2>
+<div class="flex flex-col gap-3">
+<div class="flex items-center gap-4 bg-white dark:bg-card-dark p-3 rounded-xl border border-slate-100 dark:border-primary/10">
+<div class="size-12 rounded-lg bg-slate-100 dark:bg-surface-dark overflow-hidden shrink-0">
+<img class="size-full object-cover" data-alt="Sleek modern wireless noise-canceling headphones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAXaGDK_dV2Wi8bUnpHFPtPPz61jn_PeCWVMSKTBYNlA0b8Nvwm5ihs5dhY3heoeLVehvHNU858-BaxeLhpKRr9ukncidL_w1Lo-ONXWmFhsQOqb6oOEmGnTPxAlN0Me9NM_sbepBmUS8XTM4VAGMdxvkWSOR7oUUwMMmCMg83qVXGdzQfSX_CUqTiN-sni1C4xb8XLK32u-C_MNj7HKHomEKfPs2aYsMvbKN2s2r-viuFtmzybt6pfIVr17_1lFZg8-mJMAQJGD_Q"/>
+</div>
+<div class="flex-1">
+<p class="font-bold text-sm">Pro Headphones X1</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">240 sales this week</p>
+</div>
+<p class="text-primary font-bold">$12,400</p>
+</div>
+<div class="flex items-center gap-4 bg-white dark:bg-card-dark p-3 rounded-xl border border-slate-100 dark:border-primary/10">
+<div class="size-12 rounded-lg bg-slate-100 dark:bg-surface-dark overflow-hidden shrink-0">
+<img class="size-full object-cover" data-alt="Premium mechanical keyboard with red backlight" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBWqVUo0LEikid2iy7Ga0Zf-wTBesNfsF2KMLkvFDxzNFg8UYOyea3TuQcvYBPsavuHTJTR_uHG4hUFLDSpQsPBU5PuLtoVJFKQX4CieeIUAskuO06Ft2T3uxSyLXYDifISR1qMjhpT1glsSLlR1vVAZvFfP6oZfFJS_afGS91KyBkzej3FSLxo8OMDPPB-Vd0gfcu55ZrwXHvwS-qeXrO7hlYWqUbBx9BKYHbay15ZJ25_zyli5dWr1fiN8M04uI29r7RTRwk5LR0"/>
+</div>
+<div class="flex-1">
+<p class="font-bold text-sm">Mechanical Keyboard</p>
+<p class="text-xs text-slate-500 dark:text-slate-400">185 sales this week</p>
+</div>
+<p class="text-primary font-bold">$8,290</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation Bar -->
+<div class="fixed bottom-0 left-0 right-0 z-50">
+<div class="flex gap-2 border-t border-slate-200 dark:border-primary/20 bg-white dark:bg-surface-dark px-4 pb-6 pt-2 shadow-lg">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-500 dark:text-slate-400" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">home</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Home</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-500 dark:text-slate-400" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">sell</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Products</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-primary" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined fill-1" style="font-variation-settings: 'FILL' 1;">bar_chart</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Reports</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-500 dark:text-slate-400" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">settings</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-[0.015em]">Settings</p>
+</a>
+</div>
+</div>
+</div>
+</body></html>

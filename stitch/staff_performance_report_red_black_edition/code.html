@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Staff Performance Report</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e21d48",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#0a0506",
+                        "card-dark": "#1a0d10",
+                        "border-dark": "#2d161b",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "2xl": "1rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .chart-bar {
+            transition: height 0.3s ease;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-border-dark px-4 py-4">
+<div class="max-w-5xl mx-auto flex items-center justify-between">
+<div class="flex items-center gap-3">
+<button class="p-2 hover:bg-slate-200 dark:hover:bg-border-dark rounded-lg transition-colors">
+<span class="material-symbols-outlined align-middle">arrow_back</span>
+</button>
+<h1 class="text-xl font-bold tracking-tight">Staff Performance</h1>
+</div>
+<button class="p-2 hover:bg-slate-200 dark:hover:bg-border-dark rounded-lg transition-colors">
+<span class="material-symbols-outlined align-middle">calendar_today</span>
+</button>
+</div>
+</header>
+<main class="flex-1 max-w-5xl mx-auto w-full p-4 space-y-6 pb-24">
+<div class="flex p-1 bg-slate-200 dark:bg-card-dark rounded-xl w-fit">
+<button class="px-6 py-2 rounded-lg text-sm font-semibold transition-all hover:text-primary dark:hover:text-white">Today</button>
+<button class="px-6 py-2 rounded-lg text-sm font-semibold bg-white dark:bg-primary shadow-sm text-slate-900 dark:text-white">Week</button>
+<button class="px-6 py-2 rounded-lg text-sm font-semibold transition-all hover:text-primary dark:hover:text-white">Month</button>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+<div class="bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark p-5 rounded-2xl shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<span class="text-slate-500 dark:text-slate-400 text-sm font-medium">Total Staff Sales</span>
+<span class="text-emerald-500 text-xs font-bold bg-emerald-500/10 px-2 py-1 rounded-full">+12.5%</span>
+</div>
+<div class="text-3xl font-bold">$42,850</div>
+<div class="mt-4 h-1 w-full bg-slate-100 dark:bg-border-dark rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[75%] rounded-full"></div>
+</div>
+</div>
+<div class="bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark p-5 rounded-2xl shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<span class="text-slate-500 dark:text-slate-400 text-sm font-medium">Avg Sales / Employee</span>
+<span class="text-emerald-500 text-xs font-bold bg-emerald-500/10 px-2 py-1 rounded-full">+5.2%</span>
+</div>
+<div class="text-3xl font-bold">$3,570</div>
+<div class="mt-4 h-1 w-full bg-slate-100 dark:bg-border-dark rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[60%] rounded-full"></div>
+</div>
+</div>
+<div class="bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark p-5 rounded-2xl shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<span class="text-slate-500 dark:text-slate-400 text-sm font-medium">Top Performer</span>
+<span class="material-symbols-outlined text-primary text-xl">workspace_premium</span>
+</div>
+<div class="text-3xl font-bold">Alex R.</div>
+<div class="text-slate-500 dark:text-slate-400 text-sm mt-1">142 Transactions this week</div>
+</div>
+</div>
+<section class="bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark p-6 rounded-2xl shadow-sm">
+<div class="flex items-center justify-between mb-8">
+<h2 class="text-lg font-bold">Sales by Employee</h2>
+<div class="flex items-center gap-2">
+<div class="flex items-center gap-1.5">
+<span class="size-3 rounded-full bg-primary"></span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Sales ($)</span>
+</div>
+</div>
+</div>
+<div class="flex items-end justify-between gap-4 h-48 px-2">
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full bg-primary/20 dark:bg-primary/10 rounded-t-lg relative h-[40%] group-hover:bg-primary/30 transition-colors">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg h-[80%]"></div>
+</div>
+<span class="text-xs font-medium text-slate-500">Alex</span>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full bg-primary/20 dark:bg-primary/10 rounded-t-lg relative h-[60%] group-hover:bg-primary/30 transition-colors">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg h-[70%]"></div>
+</div>
+<span class="text-xs font-medium text-slate-500">Sarah</span>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full bg-primary/20 dark:bg-primary/10 rounded-t-lg relative h-[80%] group-hover:bg-primary/30 transition-colors">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg h-[95%]"></div>
+</div>
+<span class="text-xs font-medium text-slate-500">Jordan</span>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full bg-primary/20 dark:bg-primary/10 rounded-t-lg relative h-[50%] group-hover:bg-primary/30 transition-colors">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg h-[60%]"></div>
+</div>
+<span class="text-xs font-medium text-slate-500">Maria</span>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full bg-primary/20 dark:bg-primary/10 rounded-t-lg relative h-[90%] group-hover:bg-primary/30 transition-colors">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg h-[85%]"></div>
+</div>
+<span class="text-xs font-medium text-slate-500">James</span>
+</div>
+<div class="flex flex-col items-center gap-2 flex-1 group">
+<div class="w-full bg-primary/20 dark:bg-primary/10 rounded-t-lg relative h-[30%] group-hover:bg-primary/30 transition-colors">
+<div class="absolute bottom-0 w-full bg-primary rounded-t-lg h-[50%]"></div>
+</div>
+<span class="text-xs font-medium text-slate-500">Elena</span>
+</div>
+</div>
+</section>
+<section class="bg-white dark:bg-card-dark border border-slate-200 dark:border-border-dark rounded-2xl shadow-sm overflow-hidden">
+<div class="p-6 border-b border-slate-100 dark:border-border-dark flex justify-between items-center">
+<h2 class="text-lg font-bold text-slate-900 dark:text-slate-100">Performance Leaderboard</h2>
+<button class="text-primary text-sm font-semibold hover:underline">View All</button>
+</div>
+<div class="overflow-x-auto">
+<table class="w-full text-left">
+<thead>
+<tr class="text-slate-500 dark:text-slate-400 text-xs uppercase tracking-wider">
+<th class="px-6 py-4 font-semibold">Staff Member</th>
+<th class="px-6 py-4 font-semibold text-right">Sales</th>
+<th class="px-6 py-4 font-semibold text-right">TXNs</th>
+<th class="px-6 py-4 font-semibold text-right">Efficiency</th>
+</tr>
+</thead>
+<tbody class="divide-y divide-slate-100 dark:divide-border-dark">
+<tr class="hover:bg-slate-50 dark:hover:bg-primary/5 transition-colors group">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-primary/10 overflow-hidden border-2 border-primary/20">
+<img class="size-full object-cover" data-alt="Male staff member portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDJ7tMBcxr58pfYyKeBKn4elJ9o79DsfNXmVX9VQA_MAUHGx8B_MdYz3obZILIZONgWH_gPDwmjWxhIUSK8N-pKK5yseSUgGpPDeOuwD7ljwRfIvJLDDxsm1sXeGFbY5_h0V0ZtKDQw9thzvgGnzSIG6aaJ5o1jMuHgb6Dq8EGIuLMV-7ICddbprxDt95D1-y8TBrOgyzW5ptKfK6EVlBfUw8Eo63LLkL6FUqddWXaGWXGWZIvXmiZim_mTkL07aV3OWDuDFG3PHd4"/>
+</div>
+<div>
+<div class="font-bold">Alex Rivera</div>
+<div class="text-xs text-slate-500 dark:text-slate-400">Senior Associate</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-right font-semibold">$12,450</td>
+<td class="px-6 py-4 text-right text-slate-500 dark:text-slate-400">142</td>
+<td class="px-6 py-4 text-right">
+<span class="px-2 py-1 rounded-lg bg-emerald-500/10 text-emerald-500 text-xs font-bold">98%</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-primary/10 overflow-hidden border-2 border-transparent">
+<img class="size-full object-cover" data-alt="Female staff member portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCT6XsKiW1mFohEQUPw6g4rUsQV6723hhlys3wbz_BMz5FRdIGEU2OzfHV-4yT8s0WKwcqeuexSCB6NjF3pwc7gdACe9jMZMVAgqjYY0BG9aPwwjNjucsAjITSN-UQLHZkSORkjbpUgdTWK-LMJfvY7Nr162h9tOF34fdPJ0DMgHQe4oseE8iBq79vOf8_c_5Qb4dUAHY7xtdTAuVmObYEXspVmp9_kTyOD3a70olSCH0UZypn3dd08lpJlgJboQlnz9rbolUv0G4g"/>
+</div>
+<div>
+<div class="font-bold">Sarah Jenkins</div>
+<div class="text-xs text-slate-500 dark:text-slate-400">Store Manager</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-right font-semibold">$10,210</td>
+<td class="px-6 py-4 text-right text-slate-500 dark:text-slate-400">98</td>
+<td class="px-6 py-4 text-right">
+<span class="px-2 py-1 rounded-lg bg-emerald-500/10 text-emerald-500 text-xs font-bold">94%</span>
+</td>
+</tr>
+<tr class="hover:bg-slate-50 dark:hover:bg-primary/5 transition-colors">
+<td class="px-6 py-4">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-primary/10 overflow-hidden border-2 border-transparent">
+<img class="size-full object-cover" data-alt="Male staff member portrait" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAIlS41x9skj3e0hrG2Fhz8sAe1H-grI704ymJGB8vyeBikJHE5AKXHVzqaXV5iQVvuLZqEaZZs6ZPvtM7A1AqRxQ5iB9dfcFdrpOJEPl371iNPwoNbxK12H9U-7PrVcxCJXGJscuJckaDx2bT5t_g01MgBqQDBJim2KyUyY-jFwo9QpOuuVwuz-KW8lagf_mLA59r7pmeivfYW_pI4vICwGBHVZCNrYGqusccTk7Zm0K5aD-CzV2OCEv-KX6aKCEzQ1JzkGNQ0ViI"/>
+</div>
+<div>
+<div class="font-bold">Jordan Smith</div>
+<div class="text-xs text-slate-500 dark:text-slate-400">Sales Lead</div>
+</div>
+</div>
+</td>
+<td class="px-6 py-4 text-right font-semibold">$9,840</td>
+<td class="px-6 py-4 text-right text-slate-500 dark:text-slate-400">115</td>
+<td class="px-6 py-4 text-right">
+<span class="px-2 py-1 rounded-lg bg-amber-500/10 text-amber-500 text-xs font-bold">89%</span>
+</td>
+</tr>
+</tbody>
+</table>
+</div>
+</section>
+</main>
+<nav class="fixed bottom-0 left-0 right-0 z-50 bg-white/90 dark:bg-card-dark/95 backdrop-blur-xl border-t border-slate-200 dark:border-border-dark">
+<div class="max-w-5xl mx-auto flex justify-around items-center px-2 py-3">
+<a class="flex flex-col items-center gap-1 group" href="#">
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500 group-hover:text-primary transition-colors">grid_view</span>
+<span class="text-[10px] font-medium text-slate-400 dark:text-slate-500 group-hover:text-primary uppercase tracking-tighter">Dashboard</span>
+</a>
+<a class="flex flex-col items-center gap-1 group" href="#">
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500 group-hover:text-primary transition-colors">point_of_sale</span>
+<span class="text-[10px] font-medium text-slate-400 dark:text-slate-500 group-hover:text-primary uppercase tracking-tighter">POS</span>
+</a>
+<a class="flex flex-col items-center gap-1 group" href="#">
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500 group-hover:text-primary transition-colors">inventory_2</span>
+<span class="text-[10px] font-medium text-slate-400 dark:text-slate-500 group-hover:text-primary uppercase tracking-tighter">Inventory</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">bar_chart</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Reports</span>
+</a>
+<a class="flex flex-col items-center gap-1 group" href="#">
+<span class="material-symbols-outlined text-slate-400 dark:text-slate-500 group-hover:text-primary transition-colors">settings</span>
+<span class="text-[10px] font-medium text-slate-400 dark:text-slate-500 group-hover:text-primary uppercase tracking-tighter">Settings</span>
+</a>
+</div>
+</nav>
+</body></html>

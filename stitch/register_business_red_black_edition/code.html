@@ -1,0 +1,154 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Register Business - POS Pro</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+          darkMode: "class",
+          theme: {
+            extend: {
+              colors: {
+                "primary": "#e21d48",
+                "background-light": "#f8f6f6",
+                "background-dark": "#0a0506",
+              },
+              fontFamily: {
+                "display": ["Inter"]
+              },
+              borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+            },
+          },
+        }
+    </script>
+<style>
+        .glass-panel {
+            background: rgba(33, 17, 21, 0.6);
+            backdrop-filter: blur(12px);
+            border: 1px solid rgba(226, 29, 72, 0.1);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden">
+<!-- Header / Navigation -->
+<div class="flex items-center bg-transparent p-4 justify-between sticky top-0 z-10">
+<div class="text-slate-100 flex size-10 items-center justify-center rounded-full hover:bg-primary/10 transition-colors cursor-pointer" data-icon="arrow_back">
+<span class="material-symbols-outlined">arrow_back</span>
+</div>
+<div class="flex items-center gap-2">
+<div class="size-8 bg-primary rounded-lg flex items-center justify-center">
+<span class="material-symbols-outlined text-white text-xl">point_of_sale</span>
+</div>
+<span class="font-bold tracking-tight text-white">POS<span class="text-primary">PRO</span></span>
+</div>
+<div class="size-10"></div> <!-- Spacer for centering -->
+</div>
+<main class="flex-1 flex flex-col items-center justify-center px-4 py-8">
+<div class="w-full max-w-md">
+<div class="text-center mb-8">
+<h1 class="text-white tracking-tight text-3xl font-bold leading-tight">Create your account</h1>
+<p class="text-slate-400 text-base font-normal mt-2">Join thousands of businesses managing growth with POS Pro.</p>
+</div>
+<div class="glass-panel p-6 rounded-xl shadow-2xl">
+<form class="space-y-5">
+<!-- Business Name -->
+<div class="flex flex-col gap-2">
+<label class="text-slate-300 text-sm font-medium px-1">Business Name</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xl">store</span>
+<input class="w-full pl-11 pr-4 py-3.5 rounded-lg bg-background-dark/50 border border-primary/20 text-white placeholder:text-slate-600 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none" placeholder="e.g. Crimson Coffee Roasters" type="text"/>
+</div>
+</div>
+<!-- Industry Type -->
+<div class="flex flex-col gap-2">
+<label class="text-slate-300 text-sm font-medium px-1">Industry Type</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xl">category</span>
+<select class="w-full pl-11 pr-4 py-3.5 rounded-lg bg-background-dark/50 border border-primary/20 text-white focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none appearance-none">
+<option disabled="" selected="" value="">Select Industry</option>
+<option>Restaurant &amp; Cafe</option>
+<option>Retail Store</option>
+<option>Services</option>
+<option>Fashion &amp; Boutique</option>
+<option>Other</option>
+</select>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 pointer-events-none">expand_more</span>
+</div>
+</div>
+<!-- Owner Name -->
+<div class="flex flex-col gap-2">
+<label class="text-slate-300 text-sm font-medium px-1">Owner Name</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xl">person</span>
+<input class="w-full pl-11 pr-4 py-3.5 rounded-lg bg-background-dark/50 border border-primary/20 text-white placeholder:text-slate-600 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none" placeholder="Full Name" type="text"/>
+</div>
+</div>
+<!-- Email -->
+<div class="flex flex-col gap-2">
+<label class="text-slate-300 text-sm font-medium px-1">Business Email</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xl">mail</span>
+<input class="w-full pl-11 pr-4 py-3.5 rounded-lg bg-background-dark/50 border border-primary/20 text-white placeholder:text-slate-600 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none" placeholder="name@business.com" type="email"/>
+</div>
+</div>
+<!-- Password -->
+<div class="flex flex-col gap-2">
+<label class="text-slate-300 text-sm font-medium px-1">Password</label>
+<div class="relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-500 text-xl">lock</span>
+<input class="w-full pl-11 pr-11 py-3.5 rounded-lg bg-background-dark/50 border border-primary/20 text-white placeholder:text-slate-600 focus:ring-2 focus:ring-primary focus:border-transparent transition-all outline-none" placeholder="••••••••" type="password"/>
+<span class="material-symbols-outlined absolute right-3 top-1/2 -translate-y-1/2 text-slate-500 cursor-pointer hover:text-primary">visibility</span>
+</div>
+</div>
+<div class="pt-4">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 transition-all active:scale-[0.98]" type="submit">
+                                Create Account
+                            </button>
+</div>
+</form>
+<div class="mt-6 flex items-center justify-center gap-2 text-sm">
+<span class="text-slate-400">Already have a business?</span>
+<a class="text-primary font-semibold hover:underline" href="#">Sign In</a>
+</div>
+</div>
+<p class="mt-8 text-center text-xs text-slate-500 leading-relaxed px-8">
+                    By clicking "Create Account", you agree to our 
+                    <a class="underline" href="#">Terms of Service</a> and 
+                    <a class="underline" href="#">Privacy Policy</a>.
+                </p>
+</div>
+</main>
+<!-- Bottom Navigation Component -->
+<div class="sticky bottom-0 w-full flex gap-2 border-t border-primary/10 bg-background-dark/80 backdrop-blur-md px-4 pb-6 pt-2">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 rounded-full text-white" href="#">
+<div class="text-primary flex h-8 items-center justify-center" data-icon="person">
+<span class="material-symbols-outlined fill-[1]">person</span>
+</div>
+<p class="text-white text-xs font-medium leading-normal tracking-wide">Account</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400" href="#">
+<div class="flex h-8 items-center justify-center" data-icon="headset_mic">
+<span class="material-symbols-outlined">headset_mic</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-wide">Support</p>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400" href="#">
+<div class="flex h-8 items-center justify-center" data-icon="help">
+<span class="material-symbols-outlined">help</span>
+</div>
+<p class="text-xs font-medium leading-normal tracking-wide">Guide</p>
+</a>
+</div>
+</div>
+</body></html>

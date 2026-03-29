@@ -35,7 +35,7 @@ export default function InventoryPage() {
         subtitle="Stock levels & alerts"
         icon="warehouse"
         right={
-          <button type="button" className="relative rounded-lg p-2 text-slate-100" aria-label="Notifications">
+          <button type="button" className="relative rounded-lg p-2 text-stitch-fg" aria-label="Notifications">
             <Icon name="notifications" />
             <span className="absolute right-2 top-2 h-2 w-2 rounded-full bg-stitch-primary" />
           </button>
@@ -49,7 +49,7 @@ export default function InventoryPage() {
       ) : null}
 
       {businessId && !canInv ? (
-        <div className="rounded-xl border border-stitch-border bg-stitch-card p-4 text-sm text-slate-400">
+        <div className="rounded-xl border border-stitch-border bg-stitch-card p-4 text-sm text-stitch-fg-muted">
           Inventory module is off for this profile.
         </div>
       ) : null}
@@ -78,7 +78,7 @@ export default function InventoryPage() {
                   className="mb-2 flex items-center justify-between rounded-lg border border-stitch-primary/30 p-3"
                 >
                   <div>
-                    <p className="font-bold text-slate-100">{r.item_name}</p>
+                    <p className="font-bold text-stitch-fg">{r.item_name}</p>
                     <p className="text-sm text-stitch-primary">
                       {Number(r.quantity).toFixed(0)} left · reorder {Number(r.reorder_level).toFixed(0)}
                     </p>
@@ -95,7 +95,7 @@ export default function InventoryPage() {
           ) : null}
 
           {isLoading ? (
-            <p className="mt-4 text-sm text-slate-500">Loading…</p>
+            <p className="mt-4 text-sm text-stitch-fg-muted">Loading…</p>
           ) : (
             <ul className="mt-4 space-y-2">
               {filtered.map((r) => (
@@ -104,7 +104,7 @@ export default function InventoryPage() {
                     title={r.item_name}
                     subtitle={`On hand ${Number(r.quantity).toFixed(2)} · reorder ${Number(r.reorder_level).toFixed(0)}`}
                     right={
-                      <span className="text-sm font-bold tabular-nums text-slate-100">
+                      <span className="text-sm font-bold tabular-nums text-stitch-fg">
                         {Number(r.quantity).toFixed(2)}
                       </span>
                     }
@@ -112,7 +112,7 @@ export default function InventoryPage() {
                 </li>
               ))}
               {filtered.length === 0 ? (
-                <li className="py-8 text-center text-sm text-slate-500">No rows.</li>
+                <li className="py-8 text-center text-sm text-stitch-fg-muted">No rows.</li>
               ) : null}
             </ul>
           )}

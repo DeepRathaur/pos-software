@@ -25,7 +25,7 @@ export function SalesChart({ data, title = "Sales (completed orders)" }: { data:
   }));
   return (
     <div className="h-64 w-full rounded-2xl border border-stitch-border bg-stitch-card/50 p-3">
-      <p className="mb-2 text-sm font-medium text-slate-300">{title}</p>
+      <p className="mb-2 text-sm font-medium text-stitch-fg-secondary">{title}</p>
       <ResponsiveContainer width="100%" height="100%">
         <AreaChart data={chartData}>
           <defs>

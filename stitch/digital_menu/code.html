@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Premium Digital Menu</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e21d48",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#211115",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<!-- Header / Top Nav -->
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-primary/20">
+<div class="flex items-center justify-between p-4 max-w-2xl mx-auto">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">restaurant_menu</span>
+<h1 class="text-xl font-bold tracking-tight">Luxe Dining</h1>
+</div>
+<div class="flex gap-2">
+<button class="p-2 hover:bg-slate-200 dark:hover:bg-primary/20 rounded-full transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="p-2 hover:bg-slate-200 dark:hover:bg-primary/20 rounded-full transition-colors">
+<span class="material-symbols-outlined">info</span>
+</button>
+</div>
+</div>
+<!-- Categories -->
+<div class="flex gap-8 px-6 pb-0 overflow-x-auto no-scrollbar max-w-2xl mx-auto">
+<a class="flex flex-col items-center border-b-2 border-primary pb-3 pt-2 group" href="#">
+<span class="text-sm font-bold text-primary">Starters</span>
+</a>
+<a class="flex flex-col items-center border-b-2 border-transparent pb-3 pt-2 group hover:border-primary/50" href="#">
+<span class="text-sm font-medium text-slate-500 dark:text-slate-400 group-hover:text-slate-100">Mains</span>
+</a>
+<a class="flex flex-col items-center border-b-2 border-transparent pb-3 pt-2 group hover:border-primary/50" href="#">
+<span class="text-sm font-medium text-slate-500 dark:text-slate-400 group-hover:text-slate-100">Drinks</span>
+</a>
+<a class="flex flex-col items-center border-b-2 border-transparent pb-3 pt-2 group hover:border-primary/50" href="#">
+<span class="text-sm font-medium text-slate-500 dark:text-slate-400 group-hover:text-slate-100">Desserts</span>
+</a>
+<a class="flex flex-col items-center border-b-2 border-transparent pb-3 pt-2 group hover:border-primary/50" href="#">
+<span class="text-sm font-medium text-slate-500 dark:text-slate-400 group-hover:text-slate-100">Wine</span>
+</a>
+</div>
+</header>
+<main class="max-w-2xl mx-auto p-4 pb-32">
+<!-- Section Title -->
+<div class="mb-6">
+<h2 class="text-2xl font-bold dark:text-white">Signature Starters</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Light bites to begin your journey</p>
+</div>
+<!-- Product Grid -->
+<div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+<!-- Item 1 -->
+<div class="bg-white dark:bg-slate-900/50 rounded-xl overflow-hidden border border-slate-200 dark:border-primary/10 flex flex-col">
+<div class="h-48 w-full bg-cover bg-center" data-alt="Gourmet truffle fries with parmesan garnish" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBJcMuZOJ4yQbHnN8NOMToljM-4eJ5hcofwKlGKbq82RMp64qPyEozkYki_NljIgeiO8bD1rZE8pPH7WfwDTBzAP0GRNF6ISCK5B_DTv-_kgFD5neQvKofbqi2vT-nCp8H2SEn_SHPMcypumI3W02_vMK4-cowICA33NluJ8DMBx5MM7paW5aqqkhpShhVsRrTTcJFIZPfoQJHqU7eEID1GbLmZBUHFFXx64Jq_f_r8ori46NVqewxXyaxRQ5NrgAGCyP4v05QOX4w')"></div>
+<div class="p-4 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-bold text-lg leading-tight">Truffle Parmesan Fries</h3>
+<span class="text-primary font-bold">$14.00</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-4 flex-1">Hand-cut golden fries drizzled with white truffle oil and aged parmesan.</p>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-2 px-4 rounded-lg flex items-center justify-center gap-2 transition-all active:scale-95">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                        Add to Cart
+                    </button>
+</div>
+</div>
+<!-- Item 2 -->
+<div class="bg-white dark:bg-slate-900/50 rounded-xl overflow-hidden border border-slate-200 dark:border-primary/10 flex flex-col">
+<div class="h-48 w-full bg-cover bg-center" data-alt="Fresh mediterranean salad with feta cheese" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuD8BGT_Iv9EcwDi79d3DnOg0cMVMD8BrtOu4btPR5TqcAoPbiIZ1L4ONK30mpY2z-lr4vYwKFx8jGII5Ty-hfVJ4vDjG8U18QM7sFL5u6YrtDq9USpnq7tYghixIaBrEJzKb0o9gCVX3KZnxfHLIaGaYNqd7MbzxKXVprrBfO2eO1bYMkUF94e9Y42vqcXcD4R6gStKkc9fbCgBOCB5nTu9PtUewQtJMofKAfOVKe2MsAuVami25JajeTPySoexWZwzyGomQMtbHoE')"></div>
+<div class="p-4 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-bold text-lg leading-tight">Wild Garden Salad</h3>
+<span class="text-primary font-bold">$16.00</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-4 flex-1">Organic heirloom greens, citrus segments, toasted walnuts, and honey vinaigrette.</p>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-2 px-4 rounded-lg flex items-center justify-center gap-2 transition-all active:scale-95">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                        Add to Cart
+                    </button>
+</div>
+</div>
+<!-- Item 3 -->
+<div class="bg-white dark:bg-slate-900/50 rounded-xl overflow-hidden border border-slate-200 dark:border-primary/10 flex flex-col">
+<div class="h-48 w-full bg-cover bg-center" data-alt="Beef carpaccio with capers and arugula" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuB4AsLpa3wP_UlEBBaB5P2DXKfKDIb8fOvEEjLqq3hbVYbLgPZILBDVhEEpD7igObfQ93NnXIBDGpBGmeyzdAa_0eVsuT_qT2jM9kWHnUjV7s3hGkO-ShHNGscsQY0ByxjQ68SvfdO6v4CWfjIopIpiPJG1IZDv1g0nIAidE7Ppz1MDdOlUWi6Xx9xakfIu1rQMYRg8KmA3kp0tv4RUsdAGTFks2iacHqaJcXzuH9s5nBl7Ds6rxDuH5fvovOLEQ3gqejWxXZg4UW0')"></div>
+<div class="p-4 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-bold text-lg leading-tight">Wagyu Carpaccio</h3>
+<span class="text-primary font-bold">$22.00</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-4 flex-1">Thinly sliced Wagyu beef, caper berries, micro-arugula, and lemon zest.</p>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-2 px-4 rounded-lg flex items-center justify-center gap-2 transition-all active:scale-95">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                        Add to Cart
+                    </button>
+</div>
+</div>
+<!-- Item 4 -->
+<div class="bg-white dark:bg-slate-900/50 rounded-xl overflow-hidden border border-slate-200 dark:border-primary/10 flex flex-col">
+<div class="h-48 w-full bg-cover bg-center" data-alt="Steamed sea salt edamame pods" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuCuCJQQXnMI9UbQAgfgw1EDIzEk4ixV0TcTEt5T1svrPhBs-ExHhqqhACC-IZgdmm97clGG8DZNm4zZO4JkGy0O0BzZxtHhOPtCGnCfyfryiT7tPAfnFhMGbNH5yo7ExdUYeIiP349q2DL7UX0m6ypA1No9HGFK8bjJ68WFVndkAGdsNCBgc5xR-5sukdfeDg_6lFgZhlWlXJmiuN4idyvYRgHgOJhqycOG5gij14Q1H0Ph6h7noQshxE3cmCPa_0JPenCNDaF5SqY')"></div>
+<div class="p-4 flex-1 flex flex-col">
+<div class="flex justify-between items-start mb-1">
+<h3 class="font-bold text-lg leading-tight">Sea Salt Edamame</h3>
+<span class="text-primary font-bold">$10.00</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-4 flex-1">Steamed young soy beans finished with flakey Maldon sea salt.</p>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-2 px-4 rounded-lg flex items-center justify-center gap-2 transition-all active:scale-95">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                        Add to Cart
+                    </button>
+</div>
+</div>
+</div>
+<!-- Section Title 2 -->
+<div class="mt-12 mb-6">
+<h2 class="text-2xl font-bold dark:text-white">Main Courses</h2>
+<p class="text-slate-500 dark:text-slate-400 text-sm">Chef's curated selection for the palate</p>
+</div>
+<div class="grid grid-cols-1 gap-4">
+<!-- Large Featured Item -->
+<div class="bg-white dark:bg-slate-900/50 rounded-xl overflow-hidden border border-slate-200 dark:border-primary/10 flex flex-col sm:flex-row">
+<div class="h-56 sm:h-auto sm:w-1/3 bg-cover bg-center" data-alt="Seared ribeye steak with rosemary garnish" style="background-image: url('https://lh3.googleusercontent.com/aida-public/AB6AXuBnqQyFacPe26l2e3HTXRQoLhl4-U37AWEdqpCTHtjgoUS8j9HXv_PX0Fm_wGmSRabc5eLBczz06lOTR_FGvvvNwdyLSRFr-1KuiioZCQ2vUnRNVb3ETEQgo8RWYqeiUc2nkV6pHIuOpuKm4W8CbTgINmms6ZC97-HZYEoMwrTBSMzXsa5JQhurNuBYFg4xabI4rwpB0CmLbM__WeEwwOGLonAfLDe8Yv-vYPQOIBKdvEzF5GEFCraD_UgDSPI_4LjfzGASU6_fv98')"></div>
+<div class="p-6 flex-1">
+<div class="flex justify-between items-start mb-2">
+<div>
+<span class="text-[10px] uppercase font-bold tracking-widest text-primary mb-1 block">Best Seller</span>
+<h3 class="font-bold text-xl leading-tight">Aged Black Angus Ribeye</h3>
+</div>
+<span class="text-primary font-bold text-lg">$48.00</span>
+</div>
+<p class="text-slate-500 dark:text-slate-400 text-sm mb-6">30-day dry-aged 12oz ribeye, served with roasted bone marrow and red wine reduction.</p>
+<div class="flex gap-3">
+<button class="flex-1 bg-primary hover:bg-primary/90 text-white font-bold py-3 px-6 rounded-lg flex items-center justify-center gap-2 transition-all active:scale-95">
+<span class="material-symbols-outlined text-sm">add_shopping_cart</span>
+                            Add to Cart
+                        </button>
+<button class="w-12 h-12 border border-slate-300 dark:border-primary/30 rounded-lg flex items-center justify-center hover:bg-slate-100 dark:hover:bg-primary/10 transition-colors">
+<span class="material-symbols-outlined text-slate-400">favorite</span>
+</button>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button - View Cart -->
+<div class="fixed bottom-0 left-0 right-0 p-4 bg-gradient-to-t from-background-dark via-background-dark/80 to-transparent pointer-events-none">
+<div class="max-w-2xl mx-auto pointer-events-auto">
+<button class="w-full bg-primary text-white h-14 rounded-xl shadow-2xl shadow-primary/40 flex items-center justify-between px-6 transition-transform active:scale-95 hover:bg-primary/90">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined">shopping_bag</span>
+<div class="flex flex-col items-start leading-none">
+<span class="text-sm font-bold">View Cart</span>
+<span class="text-[10px] opacity-80 uppercase tracking-tighter">2 Items Added</span>
+</div>
+</div>
+<div class="flex items-center gap-2">
+<span class="text-lg font-bold">$62.00</span>
+<span class="material-symbols-outlined text-sm">chevron_right</span>
+</div>
+</button>
+</div>
+</div>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 bg-background-light dark:bg-background-dark border-t border-slate-200 dark:border-primary/20 hidden md:block">
+<div class="max-w-2xl mx-auto flex justify-around py-3">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined fill-[1]">restaurant</span>
+<span class="text-xs font-medium">Menu</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">search</span>
+<span class="text-xs font-medium">Search</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-xs font-medium">Orders</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="text-xs font-medium">Profile</span>
+</a>
+</div>
+</nav>
+</body></html>

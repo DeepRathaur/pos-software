@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Table Management - Premium Dining</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e21d48",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#12080a",
+                        "surface-dark": "#1c0d10",
+                        "accent-dark": "#2d161b"
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+            -webkit-font-smoothing: antialiased;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<header class="sticky top-0 z-50 bg-background-light/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-accent-dark">
+<div class="flex items-center p-4 justify-between max-w-5xl mx-auto w-full">
+<div class="flex items-center gap-4">
+<button class="text-slate-900 dark:text-slate-100 p-2 hover:bg-slate-200 dark:hover:bg-accent-dark rounded-full transition-colors">
+<span class="material-symbols-outlined">arrow_back</span>
+</button>
+<h1 class="text-xl font-bold tracking-tight">Table Management</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="flex items-center justify-center p-2 text-slate-900 dark:text-slate-100 hover:bg-slate-200 dark:hover:bg-accent-dark rounded-full transition-colors">
+<span class="material-symbols-outlined">calendar_today</span>
+</button>
+<button class="flex items-center justify-center p-2 text-slate-900 dark:text-slate-100 hover:bg-slate-200 dark:hover:bg-accent-dark rounded-full transition-colors">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</div>
+<div class="max-w-5xl mx-auto w-full">
+<div class="flex px-4 gap-8">
+<button class="flex flex-col items-center justify-center border-b-2 border-transparent text-slate-500 dark:text-slate-400 pb-3 pt-2 hover:text-primary transition-colors">
+<span class="text-sm font-semibold">Floor Plan</span>
+</button>
+<button class="flex flex-col items-center justify-center border-b-2 border-primary text-primary pb-3 pt-2">
+<span class="text-sm font-bold">List View</span>
+</button>
+</div>
+</div>
+</header>
+<main class="flex-1 max-w-5xl mx-auto w-full p-4 space-y-6">
+<div class="flex flex-col md:flex-row gap-4">
+<div class="flex-1 relative">
+<span class="material-symbols-outlined absolute left-3 top-1/2 -translate-y-1/2 text-slate-400">search</span>
+<input class="w-full bg-slate-200 dark:bg-accent-dark border-none rounded-xl py-3 pl-10 pr-4 focus:ring-2 focus:ring-primary transition-all text-slate-900 dark:text-slate-100 placeholder:text-slate-500" placeholder="Search table number..." type="text"/>
+</div>
+<div class="flex gap-2 overflow-x-auto pb-2 md:pb-0 no-scrollbar">
+<button class="flex h-10 shrink-0 items-center justify-center gap-2 rounded-xl bg-primary px-4 text-white font-semibold shadow-lg shadow-primary/20">
+<span class="text-sm">All</span>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-2 rounded-xl bg-slate-200 dark:bg-accent-dark px-4 text-slate-600 dark:text-slate-300 font-medium hover:bg-slate-300 dark:hover:bg-primary/20 transition-colors">
+<span class="text-sm">Available</span>
+<span class="flex h-2 w-2 rounded-full bg-emerald-500"></span>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-2 rounded-xl bg-slate-200 dark:bg-accent-dark px-4 text-slate-600 dark:text-slate-300 font-medium hover:bg-slate-300 dark:hover:bg-primary/20 transition-colors">
+<span class="text-sm">Occupied</span>
+<span class="flex h-2 w-2 rounded-full bg-primary"></span>
+</button>
+<button class="flex h-10 shrink-0 items-center justify-center gap-2 rounded-xl bg-slate-200 dark:bg-accent-dark px-4 text-slate-600 dark:text-slate-300 font-medium hover:bg-slate-300 dark:hover:bg-primary/20 transition-colors">
+<span class="text-sm">Reserved</span>
+<span class="flex h-2 w-2 rounded-full bg-amber-500"></span>
+</button>
+</div>
+</div>
+<div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+<div class="bg-white dark:bg-surface-dark rounded-2xl border border-slate-200 dark:border-accent-dark p-5 flex flex-col gap-4 shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start">
+<div>
+<span class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1 block">Table</span>
+<h3 class="text-3xl font-black text-slate-900 dark:text-slate-100">08</h3>
+</div>
+<span class="px-3 py-1 bg-emerald-500/10 text-emerald-500 text-xs font-bold rounded-full border border-emerald-500/20">AVAILABLE</span>
+</div>
+<div class="flex items-center gap-4 text-slate-500 dark:text-slate-400">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-lg">group</span>
+<span class="text-sm font-medium">4 Seats</span>
+</div>
+<div class="flex items-center gap-1.5 border-l border-slate-200 dark:border-accent-dark pl-4">
+<span class="material-symbols-outlined text-lg">schedule</span>
+<span class="text-sm font-medium">--:--</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-xl transition-all active:scale-[0.98] shadow-lg shadow-primary/25">
+                    Reserve Table
+                </button>
+</div>
+<div class="bg-white dark:bg-surface-dark rounded-2xl border border-slate-200 dark:border-accent-dark p-5 flex flex-col gap-4 shadow-sm relative overflow-hidden">
+<div class="absolute top-0 right-0 p-2 opacity-10">
+<span class="material-symbols-outlined text-6xl">restaurant</span>
+</div>
+<div class="flex justify-between items-start">
+<div>
+<span class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1 block">Table</span>
+<h3 class="text-3xl font-black text-slate-900 dark:text-slate-100">12</h3>
+</div>
+<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full border border-primary/20">OCCUPIED</span>
+</div>
+<div class="flex items-center gap-4 text-slate-500 dark:text-slate-400">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-lg">group</span>
+<span class="text-sm font-medium">2 Seats</span>
+</div>
+<div class="flex items-center gap-1.5 border-l border-slate-200 dark:border-accent-dark pl-4">
+<span class="material-symbols-outlined text-lg text-primary">schedule</span>
+<span class="text-sm font-medium text-primary">45m elapsed</span>
+</div>
+</div>
+<button class="w-full bg-slate-100 dark:bg-accent-dark text-slate-400 dark:text-slate-500 font-bold py-3 rounded-xl cursor-not-allowed">
+                    Occupied
+                </button>
+</div>
+<div class="bg-white dark:bg-surface-dark rounded-2xl border border-slate-200 dark:border-accent-dark p-5 flex flex-col gap-4 shadow-sm">
+<div class="flex justify-between items-start">
+<div>
+<span class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1 block">Table</span>
+<h3 class="text-3xl font-black text-slate-900 dark:text-slate-100">04</h3>
+</div>
+<span class="px-3 py-1 bg-amber-500/10 text-amber-500 text-xs font-bold rounded-full border border-amber-500/20">RESERVED</span>
+</div>
+<div class="flex items-center gap-4 text-slate-500 dark:text-slate-400">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-lg">group</span>
+<span class="text-sm font-medium">6 Seats</span>
+</div>
+<div class="flex items-center gap-1.5 border-l border-slate-200 dark:border-accent-dark pl-4">
+<span class="material-symbols-outlined text-lg">timer</span>
+<span class="text-sm font-medium">Starts 19:30</span>
+</div>
+</div>
+<button class="w-full bg-slate-200 dark:bg-accent-dark hover:bg-slate-300 dark:hover:bg-primary/20 text-slate-900 dark:text-slate-100 font-bold py-3 rounded-xl transition-all border border-slate-300 dark:border-primary/20">
+                    View Booking
+                </button>
+</div>
+<div class="bg-white dark:bg-surface-dark rounded-2xl border border-slate-200 dark:border-accent-dark p-5 flex flex-col gap-4 shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start">
+<div>
+<span class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1 block">Table</span>
+<h3 class="text-3xl font-black text-slate-900 dark:text-slate-100">15</h3>
+</div>
+<span class="px-3 py-1 bg-emerald-500/10 text-emerald-500 text-xs font-bold rounded-full border border-emerald-500/20">AVAILABLE</span>
+</div>
+<div class="flex items-center gap-4 text-slate-500 dark:text-slate-400">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-lg">group</span>
+<span class="text-sm font-medium">8 Seats</span>
+</div>
+<div class="flex items-center gap-1.5 border-l border-slate-200 dark:border-accent-dark pl-4">
+<span class="material-symbols-outlined text-lg">schedule</span>
+<span class="text-sm font-medium">--:--</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-xl transition-all shadow-lg shadow-primary/25">
+                    Reserve Table
+                </button>
+</div>
+<div class="bg-white dark:bg-surface-dark rounded-2xl border border-slate-200 dark:border-accent-dark p-5 flex flex-col gap-4 shadow-sm">
+<div class="flex justify-between items-start">
+<div>
+<span class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1 block">Table</span>
+<h3 class="text-3xl font-black text-slate-900 dark:text-slate-100">22</h3>
+</div>
+<span class="px-3 py-1 bg-primary/10 text-primary text-xs font-bold rounded-full border border-primary/20">OCCUPIED</span>
+</div>
+<div class="flex items-center gap-4 text-slate-500 dark:text-slate-400">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-lg">group</span>
+<span class="text-sm font-medium">4 Seats</span>
+</div>
+<div class="flex items-center gap-1.5 border-l border-slate-200 dark:border-accent-dark pl-4">
+<span class="material-symbols-outlined text-lg text-primary">schedule</span>
+<span class="text-sm font-medium text-primary">1h 10m elapsed</span>
+</div>
+</div>
+<button class="w-full bg-slate-100 dark:bg-accent-dark text-slate-400 dark:text-slate-500 font-bold py-3 rounded-xl cursor-not-allowed">
+                    Occupied
+                </button>
+</div>
+<div class="bg-white dark:bg-surface-dark rounded-2xl border border-slate-200 dark:border-accent-dark p-5 flex flex-col gap-4 shadow-sm hover:shadow-md transition-shadow">
+<div class="flex justify-between items-start">
+<div>
+<span class="text-xs font-bold uppercase tracking-widest text-slate-400 mb-1 block">Table</span>
+<h3 class="text-3xl font-black text-slate-900 dark:text-slate-100">09</h3>
+</div>
+<span class="px-3 py-1 bg-emerald-500/10 text-emerald-500 text-xs font-bold rounded-full border border-emerald-500/20">AVAILABLE</span>
+</div>
+<div class="flex items-center gap-4 text-slate-500 dark:text-slate-400">
+<div class="flex items-center gap-1.5">
+<span class="material-symbols-outlined text-lg">group</span>
+<span class="text-sm font-medium">2 Seats</span>
+</div>
+<div class="flex items-center gap-1.5 border-l border-slate-200 dark:border-accent-dark pl-4">
+<span class="material-symbols-outlined text-lg">schedule</span>
+<span class="text-sm font-medium">--:--</span>
+</div>
+</div>
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-3 rounded-xl transition-all shadow-lg shadow-primary/25">
+                    Reserve Table
+                </button>
+</div>
+</div>
+<div class="bg-gradient-to-r from-primary to-rose-700 rounded-2xl p-6 text-white flex flex-col md:flex-row items-center justify-between gap-6 shadow-xl shadow-primary/30">
+<div class="flex flex-col gap-1 text-center md:text-left">
+<h2 class="text-2xl font-black">Ready to expand?</h2>
+<p class="text-white/80 font-medium">Manage floor capacity and rearrange tables easily from the dashboard.</p>
+</div>
+<button class="bg-white text-primary font-black px-8 py-3 rounded-full hover:scale-105 transition-transform">
+                Floor Plan Editor
+            </button>
+</div>
+</main>
+<nav class="sticky bottom-0 bg-background-light dark:bg-background-dark border-t border-slate-200 dark:border-accent-dark pb-6 pt-2 z-50">
+<div class="max-w-xl mx-auto flex justify-around px-4">
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined fill-1">grid_view</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Tables</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">menu_book</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Bookings</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">receipt_long</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">Orders</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400 dark:text-slate-500 hover:text-primary transition-colors" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold uppercase tracking-widest">More</span>
+</a>
+</div>
+</nav>
+</body></html>

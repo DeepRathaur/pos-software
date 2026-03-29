@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Product Management</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#007bff",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1923",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen pb-24">
+<!-- Header Section -->
+<header class="sticky top-0 z-20 bg-white/80 dark:bg-background-dark/80 backdrop-blur-md border-b border-slate-200 dark:border-slate-800">
+<div class="flex items-center justify-between px-4 py-4">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary text-2xl">inventory_2</span>
+<h1 class="text-xl font-bold tracking-tight">Products</h1>
+</div>
+<button class="flex items-center justify-center size-10 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400">
+<span class="material-symbols-outlined">account_circle</span>
+</button>
+</div>
+<!-- Search and Filters -->
+<div class="px-4 pb-4 space-y-3">
+<div class="relative flex items-center">
+<span class="material-symbols-outlined absolute left-3 text-slate-400">search</span>
+<input class="w-full h-11 pl-10 pr-4 rounded-xl border-none bg-slate-100 dark:bg-slate-800 focus:ring-2 focus:ring-primary/50 text-sm" placeholder="Search products..." type="text"/>
+</div>
+<div class="flex gap-2 overflow-x-auto no-scrollbar pb-1">
+<button class="flex items-center gap-1 px-4 py-1.5 rounded-full bg-primary text-white text-xs font-semibold">
+                    All
+                </button>
+<button class="flex items-center gap-1 px-4 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium whitespace-nowrap">
+                    Electronics <span class="material-symbols-outlined text-xs">expand_more</span>
+</button>
+<button class="flex items-center gap-1 px-4 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium whitespace-nowrap">
+                    Clothing <span class="material-symbols-outlined text-xs">expand_more</span>
+</button>
+<button class="flex items-center gap-1 px-4 py-1.5 rounded-full bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400 text-xs font-medium whitespace-nowrap">
+                    Home <span class="material-symbols-outlined text-xs">expand_more</span>
+</button>
+</div>
+</div>
+</header>
+<!-- Product List -->
+<main class="px-4 py-4 space-y-4">
+<!-- Product Item 1 -->
+<div class="flex gap-4 p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="size-20 shrink-0 rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-800">
+<img class="w-full h-full object-cover" data-alt="Black high quality over-ear wireless headphones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuArTnGNjVfTP5AjTmhaRO7RLB1baDTwNTPSA_DhQm7Zq59JTjX4N3q_WYbYU7EUiIeBQLQT3uRWQe9aPlOWRKkaz6Fxdpd09JKmH0kNoQ0mzyGwZHv7_ts-JXMfPahCPCWAeeKVx_0ZiNfUmLUUGxoqWDqIPruf3IM-08gKAkbkVzOVr5699BS_eWI6ToxcS_o-6iyc0YrNc_tXnKW0WM9uL4ehczVcCX2mOCh_IZ3Y_xco7oMHcQohZm9OG9XGU-Z2xiWboEADkeo"/>
+</div>
+<div class="flex flex-col flex-1 justify-between py-0.5">
+<div>
+<h3 class="font-semibold text-slate-900 dark:text-slate-100 leading-tight">Wireless Headphones</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">SKU: WH-1002</p>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<span class="text-xs font-medium px-2 py-0.5 rounded bg-primary/10 text-primary">15 in stock</span>
+</div>
+<span class="text-base font-bold text-slate-900 dark:text-slate-100">$99.00</span>
+</div>
+</div>
+</div>
+<!-- Product Item 2 -->
+<div class="flex gap-4 p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="size-20 shrink-0 rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-800">
+<img class="w-full h-full object-cover" data-alt="Modern minimal white wrist watch" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCFPHnd_p6nXP4dlVVvHs5RF3zZkECiQfuZhZOEaN9zalLCvgJtVW1zmhIYcBcEEn7Navyj465RtrEOyKniENfourCujxDnQD7scHKptcit64c4kMj9G4tMgk3ns8SNTfU1l86n-rgqdSW1O6pU9AJuPU6xv0FZVPSY22QHeysU6WiIJNjNkNMezEtFpGafFUemefpLw-OTclbXDWHRlIhgDoP2pBU3GTxHLl9S1Pv3toHKGQOFuct_YxzBGaybMJZuYpfjzXZVy-g"/>
+</div>
+<div class="flex flex-col flex-1 justify-between py-0.5">
+<div>
+<h3 class="font-semibold text-slate-900 dark:text-slate-100 leading-tight">Smart Watch Series 5</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">SKU: SW-5001</p>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<span class="text-xs font-medium px-2 py-0.5 rounded bg-amber-100 text-amber-600 dark:bg-amber-900/30 dark:text-amber-500">5 in stock</span>
+</div>
+<span class="text-base font-bold text-slate-900 dark:text-slate-100">$249.00</span>
+</div>
+</div>
+</div>
+<!-- Product Item 3 -->
+<div class="flex gap-4 p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="size-20 shrink-0 rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-800">
+<img class="w-full h-full object-cover" data-alt="Red athletic running shoes" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCLT2p5hQxCdQHHcZ0SMQWFsdJbSyBGX-9RLtGd-wDujbwHq8R1uNZQ_4e2VzYFthU8trrwhsRMDRN67bbBJEIdOQSx6lb_2Ahu0n4onXiPCG9DFEROc7Jm-npVoC0qbUnuLSMBHguPbVVGA1vpSBz_fLRybR0SNlKYLxWvUzGWCOS6Dk6OK8t2m0G67TMYDr2_8_kIRB8V6EYp-BtF6BppKNOjpMUkH4yYtJL3wj0VfyENMU5vA1BOBmz1GxTBn5WFWuEMVPZlCo4"/>
+</div>
+<div class="flex flex-col flex-1 justify-between py-0.5">
+<div>
+<h3 class="font-semibold text-slate-900 dark:text-slate-100 leading-tight">Air Max Sneakers</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">SKU: RS-9092</p>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<span class="text-xs font-medium px-2 py-0.5 rounded bg-primary/10 text-primary">42 in stock</span>
+</div>
+<span class="text-base font-bold text-slate-900 dark:text-slate-100">$120.00</span>
+</div>
+</div>
+</div>
+<!-- Product Item 4 -->
+<div class="flex gap-4 p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm opacity-80">
+<div class="size-20 shrink-0 rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-800 grayscale">
+<img class="w-full h-full object-cover" data-alt="Vintage style analog camera" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD82WiA3A2NY_YUPWSAjwqcr5XbxsisGG-eBmxZJEb-XLw1WoZeFdA8EDkiuCJPC_LfrQ_sDjoRSB1TKP8Zf-7TCCthV_Ob4HnI5-JjKwpQTTc8SA5KAcg1fuE1i6-nQcjh14uHGLtXpvboUQu8op789DqR1zyxRBmmn6e3Fa3op5oREkqAC_p8VbtcJlUrhtnCw5d6z2yuJ6UjcTQGWC7OPC3zZzsOoXlVwJclFNm5c_19GOsHSMTWJ3OjU7x7Eu9Pc4t-JLeP5iY"/>
+</div>
+<div class="flex flex-col flex-1 justify-between py-0.5">
+<div>
+<h3 class="font-semibold text-slate-900 dark:text-slate-100 leading-tight">Retro Camera</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">SKU: RC-4402</p>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<span class="text-xs font-medium px-2 py-0.5 rounded bg-rose-100 text-rose-600 dark:bg-rose-900/30 dark:text-rose-500">Out of Stock</span>
+</div>
+<span class="text-base font-bold text-slate-900 dark:text-slate-100">$45.00</span>
+</div>
+</div>
+</div>
+<!-- Product Item 5 -->
+<div class="flex gap-4 p-3 bg-white dark:bg-slate-900 rounded-xl border border-slate-100 dark:border-slate-800 shadow-sm">
+<div class="size-20 shrink-0 rounded-lg overflow-hidden bg-slate-100 dark:bg-slate-800">
+<img class="w-full h-full object-cover" data-alt="Minimalist wooden desk lamp" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCvRh8147mQMujy7ZRQv2TGQzbaOPfDTy3oahrQfKsVNEm7WTruQDlp2Ym8eZfkBCEn0Dy1GPJR1MM-1edXdaDYxyY7h9XKXWnlAjBvHit12ZdF6_AMy-hJnU0zEWxH7JV8UDynSVHG6FhoWUOuLoWwcK7LxgSO5JGSDBgAfK5vaeeJ8xHWurovwNS2nXYU-qT1F1v2TiTHea5QvQtB6mdE4wjMc3l4XvgXN9NNfPdK4D-eEjwpjvzGZWZxV6exST-z7Up7SeIGzWc"/>
+</div>
+<div class="flex flex-col flex-1 justify-between py-0.5">
+<div>
+<h3 class="font-semibold text-slate-900 dark:text-slate-100 leading-tight">LED Desk Lamp</h3>
+<p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">SKU: LL-2020</p>
+</div>
+<div class="flex items-end justify-between">
+<div>
+<span class="text-xs font-medium px-2 py-0.5 rounded bg-primary/10 text-primary">8 in stock</span>
+</div>
+<span class="text-base font-bold text-slate-900 dark:text-slate-100">$32.00</span>
+</div>
+</div>
+</div>
+</main>
+<!-- Floating Action Button -->
+<button class="fixed bottom-24 right-6 size-14 bg-primary text-white rounded-full shadow-lg shadow-primary/40 flex items-center justify-center z-30 active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 bg-white dark:bg-background-dark border-t border-slate-200 dark:border-slate-800 px-2 pb-safe pt-2 z-40">
+<div class="flex justify-around items-center h-16 max-w-md mx-auto">
+<a class="flex flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined text-2xl">dashboard</span>
+<span class="text-[10px] font-medium">Dashboard</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined text-2xl">point_of_sale</span>
+<span class="text-[10px] font-medium">POS</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined text-2xl" style="font-variation-settings: 'FILL' 1">inventory_2</span>
+<span class="text-[10px] font-bold">Products</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined text-2xl">archive</span>
+<span class="text-[10px] font-medium">Inventory</span>
+</a>
+<a class="flex flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined text-2xl">bar_chart</span>
+<span class="text-[10px] font-medium">Reports</span>
+</a>
+</div>
+</nav>
+<style>
+        .no-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .no-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+        .pb-safe {
+            padding-bottom: env(safe-area-inset-bottom, 0.5rem);
+        }
+    </style>
+</body></html>

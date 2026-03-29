@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#007bff",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1923",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<title>Inventory Tracking</title>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col">
+<div class="flex-1 flex flex-col max-w-md mx-auto w-full bg-white dark:bg-slate-900 shadow-xl overflow-hidden relative">
+<header class="flex items-center justify-between p-4 bg-white dark:bg-slate-900 sticky top-0 z-10 border-b border-slate-100 dark:border-slate-800">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-400">menu</span>
+<h1 class="text-xl font-bold tracking-tight">Inventory</h1>
+</div>
+<div class="flex items-center gap-2">
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined">search</span>
+</button>
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors">
+<span class="material-symbols-outlined text-primary">notifications</span>
+</button>
+</div>
+</header>
+<main class="flex-1 overflow-y-auto pb-24">
+<div class="p-4 grid grid-cols-2 gap-4">
+<div class="bg-amber-50 dark:bg-amber-950/30 border border-amber-100 dark:border-amber-900/50 rounded-xl p-4 flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-amber-600 dark:text-amber-500">warning</span>
+<span class="text-amber-700 dark:text-amber-400 text-xs font-bold uppercase tracking-wider">Warning</span>
+</div>
+<p class="text-3xl font-bold text-amber-900 dark:text-amber-200 mt-2">3</p>
+<p class="text-amber-800 dark:text-amber-300 text-sm font-medium">Low Stock Items</p>
+</div>
+<div class="bg-red-50 dark:bg-red-950/30 border border-red-100 dark:border-red-900/50 rounded-xl p-4 flex flex-col gap-1">
+<div class="flex items-center justify-between">
+<span class="material-symbols-outlined text-red-600 dark:text-red-500">error</span>
+<span class="text-red-700 dark:text-red-400 text-xs font-bold uppercase tracking-wider">Critical</span>
+</div>
+<p class="text-3xl font-bold text-red-900 dark:text-red-200 mt-2">1</p>
+<p class="text-red-800 dark:text-red-300 text-sm font-medium">Out of Stock</p>
+</div>
+</div>
+<div class="px-4 flex gap-3 mb-6">
+<button class="flex-1 bg-primary text-white py-3 rounded-lg font-bold flex items-center justify-center gap-2 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-[20px]">bolt</span>
+                    Quick Restock
+                </button>
+<button class="flex-1 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 py-3 rounded-lg font-bold flex items-center justify-center gap-2">
+<span class="material-symbols-outlined text-[20px]">edit_note</span>
+                    Manual Adj.
+                </button>
+</div>
+<div class="px-4 mb-4 flex items-center justify-between">
+<h2 class="text-lg font-bold">Needing Reorder</h2>
+<button class="text-primary text-sm font-semibold">View All</button>
+</div>
+<div class="space-y-1">
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900 px-4 py-3 border-b border-slate-50 dark:border-slate-800">
+<div class="relative">
+<div class="w-14 h-14 rounded-lg bg-slate-100 dark:bg-slate-800 bg-cover bg-center" data-alt="Carton of fresh organic milk on white background" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCQF0awJ8YvGBfLiMv0bkpnZFvllGvgOlQ9CXgXI4pXLPw8waubWK13GWRirEC7Mo8B-1xo1QSHRHgEK_Z_05faBcYdg6Lt_L6siQTPYPu7cZZiCjT0sOYflniBRP9Cstbxk9gtDScaC5cr_MoSLUFqm9whYXJIVa42E3tmeZvJ886OGnh3IH8w_j7x1jChn089Y7_DBj-2cZot8HmKTlVQLJlX5rQyUU7HkxMyCaf2fzsZUfNibafuEiYDfCznrKazTaEqkCZ7mVA");'></div>
+<div class="absolute -top-1 -right-1 w-4 h-4 bg-red-500 rounded-full border-2 border-white dark:border-slate-900"></div>
+</div>
+<div class="flex-1">
+<h3 class="font-semibold text-slate-900 dark:text-slate-100">Organic Milk 1L</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-xs font-medium px-2 py-0.5 rounded bg-red-100 text-red-700 dark:bg-red-900/40 dark:text-red-300">0 left</span>
+<span class="text-slate-500 dark:text-slate-400 text-xs">Par: 20 units</span>
+</div>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-50 dark:bg-slate-800 text-primary">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900 px-4 py-3 border-b border-slate-50 dark:border-slate-800">
+<div class="relative">
+<div class="w-14 h-14 rounded-lg bg-slate-100 dark:bg-slate-800 bg-cover bg-center" data-alt="Loaf of artisan sourdough bread" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCRUnaLVBuF3Yuj8sJ153IkFS-N4efjU_gBi15-OZMEZVi_Z-t1w-5eNTiZSLAYDt1SXJPVQnWj7ciouyK4OTbpHAykN3ZqToe82RPVu66y_FBoYcQTG2zOn2HhzDZfLZwhTUMnOI1fT8ar7PYIyKtuazhuFcWSw920J-F43l-GyVssW_WCguuDOIb9xa45dbniYCCSzZCxizO2nwpj2LUBkH0kOAj6kN06iljugt8K4lhA7CJzB_B-wbgvu-YzOnZBStgE2Kmj7JU");'></div>
+<div class="absolute -top-1 -right-1 w-4 h-4 bg-amber-500 rounded-full border-2 border-white dark:border-slate-900"></div>
+</div>
+<div class="flex-1">
+<h3 class="font-semibold text-slate-900 dark:text-slate-100">Sourdough Bread</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-xs font-medium px-2 py-0.5 rounded bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300">3 left</span>
+<span class="text-slate-500 dark:text-slate-400 text-xs">Par: 15 units</span>
+</div>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-50 dark:bg-slate-800 text-primary">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900 px-4 py-3 border-b border-slate-50 dark:border-slate-800">
+<div class="relative">
+<div class="w-14 h-14 rounded-lg bg-slate-100 dark:bg-slate-800 bg-cover bg-center" data-alt="Bag of gourmet roasted coffee beans" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCTjTAmequhZweSVopMmxqyv2xoprDhNUIevErtJKuICK1mlkvttiNK1hGjvbrXeMmAL3m7Um8nLml5zr9LR0QY9JVOkZt3uwa8BH6kMi0EskVmxHLzYYJqc4cuybrG7Ij8CXZa7VSTpUR4hMz9Heu3fpWS0XdSmCb2E7ikc1pdI0nJCat-RdaKApnP6tHowMAtPmIyW6o-_SqnDznZ82J00ae5mY_IVEByUs21ccfHvl3ZgACHPyBE_QPVI9dcLX-rzDOIpLInvSg");'></div>
+<div class="absolute -top-1 -right-1 w-4 h-4 bg-amber-500 rounded-full border-2 border-white dark:border-slate-900"></div>
+</div>
+<div class="flex-1">
+<h3 class="font-semibold text-slate-900 dark:text-slate-100">Ethiopian Coffee 250g</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-xs font-medium px-2 py-0.5 rounded bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300">5 left</span>
+<span class="text-slate-500 dark:text-slate-400 text-xs">Par: 24 units</span>
+</div>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-50 dark:bg-slate-800 text-primary">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900 px-4 py-3 border-b border-slate-50 dark:border-slate-800">
+<div class="relative">
+<div class="w-14 h-14 rounded-lg bg-slate-100 dark:bg-slate-800 bg-cover bg-center" data-alt="Bottles of cold pressed orange juice" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC9bn7TRVmhmruHhjz_MLpqbk8q1YMq_U9FePP76CJAWBFKlhv9wQ8FoD1FR4f63Lx8mVGEQlmw9XbSjsaQ52VuyEianhyKr_JEwwzMKLqWwORdxsbIR260CE2Kj1O7KEf6sM3zue_5XB_6ylIGyqgJfbGs62-lkX7wJ5pZfFWReGqYAQfkJ5z7aBqT3jj2WvT6PsTfK9QIf8j7kqyS_SdX0rfg7EaEj4CLWXYN4YB3_pTtR-SgcfFKdFKG0jbqhKgmHJs_DKqjIVA");'></div>
+<div class="absolute -top-1 -right-1 w-4 h-4 bg-amber-500 rounded-full border-2 border-white dark:border-slate-900"></div>
+</div>
+<div class="flex-1">
+<h3 class="font-semibold text-slate-900 dark:text-slate-100">Fresh Orange Juice</h3>
+<div class="flex items-center gap-2 mt-1">
+<span class="text-xs font-medium px-2 py-0.5 rounded bg-amber-100 text-amber-700 dark:bg-amber-900/40 dark:text-amber-300">8 left</span>
+<span class="text-slate-500 dark:text-slate-400 text-xs">Par: 30 units</span>
+</div>
+</div>
+<button class="w-10 h-10 flex items-center justify-center rounded-full bg-slate-50 dark:bg-slate-800 text-primary">
+<span class="material-symbols-outlined">add_shopping_cart</span>
+</button>
+</div>
+</div>
+</main>
+<nav class="absolute bottom-0 left-0 right-0 bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 px-2 pb-6 pt-2 flex justify-between">
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Dashboard</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">point_of_sale</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">POS</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Products</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined fill-1">format_text_clip</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Inventory</span>
+</a>
+<a class="flex flex-1 flex-col items-center justify-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<span class="text-[10px] font-bold uppercase tracking-wider">Reports</span>
+</a>
+</nav>
+<button class="absolute bottom-20 right-4 w-14 h-14 bg-primary text-white rounded-full shadow-xl shadow-primary/30 flex items-center justify-center z-20">
+<span class="material-symbols-outlined text-3xl">add</span>
+</button>
+</div>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .material-symbols-outlined.fill-1 {
+            font-variation-settings: 'FILL' 1, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+</body></html>

@@ -1,0 +1,221 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Reports &amp; Analytics - POS SaaS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#2563EB",
+                        "background-light": "#F8FAFC",
+                        "background-dark": "#0f1923",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.5rem",
+                        "lg": "1rem",
+                        "xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .custom-scrollbar::-webkit-scrollbar {
+            width: 4px;
+        }
+        .custom-scrollbar::-webkit-scrollbar-track {
+            background: transparent;
+        }
+        .custom-scrollbar::-webkit-scrollbar-thumb {
+            background: #e2e8f0;
+            border-radius: 10px;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased">
+<div class="relative flex min-h-screen w-full flex-col pb-24">
+<!-- Header -->
+<header class="sticky top-0 z-10 flex items-center bg-white/80 dark:bg-background-dark/80 backdrop-blur-md px-4 py-4 justify-between border-b border-slate-200 dark:border-slate-800">
+<button class="flex h-10 w-10 items-center justify-center rounded-full bg-slate-100 dark:bg-slate-800">
+<span class="material-symbols-outlined text-slate-600 dark:text-slate-300">chevron_left</span>
+</button>
+<h1 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight">Analytics</h1>
+<button class="flex h-10 w-10 items-center justify-center rounded-full bg-primary/10 text-primary">
+<span class="material-symbols-outlined">download</span>
+</button>
+</header>
+<!-- Date Filter -->
+<div class="px-4 py-4">
+<div class="flex bg-slate-100 dark:bg-slate-800 p-1 rounded-xl">
+<button class="flex-1 py-2 text-sm font-semibold rounded-lg bg-white dark:bg-slate-700 shadow-sm text-primary">Today</button>
+<button class="flex-1 py-2 text-sm font-medium text-slate-500 dark:text-slate-400">Week</button>
+<button class="flex-1 py-2 text-sm font-medium text-slate-500 dark:text-slate-400">Month</button>
+</div>
+</div>
+<!-- KPI Cards -->
+<div class="grid grid-cols-1 gap-4 px-4 pb-6">
+<div class="flex flex-col gap-1 rounded-xl p-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="flex items-center justify-between mb-2">
+<span class="text-slate-500 dark:text-slate-400 text-sm font-medium">Total Revenue</span>
+<div class="bg-emerald-100 dark:bg-emerald-900/30 text-emerald-600 dark:text-emerald-400 px-2 py-1 rounded-full text-xs font-bold flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">trending_up</span> 12.5%
+                    </div>
+</div>
+<p class="text-slate-900 dark:text-slate-100 tracking-tight text-3xl font-bold">$12,450.00</p>
+<p class="text-slate-400 text-xs mt-1 italic">vs. $11,066.00 yesterday</p>
+</div>
+<div class="flex gap-4">
+<div class="flex-1 flex flex-col gap-1 rounded-xl p-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+<span class="text-slate-500 dark:text-slate-400 text-sm font-medium">Net Profit</span>
+<p class="text-slate-900 dark:text-slate-100 text-xl font-bold">$4,820.50</p>
+<div class="text-rose-500 text-xs font-medium flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-xs">trending_down</span> 2.4%
+                    </div>
+</div>
+<div class="flex-1 flex flex-col gap-1 rounded-xl p-5 bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 shadow-sm">
+<span class="text-slate-500 dark:text-slate-400 text-sm font-medium">Avg Order</span>
+<p class="text-slate-900 dark:text-slate-100 text-xl font-bold">$42.15</p>
+<div class="text-emerald-500 text-xs font-medium flex items-center gap-1 mt-1">
+<span class="material-symbols-outlined text-xs">trending_up</span> 5.1%
+                    </div>
+</div>
+</div>
+</div>
+<!-- Sales by Category (Chart Placeholder) -->
+<div class="px-4 mb-8">
+<div class="bg-white dark:bg-slate-900 rounded-xl p-5 border border-slate-200 dark:border-slate-800 shadow-sm">
+<h3 class="text-slate-900 dark:text-white text-base font-bold mb-6">Sales by Category</h3>
+<div class="flex items-end justify-between h-40 gap-3 px-2">
+<div class="flex flex-col items-center flex-1 gap-2">
+<div class="w-full bg-primary/20 rounded-t-lg relative" style="height: 60%;">
+<div class="absolute inset-0 bg-primary rounded-t-lg opacity-80"></div>
+</div>
+<span class="text-[10px] text-slate-400 font-medium">Food</span>
+</div>
+<div class="flex flex-col items-center flex-1 gap-2">
+<div class="w-full bg-primary/20 rounded-t-lg relative" style="height: 90%;">
+<div class="absolute inset-0 bg-primary rounded-t-lg opacity-80"></div>
+</div>
+<span class="text-[10px] text-slate-400 font-medium">Drink</span>
+</div>
+<div class="flex flex-col items-center flex-1 gap-2">
+<div class="w-full bg-primary/20 rounded-t-lg relative" style="height: 40%;">
+<div class="absolute inset-0 bg-primary rounded-t-lg opacity-80"></div>
+</div>
+<span class="text-[10px] text-slate-400 font-medium">Snack</span>
+</div>
+<div class="flex flex-col items-center flex-1 gap-2">
+<div class="w-full bg-primary/20 rounded-t-lg relative" style="height: 75%;">
+<div class="absolute inset-0 bg-primary rounded-t-lg opacity-80"></div>
+</div>
+<span class="text-[10px] text-slate-400 font-medium">Dessert</span>
+</div>
+<div class="flex flex-col items-center flex-1 gap-2">
+<div class="w-full bg-primary/20 rounded-t-lg relative" style="height: 55%;">
+<div class="absolute inset-0 bg-primary rounded-t-lg opacity-80"></div>
+</div>
+<span class="text-[10px] text-slate-400 font-medium">Other</span>
+</div>
+</div>
+</div>
+</div>
+<!-- Top Selling Products -->
+<div class="px-4 pb-8">
+<div class="flex items-center justify-between mb-4">
+<h3 class="text-slate-900 dark:text-white text-base font-bold">Top Selling Products</h3>
+<button class="text-primary text-sm font-semibold">View All</button>
+</div>
+<div class="flex flex-col gap-3">
+<!-- Product 1 -->
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900 p-3 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="h-12 w-12 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
+<img class="h-full w-full object-cover" data-alt="Close up of a specialty coffee latte art" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDTThE4_7lUbJ_-aMD-PyKUdthhf6ZUDdTieDa6ouJQqj9uZcc4gf0gkbbbtXWiInkReuQNhS2YrNfv5SrLJ4Gx0RtXF5HqJP01P5nPbr0ZxHAhJWgAnwdbpP0yCyq9cLLqI8PHscIPy-UIawm3A37t0bbecmZLrLdgsLFZ0ciIQ19pimC-1TuP2yfC1rc7DzzqWcfLFLlVWgcr7WpUFhEBNnr4kYtZYqtabY-NKZRgiu8IqZ65O2borp7NytkSAJk215lkGE0i6_k"/>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100">Caramel Macchiato</p>
+<p class="text-xs text-slate-500">142 orders</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100">$710.00</p>
+<p class="text-[10px] text-emerald-500 font-medium">+8%</p>
+</div>
+</div>
+<!-- Product 2 -->
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900 p-3 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="h-12 w-12 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
+<img class="h-full w-full object-cover" data-alt="Fresh avocado toast with egg on top" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDWposvkwJPlgY37kZ3bpJAch-bTobVZqKPwoW79mLpNxXQvV5UV1-slnG7dQcVZRos-CD8Il4KT6ZjATwJxCRHDX6LlYl3pgOZNkSr4Hp2uNJy0YOZqZg4mUgH_FhXPAQhm10ukOkIDFWP3JSvntNQ50ENSr3mB-bK1hcJ6Lob7ciYTbQVDwJIm2fFKaK4wmUCfiqZzjESGF4oW2ri27tRXTD09EnkAFqXlUK8giqFpVwmuEusiR9_4neFyorGbj2fli00bpTI-9E"/>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100">Avocado Toast</p>
+<p class="text-xs text-slate-500">98 orders</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100">$1,176.00</p>
+<p class="text-[10px] text-emerald-500 font-medium">+12%</p>
+</div>
+</div>
+<!-- Product 3 -->
+<div class="flex items-center gap-4 bg-white dark:bg-slate-900 p-3 rounded-xl border border-slate-200 dark:border-slate-800 shadow-sm">
+<div class="h-12 w-12 rounded-lg bg-slate-100 dark:bg-slate-800 flex items-center justify-center overflow-hidden">
+<img class="h-full w-full object-cover" data-alt="Chocolate glazed donut with sprinkles" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCiJTnKRNI3JWxgYPrvbCvULkLObU1OBy4e0g2adcHc59oefBG_BzTOg0xBMazuuDgPQWoRh3dhsrbqMbVjaqE98BAZr5IInx4l57PnBzWJJeJnIiyQGKvCxmkIBTd3bNA7wzhu1mKp3tc7kn7BKHiY1W844H3t-v1lvn-zQthaLaBzDbi-b2WMds-Gg7dXk4OZVlhvLzbqmjmGvJv9c6vm74F3yZx3IjKxsCLaQSpS74jg1ocbJYikJffTrlPISRdqimwgdgJghis"/>
+</div>
+<div class="flex-1">
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100">Choco Glazed Donut</p>
+<p class="text-xs text-slate-500">85 orders</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold text-slate-900 dark:text-slate-100">$255.00</p>
+<p class="text-[10px] text-rose-500 font-medium">-3%</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation Bar -->
+<nav class="fixed bottom-0 left-0 right-0 z-20 flex justify-around items-center bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800 px-2 py-3">
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined text-[24px]">dashboard</span>
+<span class="text-[10px] font-medium">Dashboard</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined text-[24px]">calculate</span>
+<span class="text-[10px] font-medium">POS</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined text-[24px]">inventory_2</span>
+<span class="text-[10px] font-medium">Products</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined text-[24px]">package</span>
+<span class="text-[10px] font-medium">Inventory</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined text-[24px] fill-1">bar_chart</span>
+<span class="text-[10px] font-bold">Reports</span>
+</a>
+<a class="flex flex-col items-center gap-1 text-slate-400" href="#">
+<span class="material-symbols-outlined text-[24px]">settings</span>
+<span class="text-[10px] font-medium">Settings</span>
+</a>
+</nav>
+</div>
+</body></html>

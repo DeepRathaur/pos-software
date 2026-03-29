@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e21d48",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#11080a",
+                        "card-dark": "#1c0d10",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body { font-family: 'Inter', sans-serif; }
+        .dashed-line {
+            background-image: linear-gradient(to right, #46252c 50%, transparent 50%);
+            background-size: 10px 1px;
+            background-repeat: repeat-x;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 min-h-screen flex items-center justify-center p-4">
+<div class="max-w-md w-full bg-background-light dark:bg-card-dark rounded-xl shadow-2xl overflow-hidden border border-slate-200 dark:border-primary/10">
+<!-- Header / Logo Section -->
+<div class="p-6 text-center border-b border-slate-200 dark:border-primary/20">
+<div class="inline-flex items-center justify-center w-16 h-16 rounded-full bg-primary mb-4 shadow-lg shadow-primary/20">
+<span class="material-symbols-outlined text-white text-3xl">restaurant</span>
+</div>
+<h1 class="text-2xl font-bold tracking-tight text-slate-900 dark:text-white uppercase">The Crimson Bistro</h1>
+<p class="text-slate-500 dark:text-primary/70 text-sm font-medium">Elevated Dining Experience</p>
+</div>
+<!-- Order Metadata -->
+<div class="px-6 py-4 bg-slate-50 dark:bg-primary/5 flex justify-between items-center text-xs font-semibold uppercase tracking-wider text-slate-500 dark:text-primary/60">
+<div class="flex flex-col">
+<span>Order #RD-8829</span>
+<span>Table 12 • Server: Marcus</span>
+</div>
+<div class="text-right">
+<span>Oct 24, 2023</span>
+<span>8:45 PM</span>
+</div>
+</div>
+<!-- Itemized List -->
+<div class="p-6 space-y-4">
+<div class="flex justify-between items-start">
+<div class="flex gap-3">
+<span class="text-primary font-bold">2x</span>
+<div>
+<p class="font-semibold text-slate-900 dark:text-slate-100">Signature Wagyu Slider</p>
+<p class="text-xs text-slate-500 dark:text-slate-400 italic">Medium Rare, No Onions</p>
+</div>
+</div>
+<p class="font-medium text-slate-900 dark:text-slate-100">$48.00</p>
+</div>
+<div class="flex justify-between items-start">
+<div class="flex gap-3">
+<span class="text-primary font-bold">1x</span>
+<div>
+<p class="font-semibold text-slate-900 dark:text-slate-100">Truffle Parmesan Fries</p>
+</div>
+</div>
+<p class="font-medium text-slate-900 dark:text-slate-100">$14.00</p>
+</div>
+<div class="flex justify-between items-start">
+<div class="flex gap-3">
+<span class="text-primary font-bold">2x</span>
+<div>
+<p class="font-semibold text-slate-900 dark:text-slate-100">Midnight Old Fashioned</p>
+</div>
+</div>
+<p class="font-medium text-slate-900 dark:text-slate-100">$36.00</p>
+</div>
+<!-- Divider -->
+<div class="dashed-line h-px w-full my-6 opacity-30"></div>
+<!-- Totals Section -->
+<div class="space-y-2 text-sm">
+<div class="flex justify-between text-slate-500 dark:text-slate-400">
+<span>Subtotal</span>
+<span>$98.00</span>
+</div>
+<div class="flex justify-between text-slate-500 dark:text-slate-400">
+<span>Tax (8.5%)</span>
+<span>$8.33</span>
+</div>
+<div class="flex justify-between text-slate-500 dark:text-slate-400">
+<span>Service Fee (10%)</span>
+<span>$9.80</span>
+</div>
+<div class="flex justify-between items-center pt-2 text-xl font-bold">
+<span class="text-slate-900 dark:text-white">Total Amount</span>
+<span class="text-primary">$116.13</span>
+</div>
+</div>
+<!-- Loyalty Points -->
+<div class="mt-6 p-4 rounded-lg bg-primary/10 border border-primary/20 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">stars</span>
+<div>
+<p class="text-xs font-bold text-primary uppercase">Loyalty Points</p>
+<p class="text-sm font-semibold text-slate-900 dark:text-white">+116 points earned</p>
+</div>
+</div>
+<div class="text-right">
+<p class="text-[10px] text-slate-500 dark:text-slate-400 uppercase">Balance</p>
+<p class="text-sm font-bold text-slate-900 dark:text-white">2,450 pts</p>
+</div>
+</div>
+<!-- Payment Info -->
+<div class="mt-4 flex items-center gap-2 text-xs text-slate-500 dark:text-slate-400">
+<span class="material-symbols-outlined text-sm">credit_card</span>
+<span>Paid via Credit Card (Visa) • • • • 4242</span>
+</div>
+</div>
+<!-- Footer / Action Section -->
+<div class="bg-slate-50 dark:bg-primary/5 p-6 space-y-6">
+<div class="flex flex-col items-center justify-center text-center">
+<div class="bg-white p-2 rounded-lg mb-3 shadow-md">
+<img alt="QR Code" class="w-24 h-24" data-alt="QR Code for digital receipt tracking" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBv8e-BkVemRhUMcJpLyOtNRro78JMFtuJl8NGhe4v88nnQkhmq9c5Rw4ZX2xXj_xpdEac9FVfv39d6ksQ8GDu4AMF3mtt5shq7IoqupLee-xOMDbZZLZS_769aDEtWcKJK1julfrA0BxiIoOZF4n6HbNhMXy9e7OMXx7311tNIX2kGER05HiJkoLaVPdEva1Y3nbwqCOTQYXoQLxAQZEoWLTXv5OF4Be2-0o0tbDHYn_3vrEumuSbg8mR7BW670j9_XDMnkJuK1iQ"/>
+</div>
+<p class="text-xs font-medium text-slate-500 dark:text-slate-400">Scan to rate your experience or track your digital receipt</p>
+</div>
+<!-- Action Buttons -->
+<div class="grid grid-cols-3 gap-2">
+<button class="flex flex-col items-center justify-center p-3 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-primary/10 hover:border-primary transition-colors group">
+<span class="material-symbols-outlined text-slate-500 dark:text-primary group-hover:text-primary mb-1">download</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">PDF</span>
+</button>
+<button class="flex flex-col items-center justify-center p-3 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-primary/10 hover:border-primary transition-colors group">
+<span class="material-symbols-outlined text-slate-500 dark:text-primary group-hover:text-primary mb-1">mail</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Email</span>
+</button>
+<button class="flex flex-col items-center justify-center p-3 rounded-lg bg-primary text-white shadow-lg shadow-primary/20 hover:bg-primary/90 transition-colors">
+<span class="material-symbols-outlined mb-1">print</span>
+<span class="text-[10px] font-bold uppercase tracking-tighter">Print</span>
+</button>
+</div>
+<p class="text-[10px] text-center text-slate-400 dark:text-slate-600 font-medium italic">Thank you for dining with us! Come back soon.</p>
+</div>
+<!-- Bottom Navigation Bar (Matching provided component style) -->
+<div class="flex gap-2 border-t border-slate-200 dark:border-primary/20 bg-white dark:bg-card-dark px-4 pb-3 pt-2">
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 dark:text-primary/60" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">home</span>
+</div>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 rounded-full text-primary" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">receipt_long</span>
+</div>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 dark:text-primary/60" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">star</span>
+</div>
+</a>
+<a class="flex flex-1 flex-col items-center justify-end gap-1 text-slate-400 dark:text-primary/60" href="#">
+<div class="flex h-8 items-center justify-center">
+<span class="material-symbols-outlined">person</span>
+</div>
+</a>
+</div>
+</div>
+</body></html>

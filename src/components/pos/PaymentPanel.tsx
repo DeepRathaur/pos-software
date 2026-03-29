@@ -43,8 +43,8 @@ export function PaymentPanel({
   return (
     <div className="rounded-2xl border border-stitch-border bg-stitch-card/80 p-4">
       <div className="flex items-center justify-between gap-2">
-        <h2 className="text-sm font-semibold text-slate-200">Payment</h2>
-        <label className="flex items-center gap-2 text-xs text-slate-400">
+        <h2 className="text-sm font-semibold text-stitch-fg-secondary">Payment</h2>
+        <label className="flex items-center gap-2 text-xs text-stitch-fg-muted">
           <input
             type="checkbox"
             checked={split}
@@ -65,7 +65,7 @@ export function PaymentPanel({
               className={`min-h-[52px] rounded-xl border px-2 text-sm font-semibold ${
                 method === m.id
                   ? "border-stitch-primary bg-stitch-primary/15 text-stitch-primary"
-                  : "border-stitch-border bg-stitch-bg text-slate-300"
+                  : "border-stitch-border bg-stitch-bg text-stitch-fg-secondary"
               }`}
             >
               {m.label}
@@ -83,7 +83,7 @@ export function PaymentPanel({
                   next[idx] = { ...line, method: e.target.value as SplitLine["method"] };
                   onSplitLines(next);
                 }}
-                className="min-h-[44px] flex-1 rounded-xl border border-stitch-border bg-stitch-bg px-2 text-sm text-slate-200"
+                className="min-h-[44px] flex-1 rounded-xl border border-stitch-border bg-stitch-bg px-2 text-sm text-stitch-fg-secondary"
               >
                 {methods.map((m) => (
                   <option key={m.id} value={m.id}>
@@ -102,7 +102,7 @@ export function PaymentPanel({
                   next[idx] = { ...line, amount: Number(e.target.value) || 0 };
                   onSplitLines(next);
                 }}
-                className="min-h-[44px] w-28 rounded-xl border border-stitch-border bg-stitch-bg px-2 text-sm tabular-nums text-slate-100"
+                className="min-h-[44px] w-28 rounded-xl border border-stitch-border bg-stitch-bg px-2 text-sm tabular-nums text-stitch-fg"
                 placeholder="Amount"
               />
               {splitLines.length > 1 ? (
@@ -123,10 +123,10 @@ export function PaymentPanel({
           >
             + Add tender
           </button>
-          <p className="text-xs text-slate-500">
-            Collected: <span className="tabular-nums text-slate-200">₹{splitSum.toFixed(2)}</span>
+          <p className="text-xs text-stitch-fg-muted">
+            Collected: <span className="tabular-nums text-stitch-fg-secondary">₹{splitSum.toFixed(2)}</span>
             {" · "}
-            Need: <span className="tabular-nums text-slate-200">₹{orderTotal.toFixed(2)}</span>
+            Need: <span className="tabular-nums text-stitch-fg-secondary">₹{orderTotal.toFixed(2)}</span>
             {!splitOk ? (
               <span className="text-amber-400"> — add enough to cover total</span>
             ) : null}

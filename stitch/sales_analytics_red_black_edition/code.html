@@ -1,0 +1,316 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Sales Analytics - POS Premium</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#dc2626",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#000000",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "1rem",
+                        "2xl": "1.5rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .hide-scrollbar::-webkit-scrollbar {
+            display: none;
+        }
+        .hide-scrollbar {
+            -ms-overflow-style: none;
+            scrollbar-width: none;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<div class="relative flex min-h-screen w-full flex-col overflow-x-hidden pb-24">
+<!-- Header Section -->
+<div class="sticky top-0 z-20 bg-background-dark/80 backdrop-blur-md px-4 pt-6 pb-2">
+<div class="flex items-center justify-between mb-4">
+<div class="flex items-center gap-3">
+<div class="flex h-10 w-10 items-center justify-center rounded-xl bg-primary/10 text-primary border border-primary/20">
+<span class="material-symbols-outlined">analytics</span>
+</div>
+<div>
+<h1 class="text-xl font-bold tracking-tight">Sales Analytics</h1>
+<p class="text-xs text-slate-400">Real-time performance</p>
+</div>
+</div>
+<button class="flex h-10 w-10 items-center justify-center rounded-xl bg-slate-800/50 text-slate-200 border border-slate-700">
+<span class="material-symbols-outlined text-[20px]">notifications</span>
+</button>
+</div>
+<!-- Date Range Picker -->
+<div class="flex gap-2 overflow-x-auto hide-scrollbar pb-2">
+<button class="flex h-9 shrink-0 items-center justify-center rounded-full bg-primary px-5 text-sm font-semibold text-white">
+                    Today
+                </button>
+<button class="flex h-9 shrink-0 items-center justify-center rounded-full bg-slate-800/50 border border-slate-700 px-5 text-sm font-medium text-slate-300">
+                    Yesterday
+                </button>
+<button class="flex h-9 shrink-0 items-center justify-center rounded-full bg-slate-800/50 border border-slate-700 px-5 text-sm font-medium text-slate-300">
+                    Last 7 Days
+                </button>
+<button class="flex h-9 shrink-0 items-center justify-center rounded-full bg-slate-800/50 border border-slate-700 px-5 text-sm font-medium text-slate-300">
+<span class="material-symbols-outlined text-sm mr-1">calendar_today</span>
+                    Custom
+                </button>
+</div>
+</div>
+<!-- KPI Cards Grid -->
+<div class="grid grid-cols-2 gap-3 p-4">
+<div class="flex flex-col gap-2 rounded-2xl p-4 bg-slate-900/40 border border-slate-800 relative overflow-hidden group">
+<div class="absolute -right-2 -top-2 h-12 w-12 rounded-full bg-primary/5 blur-xl group-hover:bg-primary/10 transition-colors"></div>
+<p class="text-slate-400 text-xs font-medium uppercase tracking-wider">Gross Sales</p>
+<p class="text-2xl font-bold leading-tight">$24,500.00</p>
+<div class="flex items-center gap-1 text-emerald-400 text-xs font-bold">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                    +12.5%
+                </div>
+</div>
+<div class="flex flex-col gap-2 rounded-2xl p-4 bg-slate-900/40 border border-slate-800">
+<p class="text-slate-400 text-xs font-medium uppercase tracking-wider">Net Sales</p>
+<p class="text-2xl font-bold leading-tight">$21,200.00</p>
+<div class="flex items-center gap-1 text-emerald-400 text-xs font-bold">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                    +10.2%
+                </div>
+</div>
+<div class="flex flex-col gap-2 rounded-2xl p-4 bg-slate-900/40 border border-slate-800">
+<p class="text-slate-400 text-xs font-medium uppercase tracking-wider">Avg. Order</p>
+<p class="text-2xl font-bold leading-tight">$42.50</p>
+<div class="flex items-center gap-1 text-emerald-400 text-xs font-bold">
+<span class="material-symbols-outlined text-sm">trending_up</span>
+                    +5.4%
+                </div>
+</div>
+<div class="flex flex-col gap-2 rounded-2xl p-4 bg-slate-900/40 border border-slate-800">
+<p class="text-slate-400 text-xs font-medium uppercase tracking-wider">Refunds</p>
+<p class="text-2xl font-bold leading-tight text-primary">$450.00</p>
+<div class="flex items-center gap-1 text-primary text-xs font-bold">
+<span class="material-symbols-outlined text-sm">trending_down</span>
+                    -2.1%
+                </div>
+</div>
+</div>
+<!-- Main Chart Section -->
+<div class="px-4 py-2">
+<div class="rounded-2xl bg-slate-900/40 border border-slate-800 p-5">
+<div class="flex justify-between items-end mb-6">
+<div>
+<h2 class="text-lg font-bold">Sales Over Time</h2>
+<p class="text-sm text-slate-400">Peak performance at 2:00 PM</p>
+</div>
+<div class="flex items-center gap-1 bg-primary/20 text-primary px-2 py-1 rounded-lg text-xs font-bold">
+                        Live <span class="flex h-1.5 w-1.5 rounded-full bg-primary animate-pulse"></span>
+</div>
+</div>
+<div class="relative h-48 w-full flex items-end gap-1">
+<!-- Faux Area Chart Design -->
+<div class="absolute inset-0 bg-gradient-to-t from-primary/10 to-transparent rounded-lg"></div>
+<div class="flex-1 bg-primary/20 h-1/4 rounded-t-sm"></div>
+<div class="flex-1 bg-primary/30 h-1/3 rounded-t-sm"></div>
+<div class="flex-1 bg-primary/40 h-1/2 rounded-t-sm"></div>
+<div class="flex-1 bg-primary/60 h-3/4 rounded-t-sm"></div>
+<div class="flex-1 bg-primary h-full rounded-t-sm shadow-[0_0_15px_rgba(220,38,38,0.5)]"></div>
+<div class="flex-1 bg-primary/70 h-2/3 rounded-t-sm"></div>
+<div class="flex-1 bg-primary/40 h-1/2 rounded-t-sm"></div>
+<div class="flex-1 bg-primary/30 h-1/4 rounded-t-sm"></div>
+<div class="flex-1 bg-primary/20 h-1/5 rounded-t-sm"></div>
+<div class="flex-1 bg-primary/10 h-1/6 rounded-t-sm"></div>
+</div>
+<div class="flex justify-between mt-4 text-[10px] text-slate-500 font-bold uppercase tracking-tighter">
+<span>08:00</span>
+<span>10:00</span>
+<span>12:00</span>
+<span>14:00</span>
+<span>16:00</span>
+<span>18:00</span>
+<span>20:00</span>
+</div>
+</div>
+</div>
+<!-- Category Breakdown -->
+<div class="px-4 py-4">
+<h2 class="text-lg font-bold mb-4">Sales by Category</h2>
+<div class="space-y-3">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3 flex-1">
+<div class="h-8 w-8 rounded-lg bg-orange-500/20 flex items-center justify-center text-orange-500">
+<span class="material-symbols-outlined text-[20px]">restaurant</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<span class="text-sm font-semibold">Food</span>
+<span class="text-sm font-bold">$12,400</span>
+</div>
+<div class="w-full bg-slate-800 rounded-full h-1.5">
+<div class="bg-orange-500 h-1.5 rounded-full" style="width: 65%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3 flex-1">
+<div class="h-8 w-8 rounded-lg bg-blue-500/20 flex items-center justify-center text-blue-500">
+<span class="material-symbols-outlined text-[20px]">local_bar</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<span class="text-sm font-semibold">Beverages</span>
+<span class="text-sm font-bold">$5,800</span>
+</div>
+<div class="w-full bg-slate-800 rounded-full h-1.5">
+<div class="bg-blue-500 h-1.5 rounded-full" style="width: 40%"></div>
+</div>
+</div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3 flex-1">
+<div class="h-8 w-8 rounded-lg bg-purple-500/20 flex items-center justify-center text-purple-500">
+<span class="material-symbols-outlined text-[20px]">shopping_bag</span>
+</div>
+<div class="flex-1">
+<div class="flex justify-between mb-1">
+<span class="text-sm font-semibold">Retail</span>
+<span class="text-sm font-bold">$3,200</span>
+</div>
+<div class="w-full bg-slate-800 rounded-full h-1.5">
+<div class="bg-purple-500 h-1.5 rounded-full" style="width: 25%"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Peak Hours Heatmap Section -->
+<div class="px-4 py-4">
+<h2 class="text-lg font-bold mb-4">Peak Hours Heatmap</h2>
+<div class="rounded-2xl bg-slate-900/40 border border-slate-800 p-4">
+<div class="grid grid-cols-6 gap-2">
+<div class="h-10 rounded bg-primary/10"></div>
+<div class="h-10 rounded bg-primary/20"></div>
+<div class="h-10 rounded bg-primary/40"></div>
+<div class="h-10 rounded bg-primary/60"></div>
+<div class="h-10 rounded bg-primary/80 shadow-[0_0_8px_rgba(220,38,38,0.4)]"></div>
+<div class="h-10 rounded bg-primary shadow-[0_0_12px_rgba(220,38,38,0.6)]"></div>
+<div class="h-10 rounded bg-primary/5"></div>
+<div class="h-10 rounded bg-primary/10"></div>
+<div class="h-10 rounded bg-primary/20"></div>
+<div class="h-10 rounded bg-primary/40"></div>
+<div class="h-10 rounded bg-primary/70"></div>
+<div class="h-10 rounded bg-primary/90"></div>
+</div>
+<div class="flex justify-between mt-3 text-[10px] text-slate-500 uppercase font-bold">
+<span>Morning</span>
+<span>Afternoon</span>
+<span>Evening</span>
+</div>
+</div>
+</div>
+<!-- Top Selling Items -->
+<div class="px-4 py-4 mb-10">
+<div class="flex justify-between items-center mb-4">
+<h2 class="text-lg font-bold">Top Selling Items</h2>
+<button class="text-primary text-xs font-bold flex items-center">
+                    VIEW ALL <span class="material-symbols-outlined text-xs">chevron_right</span>
+</button>
+</div>
+<div class="bg-slate-900/40 border border-slate-800 rounded-2xl overflow-hidden">
+<div class="flex items-center gap-4 p-4 border-b border-slate-800">
+<div class="h-12 w-12 rounded-xl bg-slate-800 overflow-hidden relative">
+<img alt="Espresso" class="h-full w-full object-cover" data-alt="Close up of an espresso coffee cup" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDpnfexaa1McRV4GIm9FUAUWV-Myml42xEVwZqgpdUVi3osAtxlNi-3qQXd9OianuhuGOqsFaAZ_vMPHy3Y4U2q3KZBJaxPqD0j8oNGGKu_hVLCSNOcNz52jONAgbHprEtDTCRlB0us6w9jMHic7pgYIvAWc7gLXFDpFa2754sgUOMO9FQF0UQGaX-7QJDNW-J9iGDA2u4VcxGcyMJpZmYXAi7Zyt2YJlH4ExhXJLpRfsGPbNTmFh4BCewmmsL0BWeGaAA3Q4Lz2WI"/>
+</div>
+<div class="flex-1">
+<h4 class="text-sm font-bold">Double Espresso</h4>
+<p class="text-xs text-slate-500">Beverages • 420 sold</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold">$1,470.00</p>
+<p class="text-[10px] text-emerald-400 font-bold">+12%</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-4 border-b border-slate-800">
+<div class="h-12 w-12 rounded-xl bg-slate-800 overflow-hidden relative">
+<img alt="Burger" class="h-full w-full object-cover" data-alt="Delicious cheeseburger on a dark background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCe-JxJ-moNZwJd9GrB2ywjtWsXQT23CBY1IpDFP2lZh1GEVbdXM7Tc7dp0cgn3hmQHmpcoeIPGxbbdeOjnHDbYBfUe4Z5xqCcsGumTACMuOfYW6hzce3BHplr-is3TQbVr7r1nIzu90XR1Lzu-C78og66V9aqnZV3OZrIit9kAsnN3BM6bAD-qy98vIAN8a8vbiOZ440xSQNTK2uVU4OmEmEL-4TrDTJ-j-1IMSrQWoTxBZOFsnTa_gzycOmpDtGroHxwPW9sua20"/>
+</div>
+<div class="flex-1">
+<h4 class="text-sm font-bold">Classic Cheeseburger</h4>
+<p class="text-xs text-slate-500">Food • 315 sold</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold">$3,780.00</p>
+<p class="text-[10px] text-emerald-400 font-bold">+8%</p>
+</div>
+</div>
+<div class="flex items-center gap-4 p-4">
+<div class="h-12 w-12 rounded-xl bg-slate-800 overflow-hidden relative">
+<img alt="T-Shirt" class="h-full w-full object-cover" data-alt="Minimalist black cotton t-shirt layout" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD-nQrDtm64_vrUG3JXDK64El5UQTHEs4Jk4Cj1blKQSioSeNp9VJ019pPY5HutuhfxDeO8FlUYKdhGn5gOeWoBJ7NID6juC0e17C89_oeLVT3GkoPCcG5HGUg_aLk-qYXSzR_ZCFLCUNktWc9f7yVwUK11DbuZCoWJQ39YQOp852IRnnaT4C-aWCbl4_niViSa4f-9ozR360mSxgzuKAkVfLwakBNpOiTFtuBJF1rvWgBGqy0KzJNyzdIwPwEaJkTg5J_L7pvrU9s"/>
+</div>
+<div class="flex-1">
+<h4 class="text-sm font-bold">Cotton Logo Tee</h4>
+<p class="text-xs text-slate-500">Retail • 120 sold</p>
+</div>
+<div class="text-right">
+<p class="text-sm font-bold">$2,880.00</p>
+<p class="text-[10px] text-slate-500 font-bold">0%</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Navigation Footer -->
+<div class="fixed bottom-0 left-0 right-0 z-50 bg-slate-900/90 backdrop-blur-xl border-t border-slate-800 px-2 pb-6 pt-2">
+<div class="flex justify-between items-center max-w-md mx-auto">
+<a class="flex flex-col items-center gap-1 px-3 py-1 text-slate-500" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span class="text-[10px] font-bold">Home</span>
+</a>
+<a class="flex flex-col items-center gap-1 px-3 py-1 text-slate-500" href="#">
+<span class="material-symbols-outlined">point_of_sale</span>
+<span class="text-[10px] font-bold">POS</span>
+</a>
+<a class="flex flex-col items-center gap-1 px-3 py-1 text-slate-500" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<span class="text-[10px] font-bold">Stock</span>
+</a>
+<a class="flex flex-col items-center gap-1 px-4 py-1 text-primary border-t-2 border-primary" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1">bar_chart</span>
+<span class="text-[10px] font-bold">Reports</span>
+</a>
+<a class="flex flex-col items-center gap-1 px-3 py-1 text-slate-500" href="#">
+<span class="material-symbols-outlined">settings</span>
+<span class="text-[10px] font-bold">Admin</span>
+</a>
+</div>
+</div>
+</body></html>

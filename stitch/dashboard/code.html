@@ -1,0 +1,204 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Mobile POS Dashboard</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#007bff",
+                        "background-light": "#f5f7f8",
+                        "background-dark": "#0f1923",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.5rem", "lg": "1rem", "xl": "1.5rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        body {
+            font-family: 'Inter', sans-serif;
+        }
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display">
+<!-- Main Container -->
+<div class="relative mx-auto max-w-md min-h-screen flex flex-col bg-white dark:bg-slate-900 shadow-xl overflow-x-hidden">
+<!-- Top Bar -->
+<div class="flex items-center bg-white dark:bg-slate-900 p-4 pb-2 justify-between sticky top-0 z-10 border-b border-slate-100 dark:border-slate-800">
+<div class="flex size-10 shrink-0 items-center">
+<div class="bg-primary/10 rounded-full size-10 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined">person</span>
+</div>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 ml-3">Dashboard</h2>
+<div class="flex w-12 items-center justify-end">
+<button class="flex items-center justify-center rounded-xl h-10 w-10 bg-transparent text-slate-700 dark:text-slate-300">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+</div>
+</div>
+<!-- Scrollable Content -->
+<div class="flex-1 overflow-y-auto pb-24">
+<!-- Stats Summary -->
+<div class="flex flex-wrap gap-4 p-4">
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-5 bg-primary/5 border border-primary/10 shadow-sm">
+<p class="text-slate-600 dark:text-slate-400 text-sm font-medium leading-normal">Total Sales Today</p>
+<p class="text-slate-900 dark:text-white tracking-tight text-2xl font-bold leading-tight">$1,240.00</p>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-green-500 text-sm">trending_up</span>
+<p class="text-green-600 dark:text-green-400 text-sm font-semibold">+12%</p>
+</div>
+</div>
+<div class="flex min-w-[158px] flex-1 flex-col gap-2 rounded-xl p-5 bg-slate-50 dark:bg-slate-800 border border-slate-100 dark:border-slate-700 shadow-sm">
+<p class="text-slate-600 dark:text-slate-400 text-sm font-medium leading-normal">Orders</p>
+<p class="text-slate-900 dark:text-white tracking-tight text-2xl font-bold leading-tight">42</p>
+<div class="flex items-center gap-1">
+<span class="material-symbols-outlined text-green-500 text-sm">trending_up</span>
+<p class="text-green-600 dark:text-green-400 text-sm font-semibold">+5%</p>
+</div>
+</div>
+</div>
+<!-- Chart Section -->
+<div class="px-4 py-2">
+<div class="bg-white dark:bg-slate-800 rounded-xl border border-slate-100 dark:border-slate-700 p-5 shadow-sm">
+<div class="flex justify-between items-center mb-4">
+<div>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Weekly Sales Trend</p>
+<p class="text-slate-900 dark:text-white text-2xl font-bold leading-tight">$8,540.00</p>
+</div>
+<span class="text-primary bg-primary/10 px-2 py-1 rounded text-xs font-bold leading-tight">+15.4%</span>
+</div>
+<div class="min-h-[160px] w-full mt-4">
+<svg fill="none" height="120" preserveaspectratio="none" viewbox="0 0 400 120" width="100%" xmlns="http://www.w3.org/2000/svg">
+<path d="M0 100C40 100 60 20 100 20C140 20 160 80 200 80C240 80 260 40 300 40C340 40 360 10 400 10V120H0V100Z" fill="url(#paint0_linear_pos)"></path>
+<path d="M0 100C40 100 60 20 100 20C140 20 160 80 200 80C240 80 260 40 300 40C340 40 360 10 400 10" stroke="#007bff" stroke-linecap="round" stroke-width="3"></path>
+<defs>
+<lineargradient gradientunits="userSpaceOnUse" id="paint0_linear_pos" x1="200" x2="200" y1="10" y2="120">
+<stop stop-color="#007bff" stop-opacity="0.2"></stop>
+<stop offset="1" stop-color="#007bff" stop-opacity="0"></stop>
+</lineargradient>
+</defs>
+</svg>
+<div class="flex justify-between mt-4">
+<p class="text-slate-400 dark:text-slate-500 text-[10px] font-bold uppercase tracking-wider">Mon</p>
+<p class="text-slate-400 dark:text-slate-500 text-[10px] font-bold uppercase tracking-wider">Tue</p>
+<p class="text-slate-400 dark:text-slate-500 text-[10px] font-bold uppercase tracking-wider">Wed</p>
+<p class="text-slate-400 dark:text-slate-500 text-[10px] font-bold uppercase tracking-wider">Thu</p>
+<p class="text-slate-400 dark:text-slate-500 text-[10px] font-bold uppercase tracking-wider">Fri</p>
+<p class="text-slate-400 dark:text-slate-500 text-[10px] font-bold uppercase tracking-wider">Sat</p>
+<p class="text-slate-400 dark:text-slate-500 text-[10px] font-bold uppercase tracking-wider">Sun</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Quick Actions -->
+<div class="px-4 py-6">
+<h3 class="text-slate-900 dark:text-white text-base font-bold mb-4">Quick Actions</h3>
+<div class="grid grid-cols-3 gap-4">
+<button class="flex flex-col items-center justify-center gap-2 p-4 bg-primary text-white rounded-xl shadow-md active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-2xl">add_shopping_cart</span>
+<span class="text-[11px] font-bold">New Sale</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-2xl text-primary">add_box</span>
+<span class="text-[11px] font-bold text-slate-700 dark:text-slate-300">Product</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 p-4 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl shadow-sm active:scale-95 transition-transform">
+<span class="material-symbols-outlined text-2xl text-primary">barcode_scanner</span>
+<span class="text-[11px] font-bold text-slate-700 dark:text-slate-300">Scan</span>
+</button>
+</div>
+</div>
+<!-- Recent Transactions -->
+<div class="px-4 pb-10">
+<div class="flex justify-between items-center mb-4">
+<h3 class="text-slate-900 dark:text-white text-base font-bold">Recent Transactions</h3>
+<button class="text-primary text-sm font-semibold">See All</button>
+</div>
+<div class="space-y-3">
+<div class="flex items-center justify-between p-4 bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-xl shadow-sm">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900 dark:text-white">Order #TR-4921</p>
+<p class="text-xs text-slate-500">2:45 PM • 3 items</p>
+</div>
+</div>
+<p class="text-sm font-bold text-slate-900 dark:text-white">$124.50</p>
+</div>
+<div class="flex items-center justify-between p-4 bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-xl shadow-sm">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900 dark:text-white">Order #TR-4920</p>
+<p class="text-xs text-slate-500">1:15 PM • 1 item</p>
+</div>
+</div>
+<p class="text-sm font-bold text-slate-900 dark:text-white">$45.00</p>
+</div>
+<div class="flex items-center justify-between p-4 bg-white dark:bg-slate-800 border border-slate-100 dark:border-slate-700 rounded-xl shadow-sm opacity-80">
+<div class="flex items-center gap-3">
+<div class="size-10 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-slate-600 dark:text-slate-300">
+<span class="material-symbols-outlined">receipt_long</span>
+</div>
+<div>
+<p class="text-sm font-bold text-slate-900 dark:text-white">Order #TR-4919</p>
+<p class="text-xs text-slate-500">12:30 PM • 5 items</p>
+</div>
+</div>
+<p class="text-sm font-bold text-slate-900 dark:text-white">$210.20</p>
+</div>
+</div>
+</div>
+</div>
+<!-- Bottom Navigation Bar -->
+<div class="fixed bottom-0 left-0 right-0 mx-auto max-w-md bg-white dark:bg-slate-900 border-t border-slate-100 dark:border-slate-800 px-2 py-3">
+<div class="flex items-center justify-between">
+<a class="flex flex-1 flex-col items-center gap-1 text-primary" href="#">
+<span class="material-symbols-outlined fill-[1]">dashboard</span>
+<p class="text-[10px] font-bold">Dashboard</p>
+</a>
+<a class="flex flex-1 flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">point_of_sale</span>
+<p class="text-[10px] font-medium">POS</p>
+</a>
+<a class="flex flex-1 flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">inventory_2</span>
+<p class="text-[10px] font-medium">Products</p>
+</a>
+<a class="flex flex-1 flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">warehouse</span>
+<p class="text-[10px] font-medium">Inventory</p>
+</a>
+<a class="flex flex-1 flex-col items-center gap-1 text-slate-400 dark:text-slate-500" href="#">
+<span class="material-symbols-outlined">bar_chart</span>
+<p class="text-[10px] font-medium">Reports</p>
+</a>
+</div>
+</div>
+</div>
+</body></html>

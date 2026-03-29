@@ -1,0 +1,118 @@
+<mxfile host="app.diagrams.net" modified="2026-03-29T00:00:00.000Z" agent="billing-software-docs" version="22.1.0" type="device">
+  <diagram id="hld-context" name="HLD - System context">
+    <mxGraphModel dx="1100" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="hld-title" value="HLD — POS / Billing system context" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="400" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="hld-browser" value="Browser / PWA&#xa;React UI" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="120" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="hld-cap" value="Capacitor&#xa;(optional mobile)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#fff2cc;strokeColor=#d6b656;" vertex="1" parent="1">
+          <mxGeometry x="40" y="230" width="160" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="hld-next" value="Next.js App Router&#xa;Pages + REST /api/*" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="320" y="160" width="200" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="hld-pg" value="PostgreSQL&#xa;(multi-tenant data)" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=12;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="620" y="165" width="160" height="80" as="geometry" />
+        </mxCell>
+        <mxCell id="hld-e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="hld-browser" target="hld-next">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hld-e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;" edge="1" parent="1" source="hld-cap" target="hld-next">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hld-e3" value="HTTPS / JSON / JWT" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;fontSize=10;" edge="1" parent="1" source="hld-next" target="hld-pg">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="hld-note" value="Tenancy: business_id + membership per request" style="shape=note;whiteSpace=wrap;html=1;backgroundOutline=1;darkOpacity=0.05;fillColor=#ffffc0;strokeColor=#ff9900;size=14;fontSize=11;align=left;" vertex="1" parent="1">
+          <mxGeometry x="320" y="300" width="260" height="60" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="lld-layers" name="LLD - Layered architecture">
+    <mxGraphModel dx="1100" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="lld-title" value="LLD — Code layers (dependency direction: downward)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="480" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="lld-app" value="App (Next.js)&#xa;src/app/ — routes, UI, api route handlers" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="200" y="70" width="360" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="lld-appl" value="Application&#xa;src/application/ — use cases (checkout, metrics, …)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="200" y="180" width="360" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="lld-infra" value="Infrastructure&#xa;src/infrastructure/ — pool, JWT, route-errors, membership" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="200" y="290" width="360" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="lld-shared" value="Shared&#xa;src/shared/ — validation, kernel/http, domain modules, api client" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1;align=center;" vertex="1" parent="1">
+          <mxGeometry x="200" y="400" width="360" height="70" as="geometry" />
+        </mxCell>
+        <mxCell id="lld-e1" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;dashed=1;dashPattern=8 8;" edge="1" parent="1" source="lld-app" target="lld-appl">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lld-e2" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;dashed=1;dashPattern=8 8;" edge="1" parent="1" source="lld-appl" target="lld-infra">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lld-e3" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=block;endFill=1;dashed=1;dashPattern=8 8;" edge="1" parent="1" source="lld-infra" target="lld-shared">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="lld-side" value="Client: Zustand + TanStack Query&#xa;hooks, stores (cart, auth, business, …)" style="rounded=1;whiteSpace=wrap;html=1;fillColor=#f5f5f5;strokeColor=#666666;fontSize=11;align=left;verticalAlign=top;spacingLeft=8;spacingTop=6;" vertex="1" parent="1">
+          <mxGeometry x="620" y="70" width="220" height="200" as="geometry" />
+        </mxCell>
+        <mxCell id="lld-db" value="PostgreSQL&#xa;db/schema.sql" style="shape=cylinder3;whiteSpace=wrap;html=1;boundedLbl=1;backgroundOutline=1;size=10;fillColor=#f8cecc;strokeColor=#b85450;" vertex="1" parent="1">
+          <mxGeometry x="620" y="310" width="140" height="90" as="geometry" />
+        </mxCell>
+        <mxCell id="lld-e4" value="SQL" style="edgeStyle=orthogonalEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;endArrow=open;endFill=0;dashed=1;" edge="1" parent="1" source="lld-infra" target="lld-db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+  <diagram id="lld-checkout" name="LLD - POS checkout (sequence)">
+    <mxGraphModel dx="1100" dy="800" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="1100" pageHeight="850" math="0" shadow="0">
+      <root>
+        <mxCell id="0" />
+        <mxCell id="1" parent="0" />
+        <mxCell id="seq-title" value="LLD — Checkout flow (simplified)" style="text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=middle;fontStyle=1;fontSize=16;" vertex="1" parent="1">
+          <mxGeometry x="40" y="20" width="400" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="seq-ui" value="POS UI" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#dae8fc;strokeColor=#6c8ebf;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="40" y="80" width="100" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="seq-api" value="POST /api/orders" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#d5e8d4;strokeColor=#82b366;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="220" y="80" width="120" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="seq-app" value="checkout-order&#xa;service" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#ffe6cc;strokeColor=#d79b00;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="420" y="80" width="120" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="seq-db" value="PostgreSQL" style="rounded=0;whiteSpace=wrap;html=1;fillColor=#e1d5e7;strokeColor=#9673a6;fontStyle=1" vertex="1" parent="1">
+          <mxGeometry x="620" y="80" width="100" height="360" as="geometry" />
+        </mxCell>
+        <mxCell id="seq-m1" value="JSON + JWT" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;endFill=1;exitX=1;exitY=0.25;entryX=0;entryY=0.25;" edge="1" parent="1" source="seq-ui" target="seq-api">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="seq-m2" value="invoke" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;endFill=1;exitX=1;exitY=0.45;entryX=0;entryY=0.45;" edge="1" parent="1" source="seq-api" target="seq-app">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="seq-m3" value="transaction" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=block;endFill=1;exitX=1;exitY=0.55;entryX=0;entryY=0.55;" edge="1" parent="1" source="seq-app" target="seq-db">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="seq-m4" value="order id" style="edgeStyle=orthogonalEdgeStyle;html=1;endArrow=open;endFill=0;dashed=1;exitX=0;exitY=0.65;entryX=1;entryY=0.65;" edge="1" parent="1" source="seq-db" target="seq-ui">
+          <mxGeometry relative="1" as="geometry">
+            <Array as="points">
+              <mxPoint x="720" y="320" />
+              <mxPoint x="20" y="320" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Payment Success - POS</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e21d48",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#211115",
+                    },
+                    fontFamily: {
+                        "display": ["Inter", "sans-serif"]
+                    },
+                    borderRadius: {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                },
+            },
+        }
+    </script>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen">
+<div class="relative flex h-auto min-h-screen w-full flex-col max-w-md mx-auto overflow-x-hidden border-x border-slate-200 dark:border-primary/10">
+<!-- Header -->
+<div class="flex items-center bg-background-light dark:bg-background-dark p-4 pb-2 justify-between">
+<div class="text-slate-900 dark:text-slate-100 flex size-12 shrink-0 items-center justify-start cursor-pointer">
+<span class="material-symbols-outlined text-2xl">close</span>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 text-lg font-bold leading-tight tracking-tight flex-1 text-center pr-12">Payment Status</h2>
+</div>
+<!-- Success Visual Section -->
+<div class="flex flex-col items-center justify-center pt-10 pb-6 px-4">
+<div class="relative flex items-center justify-center">
+<!-- Success Ring Animation Placeholder -->
+<div class="absolute inset-0 bg-primary/20 rounded-full scale-150 blur-xl"></div>
+<div class="bg-primary rounded-full p-6 flex items-center justify-center shadow-xl shadow-primary/20 z-10">
+<span class="material-symbols-outlined text-white text-7xl font-bold" style="font-variation-settings: 'wght' 700;">check</span>
+</div>
+</div>
+<h2 class="text-slate-900 dark:text-slate-100 tracking-light text-2xl font-bold leading-tight mt-10">Payment Successful</h2>
+<h1 class="text-slate-900 dark:text-slate-100 tracking-light text-5xl font-black leading-tight pt-2">$125.00</h1>
+<p class="text-slate-500 dark:text-primary/60 text-sm font-medium leading-normal pt-1">Order #ORD-9921</p>
+</div>
+<!-- Loyalty Points Card -->
+<div class="px-6 py-4">
+<div class="bg-primary/5 dark:bg-primary/10 border border-primary/20 rounded-xl p-4 flex items-center justify-between">
+<div class="flex items-center gap-3">
+<div class="bg-primary/20 p-2 rounded-lg">
+<span class="material-symbols-outlined text-primary text-2xl">workspace_premium</span>
+</div>
+<div>
+<p class="text-slate-400 text-xs font-semibold uppercase tracking-wider">Loyalty Points</p>
+<p class="text-slate-900 dark:text-slate-100 font-bold text-lg">+125 pts</p>
+</div>
+</div>
+<span class="material-symbols-outlined text-primary">chevron_right</span>
+</div>
+</div>
+<!-- Action Grid -->
+<div class="px-6 pt-4 grid grid-cols-2 gap-4">
+<button class="flex flex-col items-center justify-center gap-2 p-4 bg-slate-100 dark:bg-primary/10 border border-slate-200 dark:border-primary/10 rounded-xl active:bg-slate-200 dark:active:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-primary">download</span>
+<span class="text-sm font-semibold">Download</span>
+</button>
+<button class="flex flex-col items-center justify-center gap-2 p-4 bg-slate-100 dark:bg-primary/10 border border-slate-200 dark:border-primary/10 rounded-xl active:bg-slate-200 dark:active:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined text-primary">mail</span>
+<span class="text-sm font-semibold">Email Receipt</span>
+</button>
+</div>
+<!-- Spacer -->
+<div class="flex-grow"></div>
+<!-- Footer Actions -->
+<div class="p-6 flex flex-col gap-3">
+<button class="w-full bg-primary hover:bg-primary/90 text-white font-bold py-4 rounded-xl shadow-lg shadow-primary/20 transition-all active:scale-[0.98]">
+                Done
+            </button>
+<button class="w-full bg-transparent text-slate-500 dark:text-slate-400 font-medium py-3 rounded-xl transition-all active:bg-slate-100 dark:active:bg-white/5">
+                Print Customer Copy
+            </button>
+</div>
+<!-- Decorative background element -->
+<div class="absolute top-0 right-0 w-64 h-64 bg-primary/5 rounded-full -mr-32 -mt-32 blur-3xl -z-10"></div>
+</div>
+</body></html>

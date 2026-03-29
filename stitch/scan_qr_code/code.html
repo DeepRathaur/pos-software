@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+
+<html class="dark" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#e21d48",
+                        "background-light": "#f8f6f6",
+                        "background-dark": "#12080a",
+                        "neutral-dark": "#211115",
+                    },
+                    fontFamily: {
+                        "display": ["Inter"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+<style>
+        .qr-scanner-overlay {
+            background: linear-gradient(to bottom, rgba(18, 8, 10, 0.4) 0%, rgba(18, 8, 10, 0) 20%, rgba(18, 8, 10, 0) 80%, rgba(18, 8, 10, 0.4) 100%);
+        }
+        .scan-frame {
+            box-shadow: 0 0 0 4000px rgba(18, 8, 10, 0.7);
+        }
+        .scan-line {
+            height: 2px;
+            background: linear-gradient(90deg, transparent, #e21d48, transparent);
+            top: 50%;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 antialiased overflow-hidden">
+<div class="relative flex h-screen w-full flex-col overflow-hidden">
+<!-- Header -->
+<header class="flex items-center justify-between p-4 z-20">
+<button class="flex items-center justify-center size-10 rounded-full bg-neutral-dark/80 text-slate-100 hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined">close</span>
+</button>
+<div class="flex flex-col items-center">
+<h2 class="text-slate-100 text-sm font-semibold tracking-wider uppercase">Scan to Order</h2>
+<div class="flex items-center gap-1 mt-1">
+<span class="size-1.5 bg-primary rounded-full animate-pulse"></span>
+<span class="text-[10px] text-slate-400 font-medium">CAMERA ACTIVE</span>
+</div>
+</div>
+<button class="flex items-center justify-center size-10 rounded-full bg-neutral-dark/80 text-slate-100 hover:bg-primary/20 transition-colors">
+<span class="material-symbols-outlined">help</span>
+</button>
+</header>
+<!-- Viewfinder Area -->
+<div class="relative flex-1 flex flex-col items-center justify-center z-10">
+<!-- Simulated Camera Feed Background -->
+<div class="absolute inset-0 z-0 bg-neutral-900 overflow-hidden">
+<div class="w-full h-full opacity-60 bg-gradient-to-br from-neutral-800 to-background-dark" data-alt="Dark restaurant interior atmosphere abstract background"></div>
+</div>
+<!-- Scanning Frame -->
+<div class="relative size-72 sm:size-80">
+<!-- Corner Borders -->
+<div class="absolute top-0 left-0 size-8 border-t-4 border-l-4 border-primary rounded-tl-xl"></div>
+<div class="absolute top-0 right-0 size-8 border-t-4 border-r-4 border-primary rounded-tr-xl"></div>
+<div class="absolute bottom-0 left-0 size-8 border-b-4 border-l-4 border-primary rounded-bl-xl"></div>
+<div class="absolute bottom-0 right-0 size-8 border-b-4 border-r-4 border-primary rounded-br-xl"></div>
+<!-- Inner Cutout -->
+<div class="scan-frame w-full h-full rounded-xl"></div>
+<!-- Animated Scan Line -->
+<div class="scan-line absolute w-full z-20"></div>
+</div>
+<!-- Instructional Text -->
+<div class="mt-12 px-8 text-center max-w-sm">
+<h3 class="text-slate-100 text-xl font-bold leading-tight">Ready to Order?</h3>
+<p class="text-slate-300 text-sm mt-2 font-light leading-relaxed">Position the QR code on your table within the frame to view the menu.</p>
+</div>
+</div>
+<!-- Bottom Controls -->
+<footer class="relative z-20 pb-12 pt-6 px-6 bg-gradient-to-t from-background-dark via-background-dark/90 to-transparent">
+<div class="flex items-center justify-center gap-8 mb-8">
+<!-- Gallery Button -->
+<button class="group flex flex-col items-center gap-2">
+<div class="flex items-center justify-center size-12 rounded-full bg-neutral-dark/80 text-slate-100 group-hover:bg-primary/20 transition-all border border-white/5">
+<span class="material-symbols-outlined text-2xl">image</span>
+</div>
+<span class="text-[10px] text-slate-400 font-semibold tracking-widest uppercase">Photos</span>
+</button>
+<!-- Main Shutter Style Flash Toggle -->
+<button class="group flex flex-col items-center gap-2">
+<div class="flex items-center justify-center size-20 rounded-full bg-primary text-white shadow-lg shadow-primary/20 group-active:scale-95 transition-all ring-4 ring-white/10">
+<span class="material-symbols-outlined text-3xl">bolt</span>
+</div>
+<span class="text-[10px] text-primary font-bold tracking-widest uppercase mt-1">Flash On</span>
+</button>
+<!-- Zoom Button -->
+<button class="group flex flex-col items-center gap-2">
+<div class="flex items-center justify-center size-12 rounded-full bg-neutral-dark/80 text-slate-100 group-hover:bg-primary/20 transition-all border border-white/5">
+<span class="material-symbols-outlined text-2xl">zoom_in</span>
+</div>
+<span class="text-[10px] text-slate-400 font-semibold tracking-widest uppercase">Zoom</span>
+</button>
+</div>
+<!-- Manual Entry -->
+<div class="flex justify-center">
+<button class="flex items-center gap-3 px-6 py-3 rounded-full bg-neutral-dark border border-white/10 text-slate-100 hover:bg-neutral-dark/70 transition-all">
+<span class="material-symbols-outlined text-sm">keyboard</span>
+<span class="text-sm font-semibold tracking-wide">Enter Table Number Manually</span>
+</button>
+</div>
+</footer>
+<!-- Bottom Safe Area Indicator -->
+<div class="h-1 bg-primary/20 w-1/3 mx-auto rounded-full mb-2"></div>
+</div>
+</body></html>

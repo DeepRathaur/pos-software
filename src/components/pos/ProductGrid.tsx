@@ -20,7 +20,7 @@ export function ProductGrid({
 }) {
   if (items.length === 0) {
     return (
-      <p className="rounded-2xl border border-dashed border-zinc-800 py-10 text-center text-sm text-zinc-500">
+      <p className="rounded-2xl border border-dashed border-zinc-800 py-10 text-center text-sm text-stitch-fg-muted">
         {emptyHint}
       </p>
     );
@@ -43,8 +43,8 @@ export function ProductGrid({
               className="mb-2 h-14 w-full rounded-lg object-cover"
             />
           ) : null}
-          <span className="line-clamp-2 text-sm font-medium text-zinc-100">{it.name}</span>
-          <span className="text-xs text-zinc-500">{it.kind}</span>
+          <span className="line-clamp-2 text-sm font-medium text-stitch-fg">{it.name}</span>
+          <span className="text-xs text-stitch-fg-muted">{it.kind}</span>
           <span className="mt-2 text-lg font-semibold tabular-nums text-emerald-300">
             ₹{Number(it.price).toFixed(2)}
           </span>
